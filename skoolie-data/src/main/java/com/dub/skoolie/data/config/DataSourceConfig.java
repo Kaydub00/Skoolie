@@ -40,7 +40,7 @@ public class DataSourceConfig {
     
     
     @Bean
-    public DataSource schooliecoreDataSource() {
+    public DataSource skooliecoreDataSource() {
         BasicDataSource src = new BasicDataSource();
         StringBuilder str = new StringBuilder();
         str.append(url).append(coredb).append(AUTO_CONNECT);
