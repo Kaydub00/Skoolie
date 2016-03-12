@@ -1,0 +1,25 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="dbAuthenticationProvider"></authentication-provider>
+    </authentication-manager>
+    
+    <beans:bean id="dbAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+        <beans:property name="passwordEncoder">
+            <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></beans:bean>
+        </beans:property>
+        <beans:property name="userDetailsService" ref="dBUserDetailsServiceImpl"></beans:property>
+    </beans:bean>
+    
+    <global-method-security secured-annotations="enabled"/>
+    
+    
+    
+    
+</beans:beans>

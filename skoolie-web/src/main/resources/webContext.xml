@@ -19,5 +19,9 @@
     </bean>
     
     <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+    
+    <context:component-scan base-package="com.dub.skoolie"/>
+    
+    <import resource="classpath*:businessContext.xml"/>
 
 </beans>

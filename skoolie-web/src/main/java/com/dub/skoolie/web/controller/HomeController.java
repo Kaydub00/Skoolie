@@ -14,11 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
     
     @RequestMapping("/index")
-    public ModelAndView index(Model model)
-    {
+    public ModelAndView index(Model model) {
         //UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         //model.addAttribute("homebean", homeBean);
         return new ModelAndView("home");
+    }
+    
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        return new ModelAndView("login");
     }
 
 }
