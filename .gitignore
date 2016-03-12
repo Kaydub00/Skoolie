@@ -12,3 +12,4 @@ pom.xml.next
 release.properties
 /WebApplication1/nbproject/private/
 nb-configuration.xml
+database.properties
