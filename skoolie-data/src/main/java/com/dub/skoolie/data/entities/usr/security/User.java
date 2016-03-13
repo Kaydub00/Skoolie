@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
@@ -40,9 +41,11 @@ public class User implements Serializable {
     @Column(name="TYPE", length=40)
     private String type;
     
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    @Cascade({CascadeType.ALL })
-    private List<UserRole> roles;
+    @ManyToMany(mappedBy="users", fetch = FetchType.LAZY)
+    private List<Role> roles;
+    
+    @ManyToMany(mappedBy="users", fetch = FetchType.LAZY)
+    private List<Group> groups;
 
     public String getUsername() {
         return username;
@@ -76,11 +79,11 @@ public class User implements Serializable {
         this.enabled = enabled;
     }
 
-    public List<UserRole> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<UserRole> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 
@@ -98,5 +101,13 @@ public class User implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<Group> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

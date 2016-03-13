@@ -24,7 +24,7 @@ public class UserBean implements Serializable {
     
     private String type;
     
-    private List<UserRoleBean> roles = new ArrayList();
+    private List<RoleBean> roles = new ArrayList();
 
     public String getUsername() {
         return username;
@@ -58,15 +58,15 @@ public class UserBean implements Serializable {
         this.enabled = enabled;
     }
 
-    public List<UserRoleBean> getRoles() {
+    public List<RoleBean> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<UserRoleBean> roles) {
+    public void setRoles(List<RoleBean> roles) {
         this.roles = roles;
     }
     
-    public void addRole(UserRoleBean role) {
+    public void addRole(RoleBean role) {
         this.roles.add(role);
     }
 

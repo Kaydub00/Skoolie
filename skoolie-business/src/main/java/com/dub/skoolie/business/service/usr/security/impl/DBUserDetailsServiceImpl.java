@@ -36,7 +36,7 @@ public class DBUserDetailsServiceImpl  extends JdbcDaoImpl implements AppUserDet
         super.setEnableGroups(true);
         super.setUsersByUsernameQuery("select USERNAME,PASSWORD,ENABLED from USR_USER where USERNAME=?");
         super.setAuthoritiesByUsernameQuery("select USERNAME, ROLE from USR_USER_ROLE where USERNAME=?");
-        super.setGroupAuthoritiesByUsernameQuery("select G.`ID`, G.`GROUP`, UGR.`ROLE` FROM USR_USER_GROUP UUG JOIN USR_GROUPS G ON UUG.`GROUP_ID` = G.`ID` JOIN USR_GROUP_ROLES UGR ON UGR.`GROUP_ID` = G.`ID` WHERE UUG.`USERNAME` = ?");
+        super.setGroupAuthoritiesByUsernameQuery("select UUG.ID, G.`GROUP`, UGR.`ROLE` FROM USR_USER_GROUP UUG JOIN USR_GROUPS G ON UUG.`GROUP_ID` = G.`GROUP` JOIN USR_GROUP_ROLES UGR ON UGR.`GROUP_ID` = G.`GROUP` WHERE UUG.`USERNAME` = ?");
         UserDetails user =  super.loadUserByUsername(string);
         Date exp = (Date)getJdbcTemplate().queryForObject("SELECT EXPIRATION FROM USR_USER WHERE USERNAME=?", new Object[] { string }, Date.class);
         if(exp == null || exp.after(new Date())) {
