@@ -44,7 +44,7 @@ public class SkoolieJPAConfig {
         HibernateJpaVendorAdapter hibernateVendorAdapter = new HibernateJpaVendorAdapter();
         hibernateVendorAdapter.setDatabase(Database.MYSQL);
         hibernateVendorAdapter.setShowSql(false);
-        //hibernateVendorAdapter.setGenerateDdl(true);
+        hibernateVendorAdapter.setGenerateDdl(true);
         hibernateVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5InnoDBDialect");
         return hibernateVendorAdapter;
     }

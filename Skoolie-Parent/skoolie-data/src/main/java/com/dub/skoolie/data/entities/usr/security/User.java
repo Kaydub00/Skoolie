@@ -41,6 +41,9 @@ public class User implements Serializable {
     @Column(name="TYPE", length=40)
     private String type;
     
+    @Column(name="FIRST_LOGIN")
+    private Boolean firstlogin;
+    
     @ManyToMany(mappedBy="users", fetch = FetchType.LAZY)
     private List<Role> roles;
     
@@ -109,5 +112,13 @@ public class User implements Serializable {
 
     public void setGroups(List<Group> groups) {
         this.groups = groups;
+    }
+    
+    public Boolean getFirstlogin() {
+        return this.firstlogin;
+    }
+    
+    public void setFirstlogin(Boolean firstlogin) {
+        this.firstlogin = firstlogin;
     }
 }

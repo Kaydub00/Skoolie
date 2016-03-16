@@ -17,6 +17,7 @@
         <beans:property name="userDetailsService" ref="dBUserDetailsServiceImpl"></beans:property>
     </beans:bean>
     
+    
     <global-method-security secured-annotations="enabled"/>
     
     

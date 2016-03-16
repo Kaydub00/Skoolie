@@ -24,7 +24,11 @@ public class UserBean implements Serializable {
     
     private String type;
     
+    private Boolean firstlogin;
+    
     private List<RoleBean> roles = new ArrayList();
+    
+    private List<GroupBean> groups = new ArrayList();
 
     public String getUsername() {
         return username;
@@ -84,6 +88,26 @@ public class UserBean implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+    
+    public Boolean getFirstlogin() {
+        return this.firstlogin;
+    }
+    
+    public void setFirstlogin(Boolean firstlogin) {
+        this.firstlogin = firstlogin;
+    }
+    
+    public List<GroupBean> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<GroupBean> groups) {
+        this.groups = groups;
+    }
+    
+    public void addGroup(GroupBean group) {
+        this.groups.add(group);
     }
 
 }

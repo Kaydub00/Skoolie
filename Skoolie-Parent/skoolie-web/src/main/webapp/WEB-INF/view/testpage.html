@@ -11,5 +11,12 @@
         <title>Skoolie</title>
         
     </head>
-    <body> Home Page</body>
+    <body> <h1>Test Page</h1>
+        <table>
+            <tr th:each="user : ${users}" >
+                <td th:text="${user.username}">null</td>
+                <td th:text="${user.email}">null</td>
+            </tr>
+        </table>
+    </body>
 </html>

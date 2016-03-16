@@ -2,6 +2,7 @@
 package com.dub.skoolie.business.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.AppUserDetailsService;
+import com.jcraft.jsch.Logger;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -40,10 +41,19 @@ public class DBUserDetailsServiceImpl  extends JdbcDaoImpl implements AppUserDet
         UserDetails user =  super.loadUserByUsername(string);
         Date exp = (Date)getJdbcTemplate().queryForObject("SELECT EXPIRATION FROM USR_USER WHERE USERNAME=?", new Object[] { string }, Date.class);
         if(exp == null || exp.after(new Date())) {
+            if(isFirstLogin(user.getUsername())) {
+                //do something crazy like go through a first time login workflow
+                
+            }
             return user;
         } else {
             throw new CredentialsExpiredException(string + " Has Expired");
         }
+    }
+    
+    protected Boolean isFirstLogin(String username) {
+        Integer cnt = getJdbcTemplate().queryForObject("SELECT count(*) FROM USR_USER WHERE USERNAME=? AND FIRST_LOGIN = TRUE", Integer.class, username);
+        return cnt != null && cnt > 0;
     }
 
 }

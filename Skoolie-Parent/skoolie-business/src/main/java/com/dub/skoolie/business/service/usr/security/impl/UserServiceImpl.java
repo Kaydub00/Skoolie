@@ -4,6 +4,7 @@ package com.dub.skoolie.business.service.usr.security.impl;
 import com.dub.skoolie.business.service.usr.security.UserService;
 import com.dub.skoolie.data.dao.usr.security.UserRepository;
 import com.dub.skoolie.data.entities.usr.security.User;
+import com.dub.skoolie.structures.usr.security.GroupBean;
 import com.dub.skoolie.structures.usr.security.RoleBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import java.util.ArrayList;
@@ -77,8 +78,11 @@ public class UserServiceImpl implements UserService {
     public void addUser(UserBean user) {
         User entity = new User();
         RoleBean role = new RoleBean();
+        GroupBean group = new GroupBean();
+        group.setGroup("GRP_USER");
         role.setRole("ROLE_USER");
         user.addRole(role);
+        user.addGroup(null);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encpwd = encoder.encode(user.getPassword());
         user.setPassword(encpwd);
