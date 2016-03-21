@@ -27,7 +27,15 @@ public class HomeController {
         UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         UserBean user = uiUserServiceImpl.getUser(userDetails.getUsername());
         if(user.getType().equals("SYSTEM")) {
-            return new ModelAndView("redirect:/test");
+            return new ModelAndView("redirect:/system");
+        } else if (user.getType().equals("TEACHER")) {
+            return new ModelAndView("redirect:/teacher");
+        } else if (user.getType().equals("STUDENT")) {
+            return new ModelAndView("redirect:/student");
+        } else if (user.getType().equals("PARENT")) {
+            return new ModelAndView("redirect:/parent");
+        } else if (user.getType().equals("ADMIN")) {
+            return new ModelAndView("redirect:/admin");
         }
         //model.addAttribute("homebean", homeBean);
         return new ModelAndView("home");
