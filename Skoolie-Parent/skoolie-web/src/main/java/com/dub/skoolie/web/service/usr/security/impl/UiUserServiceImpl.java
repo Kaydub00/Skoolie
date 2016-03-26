@@ -2,7 +2,9 @@
 package com.dub.skoolie.web.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.UserService;
+import com.dub.skoolie.business.service.usr.security.UserTypeService;
 import com.dub.skoolie.structures.usr.security.UserBean;
+import com.dub.skoolie.structures.usr.security.UserTypeBean;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UiUserServiceImpl implements UiUserService {
     
     @Autowired
     UserService userServiceImpl;
+    
+    @Autowired
+    UserTypeService userTypeServiceImpl;
 
     @Override
     public List<UserBean> getUsers() {
@@ -52,5 +57,12 @@ public class UiUserServiceImpl implements UiUserService {
     public void enableUserByUsername(String username) {
         userServiceImpl.enableUser(username);
     }
+
+    @Override
+    public List<UserTypeBean> getUserTypes() {
+        return userTypeServiceImpl.getAll();
+    }
+    
+    
 
 }
