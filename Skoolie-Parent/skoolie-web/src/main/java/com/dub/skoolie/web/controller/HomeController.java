@@ -34,7 +34,7 @@ public class HomeController {
             return new ModelAndView("redirect:/student");
         } else if (user.getType().equals("PARENT")) {
             return new ModelAndView("redirect:/parent");
-        } else if (user.getType().equals("ADMIN")) {
+        } else if (user.getType().equals("ADMIN") || user.getType().equals("DISTRICT_ADMIN") || user.getType().equals("SCHOOL_ADMIN")) {
             return new ModelAndView("redirect:/admin");
         }
         //model.addAttribute("homebean", homeBean);

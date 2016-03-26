@@ -1,7 +1,9 @@
 
 package com.dub.skoolie.business.service.usr.security.impl;
 
+import com.dub.skoolie.business.service.usr.security.GroupService;
 import com.dub.skoolie.business.service.usr.security.UserService;
+import com.dub.skoolie.data.dao.usr.security.GroupRepository;
 import com.dub.skoolie.data.dao.usr.security.UserRepository;
 import com.dub.skoolie.data.entities.usr.security.User;
 import com.dub.skoolie.structures.usr.security.GroupBean;
@@ -30,6 +32,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository repo;
     
+    @Autowired
+    GroupService groupServiceImpl;
     
     @Override
     //@Secured("ROLE_USER")
@@ -69,23 +73,40 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserBean> getAll() {
-        List<UserBean> list = new ArrayList();
-        mapper.map(repo.findAll(), list);
-        return list;
+        List<UserBean> newlist = new ArrayList<>();
+        Iterable<User> list = repo.findAll();
+        for(User user : list) {
+            newlist.add(mapper.map(user, UserBean.class));
+        }
+        return newlist;
     }
 
     @Override
     public void addUser(UserBean user) {
         User entity = new User();
-        RoleBean role = new RoleBean();
-        GroupBean group = new GroupBean();
-        group.setGroup("GRP_USER");
-        role.setRole("ROLE_USER");
-        user.addRole(role);
-        user.addGroup(null);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         String encpwd = encoder.encode(user.getPassword());
         user.setPassword(encpwd);
+        if(user.getType().equals("STUDENT")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_STUDENT"));
+            user.addGroup(groupServiceImpl.getByID("GRP_USER"));
+        } else if (user.getType().equals("PARENT")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_PARENT"));
+            user.addGroup(groupServiceImpl.getByID("GRP_USER"));
+        } else if (user.getType().equals("TEACHER")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_TEACHER"));
+            user.addGroup(groupServiceImpl.getByID("GRP_USER"));
+        } else if (user.getType().equals("SCHOOL_ADMIN")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_SCHOOL_ADMIN"));
+            user.addGroup(groupServiceImpl.getByID("GRP_USER"));
+            user.addGroup(groupServiceImpl.getByID("GRP_ADMIN"));
+        } else if (user.getType().equals("DISTRICT_ADMIN")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_DISTRICT_ADMIN"));
+            user.addGroup(groupServiceImpl.getByID("GRP_USER"));
+            user.addGroup(groupServiceImpl.getByID("GRP_ADMIN"));
+        } else if (user.getType().equals("SYSTEM")) {
+            user.addGroup(groupServiceImpl.getByID("GRP_ADMIN"));
+        }
         mapper.map(user, entity);
         repo.save(entity);
     }

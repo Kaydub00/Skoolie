@@ -12,6 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional("skooliecoreTransactionManager")
-public interface GroupRepository extends CrudRepository<Group, Long> {
+public interface GroupRepository extends CrudRepository<Group, String> {
 
 }

@@ -5,10 +5,10 @@
  */
 package com.dub.skoolie.business.service.usr.security.impl;
 
-import com.dub.skoolie.business.service.usr.security.UserTypeService;
-import com.dub.skoolie.data.dao.usr.security.UserTypeRepository;
-import com.dub.skoolie.data.entities.usr.security.UserType;
-import com.dub.skoolie.structures.usr.security.UserTypeBean;
+import com.dub.skoolie.business.service.usr.security.GroupService;
+import com.dub.skoolie.data.dao.usr.security.GroupRepository;
+import com.dub.skoolie.data.entities.usr.security.Group;
+import com.dub.skoolie.structures.usr.security.GroupBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.DozerBeanMapper;
@@ -22,31 +22,21 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Transactional("skooliecoreTransactionManager")
 @Service
-public class UserTypeServiceImpl implements UserTypeService {
+public class GroupServiceImpl implements GroupService {
     
     @Autowired
     DozerBeanMapper mapper;
     
     @Autowired
-    UserTypeRepository repo;
-    
-    @Override
-    public List<UserTypeBean> getAll() {
-        List<UserTypeBean> newlist = new ArrayList();
-        Iterable<UserType> list = repo.findAll();
-        for(UserType type : list) {
-            newlist.add(mapper.map(type, UserTypeBean.class));
-        }
-        return newlist;
-    }
+    GroupRepository repo;
 
     @Override
-    public void updateEntity(UserTypeBean entity) {
+    public void updateEntity(GroupBean entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deleteEntity(UserTypeBean entity) {
+    public void deleteEntity(GroupBean entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -56,7 +46,20 @@ public class UserTypeServiceImpl implements UserTypeService {
     }
 
     @Override
-    public UserTypeBean getByID(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public GroupBean getByID(String id) {
+        GroupBean bn = new GroupBean();
+        mapper.map(repo.findOne(id), bn);
+        return bn;
     }
+
+    @Override
+    public List<GroupBean> getAll() {
+        List<GroupBean> newlist = new ArrayList<>();
+        Iterable<Group> list = repo.findAll();
+        for(Group user : list) {
+            newlist.add(mapper.map(user, GroupBean.class));
+        }
+        return newlist;
+    }
+    
 }

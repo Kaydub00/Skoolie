@@ -4,16 +4,16 @@ package com.dub.skoolie.data.entities.usr.security;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
 /**
  *
  * @author Kevin W.
@@ -44,10 +44,15 @@ public class User implements Serializable {
     @Column(name="FIRST_LOGIN")
     private Boolean firstlogin;
     
-    @ManyToMany(mappedBy="users", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy="users", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
     private List<Role> roles;
     
-    @ManyToMany(mappedBy="users", fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @JoinTable(
+            name="USR_USER_GROUP",
+            joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME"),
+            inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP")
+    )
     private List<Group> groups;
 
     public String getUsername() {

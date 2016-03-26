@@ -25,6 +25,6 @@ public interface UiUserService {
     
     public void enableUserByUsername(String username);
     
-    public List<UserTypeBean> getUserTypes();
+    public List<String> getUserTypes();
 
 }

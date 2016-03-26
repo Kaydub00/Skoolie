@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Group implements Serializable {
     @Column(name="GROUP", length=80)
     private String group;
     
-    @ManyToMany(cascade= {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.LAZY, cascade= {CascadeType.PERSIST})
     @JoinTable(
             name="USR_USER_GROUP",
             joinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP"),
@@ -34,7 +35,7 @@ public class Group implements Serializable {
     )
     private List<User> users;
     
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     @JoinTable(
             name = "USR_GROUP_ROLES",
             joinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP"),

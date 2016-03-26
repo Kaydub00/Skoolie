@@ -6,6 +6,7 @@ import com.dub.skoolie.business.service.usr.security.UserTypeService;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import com.dub.skoolie.structures.usr.security.UserTypeBean;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,8 +60,12 @@ public class UiUserServiceImpl implements UiUserService {
     }
 
     @Override
-    public List<UserTypeBean> getUserTypes() {
-        return userTypeServiceImpl.getAll();
+    public List<String> getUserTypes() {
+        List<String> usertypes = new ArrayList();
+        for(UserTypeBean bn : userTypeServiceImpl.getAll()) {
+            usertypes.add(bn.getName());
+        }
+        return usertypes;
     }
     
     

@@ -3,7 +3,10 @@ package com.dub.skoolie.business.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.RoleService;
 import com.dub.skoolie.data.dao.usr.security.RoleRepository;
+import com.dub.skoolie.data.entities.usr.security.Role;
+import com.dub.skoolie.data.entities.usr.security.User;
 import com.dub.skoolie.structures.usr.security.RoleBean;
+import com.dub.skoolie.structures.usr.security.UserBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.DozerBeanMapper;
@@ -27,9 +30,12 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleBean> getAllRoles() {
-        List<RoleBean> list = new ArrayList();
-        mapper.map(repo.findAll(), list);
-        return list;
+        List<RoleBean> newlist = new ArrayList<>();
+        Iterable<Role> list = repo.findAll();
+        for(Role role : list) {
+            newlist.add(mapper.map(role, RoleBean.class));
+        }
+        return newlist;
     }
 
     @Override
