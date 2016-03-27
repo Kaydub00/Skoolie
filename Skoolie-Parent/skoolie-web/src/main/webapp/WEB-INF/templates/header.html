@@ -69,7 +69,7 @@
                             
                             <!--/* Admin menus */-->
                             <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
-                                <a th:href="@{/}">School</a>
+                                <a th:href="@{/admin/schools}">Schools</a>
                             </li>
                             <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/}">Classes</a>
@@ -90,7 +90,7 @@
                                     Config <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a th:href="@{/system/users}">Users</a></li>
-                                    <li><a th:href="@{/}">Goes</a></li>
+                                    <li><a th:href="@{/system/schools}">Schools</a></li>
                                     <li><a th:href="@{/}">Here</a></li>
                                 </ul>
                             </li>

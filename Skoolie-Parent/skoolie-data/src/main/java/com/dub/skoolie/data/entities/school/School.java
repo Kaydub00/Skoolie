@@ -3,74 +3,127 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.structures.school;
+package com.dub.skoolie.data.entities.school;
 
 import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Gaming
  */
-public class SchoolBean implements Serializable {
+@Entity
+@Table(name = "SCL_SCHOOL")
+public class School implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
     
+    @Column(name="NAME", length=180)
     private String name;
     
+    @Column(name="ADDRESS", length=180)
     private String address;
     
+    @Column(name="CITY", length=180)
     private String city;
     
+    @Column(name="STATE", length=180)
     private String state;
     
+    @Column(name="POSTAL", length=12)
     private String postal;
     
+    @Column(name="PHONE", length=20)
     private String phone;
 
+    /**
+     * @return the id
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @param id the id to set
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    /**
+     * @return the address
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * @param address the address to set
+     */
     public void setAddress(String address) {
         this.address = address;
     }
 
+    /**
+     * @return the state
+     */
     public String getState() {
         return state;
     }
 
+    /**
+     * @param state the state to set
+     */
     public void setState(String state) {
         this.state = state;
     }
 
+    /**
+     * @return the postal
+     */
     public String getPostal() {
         return postal;
     }
 
+    /**
+     * @param postal the postal to set
+     */
     public void setPostal(String postal) {
         this.postal = postal;
     }
 
+    /**
+     * @return the phone
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     * @param phone the phone to set
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }

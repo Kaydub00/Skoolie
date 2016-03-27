@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+    <head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <script th:replace="../templates/header:: jquery" />
+        <script th:replace="../templates/header:: jqueryui" />
+        <link th:replace="../templates/header:: jqueryuicss" />
+        <link th:replace="../templates/header:: bootstrap" />
+        <link th:replace="../templates/header:: bootstraptheme" />
+        <script th:replace="../templates/header:: bootstrapjs" />
+        
+        
+        <title>Skoolie Schools</title>
+        
+    </head>
+    <body> 
+        <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container">
+            <div class="row">
+                <h1>Schools</h1>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-xs-offset-10">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolModal">Add School</a>
+                </div>
+                
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>City State Zip</th>
+                                <th>Phone</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="school : ${schools}" >
+                                <td><a th:href="@{/system/schools/{id}(id=${school.id})}" th:text="${school.name}">null</a></td>
+                                <td th:text="${school.address}">null</td>
+                                <td th:text="${school.city}">null</td>
+                                <td th:text="${school.phone}">null</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="addSchoolModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Add User</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/schools}" th:object="${newschool}" method="post">
+                                <input type="text" th:field="*{name}" />
+                                <input type="text" th:field="*{address}" />
+                                <input type="text" th:field="*{city}"/>
+                                <input type="text" th:field="*{state}"/>
+                                <input type="text" th:field="*{postal}"/>
+                                <input type="text" th:field="*{phone}"/>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

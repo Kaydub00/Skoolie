@@ -26,12 +26,56 @@
                 <h1 th:text="${user.username}">User Page</h1>
             </div>
             <div class="row">
-                <table class="table table-striped">
-                    <tr>
-                        <td th:text="${user.username}">null</td>
-                        <td th:text="${user.email}">null</td>
-                    </tr>
-                </table>
+                <div class=" col-xs-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">User Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#user">User</a></li>
+                                <li><a data-toggle="tab" href="#type">Type</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="user" class="tab-pane fade in active">
+                                    <ul>
+                                        <li th:text="${user.username}">null</li>
+                                        <li th:text="${user.email}">null</li>
+                                        <li th:text="${user.type}">null</li>
+                                    </ul>
+                                </div>
+                                
+                                
+                                
+                                <!--/* Different tabs per type of user */-->
+                                <div sec:authorize="hasRole('ROLE_STUDENT')" id="type" class="tab-pane fade">
+                                    <h2>testing</h2>
+                                </div>
+                                
+                                <div sec:authorize="hasRole('ROLE_PARENT')" id="type" class="tab-pane fade">
+                                    <h2>testing parent</h2>
+                                </div>
+                                
+                                <div sec:authorize="hasRole('ROLE_TEACHER')" id="type" class="tab-pane fade">
+                                    <h2>testing teacher</h2>
+                                </div>
+                                
+                                <div sec:authorize="hasRole('ROLE_SCHOOL_ADMIN')" id="type" class="tab-pane fade">
+                                    <h2>testing school admin</h2>
+                                </div>
+                                
+                                <div sec:authorize="hasRole('ROLE_DISTRICT_ADMIN')" id="type" class="tab-pane fade">
+                                    <h2>testing district admin</h2>
+                                </div>
+                                
+                                <div sec:authorize="hasRole('ROLE_ADMIN')" id="type" class="tab-pane fade">
+                                    <h2>testing admin</h2>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>                
+                </div>
             </div>
         </div>
     </body>
