@@ -60,14 +60,24 @@
                             <h4>Add User</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="#" th:action="@{/system/schools}" th:object="${newschool}" method="post">
-                                <input type="text" th:field="*{name}" />
-                                <input type="text" th:field="*{address}" />
-                                <input type="text" th:field="*{city}"/>
-                                <input type="text" th:field="*{state}"/>
-                                <input type="text" th:field="*{postal}"/>
-                                <input type="text" th:field="*{phone}"/>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <!--/* Not sure why yet but validation errors aren't working right */-->
+                            
+                            <form action="#" th:action="@{/system/schools}" th:object="${newschool}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label><input class="form-control" id="name" type="text" th:field="*{name}" />
+                                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
+                                    <label for="address">Address</label><input class="form-control" id="address" type="text" th:field="*{address}" />
+                                    <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Name Error</span>
+                                    <label for="city">City</label><input class="form-control" id="city" type="text" th:field="*{city}"/>
+                                    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Name Error</span>
+                                    <label for="state">State</label><input class="form-control" id="state" type="text" th:field="*{state}"/>
+                                    <span th:if="${#fields.hasErrors('state')}" th:errors="*{state}">Name Error</span>
+                                    <label for="postal">Postal/Zip</label><input class="form-control" id="postal" type="text" th:field="*{postal}"/>
+                                    <span th:if="${#fields.hasErrors('postal')}" th:errors="*{postal}">Name Error</span>
+                                    <label for="phone">Phone</label><input class="form-control" type="text" id="phone" th:field="*{phone}"/>
+                                    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Name Error</span>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">

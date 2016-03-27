@@ -26,6 +26,10 @@ public class UserBean implements Serializable {
     
     private Boolean firstlogin;
     
+    private String firstName;
+    
+    private String lastName;
+    
     private List<RoleBean> roles = new ArrayList();
     
     private List<GroupBean> groups = new ArrayList();
@@ -108,6 +112,34 @@ public class UserBean implements Serializable {
     
     public void addGroup(GroupBean group) {
         this.groups.add(group);
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
 }

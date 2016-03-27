@@ -41,6 +41,12 @@ public class User implements Serializable {
     @Column(name="TYPE", length=40)
     private String type;
     
+    @Column(name="FIRST_NAME", length=80)
+    private String firstName;
+    
+    @Column(name="LAST_NAME", length=80)
+    private String lastName;
+    
     @Column(name="FIRST_LOGIN")
     private Boolean firstlogin;
     
@@ -125,5 +131,33 @@ public class User implements Serializable {
     
     public void setFirstlogin(Boolean firstlogin) {
         this.firstlogin = firstlogin;
+    }
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @param firstName the firstName to set
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @param lastName the lastName to set
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

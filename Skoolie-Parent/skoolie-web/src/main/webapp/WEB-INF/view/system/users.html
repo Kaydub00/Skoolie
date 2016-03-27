@@ -36,6 +36,7 @@
                         <thead>
                             <tr>
                                 <th>User</th>
+                                <th>Name</th>
                                 <th>Email</th>
                                 <th>Type</th>
                                 <th>Activate/Deactivate</th>
@@ -44,6 +45,7 @@
                         <tbody>
                             <tr th:each="user : ${users}" >
                                 <td><a th:href="@{/system/users/{id}(id=${user.username})}" th:text="${user.username}">null</a></td>
+                                <td th:text="${user.firstName + ' ' + user.lastName}"/>
                                 <td th:text="${user.email}">null</td>
                                 <td th:text="${user.type}">null</td>
                                 <td>activate/deactivate</td>
@@ -63,6 +65,8 @@
                                 <input type="text" th:field="*{username}" />
                                 <input type="password" th:field="*{password}" />
                                 <input type="text" th:field="*{email}"/>
+                                <input type="text" th:field="*{lastName}"/>
+                                <input type="text" th:field="*{firstName}"/>
                                 <select th:field="*{type}">
                                     <option th:each="type : ${allUserTypes}"
                                             th:value="${type}"
