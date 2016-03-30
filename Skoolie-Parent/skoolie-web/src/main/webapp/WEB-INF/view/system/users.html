@@ -61,18 +61,20 @@
                             <h4>Add User</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="#" th:action="@{/system/users}" th:object="${newuser}" method="post">
-                                <input type="text" th:field="*{username}" />
-                                <input type="password" th:field="*{password}" />
-                                <input type="text" th:field="*{email}"/>
-                                <input type="text" th:field="*{lastName}"/>
-                                <input type="text" th:field="*{firstName}"/>
-                                <select th:field="*{type}">
-                                    <option th:each="type : ${allUserTypes}"
-                                            th:value="${type}"
-                                            th:text="${type}">Type</option>
-                                </select>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <form action="#" th:action="@{/system/users}" th:object="${newuser}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="username">Username</label><input class="form-control" id="username" type="text" th:field="*{username}" />
+                                    <label for="password">Password</label><input class="form-control" id="password" type="password" th:field="*{password}" />
+                                    <label for="email">Email</label><input class="form-control" id="email" type="text" th:field="*{email}"/>
+                                    <label for="lastName">Last Name</label><input class="form-control" id="lastName" type="text" th:field="*{lastName}"/>
+                                    <label for="firstName">First Name</label><input class="form-control" id="firstName" type="text" th:field="*{firstName}"/>
+                                    <label for="type">Type</label><select class="form-control" id="type" th:field="*{type}">
+                                        <option th:each="type : ${allUserTypes}"
+                                                th:value="${type}"
+                                                th:text="${type}">Type</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
                         </div>
                         <div class="modal-footer">

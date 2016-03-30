@@ -39,6 +39,8 @@ public class SystemSchoolController {
     @RequestMapping(value="/system/schools", method=RequestMethod.POST)
     public ModelAndView addSchool(@Valid SchoolBean school, BindingResult result, Model model) {
         if(result.hasErrors()) {
+            //I should add a check for an "errors" map entry in the model
+            //and on the error print it. I'll just manually add the list of Errors here
             model.addAttribute("newschool", school);
             model.addAttribute("schools", uiSchoolServiceImpl.getSchools());
             return new ModelAndView("system/schools");

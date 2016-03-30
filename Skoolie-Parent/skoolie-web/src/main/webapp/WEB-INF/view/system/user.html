@@ -49,7 +49,14 @@
                                 
                                 <!--/* Different tabs per type of user, need to fix this */-->
                                 <div id="type" class="tab-pane fade">
-                                    <h2>testing admin</h2>
+                                    <div th:switch="${user.type}">
+                                        <h2 th:case="'DISTRICT_ADMIN'">testing admin</h2>
+                                        <h2 th:case="'STUDENT'">Student</h2>
+                                        <h2 th:case="'TEACHER'">Teacher</h2>
+                                        <h2 th:case="'SCHOOL_ADMIN'">School Admin</h2>
+                                        <h2 th:case="'PARENT'">Parent</h2>
+                                        <h2 th:case="'SYSTEM'">System</h2>
+                                    </div>
                                 </div>
                                 
                             </div>
