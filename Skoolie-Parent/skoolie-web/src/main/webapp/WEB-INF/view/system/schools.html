@@ -62,7 +62,7 @@
                         <div class="modal-body">
                             <!--/* Not sure why yet but validation errors aren't working right */-->
                             
-                            <form action="#" th:action="@{/system/schools}" th:object="${newschool}" method="post" role="form">
+                            <form action="#" th:action="@{/system/schools}" th:object="${schoolBean}" method="post" role="form">
                                 <div class="form-group">
                                     <label for="name">Name</label><input class="form-control" id="name" type="text" th:field="*{name}" />
                                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</span>
