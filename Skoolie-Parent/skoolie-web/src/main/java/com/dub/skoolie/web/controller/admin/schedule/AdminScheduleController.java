@@ -19,7 +19,7 @@ public class AdminScheduleController {
     
     @RequestMapping("/admin/schedule")
     public ModelAndView index(Model model) {
-        return new ModelAndView("admin/index");
+        return new ModelAndView("admin/schedule/index");
     }
     
 }
