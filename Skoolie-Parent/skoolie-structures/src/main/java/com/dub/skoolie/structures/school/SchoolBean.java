@@ -5,7 +5,9 @@
  */
 package com.dub.skoolie.structures.school;
 
+import com.dub.skoolie.structures.schedule.SchoolYearBean;
 import java.io.Serializable;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -40,6 +42,8 @@ public class SchoolBean implements Serializable {
     @NotNull
     @Size(min=10, max=20)
     private String phone;
+    
+    private List<SchoolYearBean> schoolYears;
 
     public Long getId() {
         return id;
@@ -101,6 +105,20 @@ public class SchoolBean implements Serializable {
      */
     public void setCity(String city) {
         this.city = city;
+    }
+
+    /**
+     * @return the schoolYears
+     */
+    public List<SchoolYearBean> getSchoolYears() {
+        return schoolYears;
+    }
+
+    /**
+     * @param schoolYears the schoolYears to set
+     */
+    public void setSchoolYears(List<SchoolYearBean> schoolYears) {
+        this.schoolYears = schoolYears;
     }
     
 }

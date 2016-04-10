@@ -22,7 +22,6 @@ public class GradingPeriodTemplateBean implements Serializable {
     @Size(min=2, max=40)
     private String name;
     
-    
     @NotNull
     private Date startDate;
     
