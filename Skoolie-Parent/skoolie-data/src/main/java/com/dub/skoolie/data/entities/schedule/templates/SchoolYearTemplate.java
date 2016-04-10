@@ -6,6 +6,7 @@
 package com.dub.skoolie.data.entities.schedule.templates;
 
 import java.io.Serializable;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,5 +29,11 @@ public class SchoolYearTemplate implements Serializable {
     
     @Column(name="NAME", length=180)
     private String name;
+    
+    @Column(name="START_DATE")
+    private Date startDate;
+    
+    @Column(name="END_DATE")
+    private Date endDate;
     
 }

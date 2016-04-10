@@ -5,12 +5,15 @@
  */
 package com.dub.skoolie.data.entities.school;
 
+import com.dub.skoolie.data.entities.schedule.SchoolYear;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -43,6 +46,9 @@ public class School implements Serializable {
     
     @Column(name="PHONE", length=20)
     private String phone;
+    
+    @OneToMany(mappedBy="school")
+    private List<SchoolYear> schoolYears;
 
     /**
      * @return the id
@@ -140,6 +146,20 @@ public class School implements Serializable {
      */
     public void setCity(String city) {
         this.city = city;
+    }
+
+    /**
+     * @return the schoolYears
+     */
+    public List<SchoolYear> getSchoolYears() {
+        return schoolYears;
+    }
+
+    /**
+     * @param schoolYears the schoolYears to set
+     */
+    public void setSchoolYears(List<SchoolYear> schoolYears) {
+        this.schoolYears = schoolYears;
     }
     
 }
