@@ -20,5 +20,20 @@
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8">
+                    <span sec:authorize="hasRole('ROLE_DISTRICT_ADMIN')">Setup templates:
+                        <a th:href="@{/admin/schedule/templates}">Templates</a>
+                    </span>
+                    
+                    
+                    <a th:href="@{/admin/schedule/year}">School Year</a>
+                    <a th:href="@{/admin/schedule/gradingperiod}">Grading Period</a>
+                    <a th:href="@{/admin/schedule/classtimeblock}">Grading Period</a>
+                    
+                </div>
+            </div>
+        </div>
     </body>
 </html>

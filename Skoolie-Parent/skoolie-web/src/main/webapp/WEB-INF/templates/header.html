@@ -71,16 +71,16 @@
                             <li sec:authorize="hasRole('ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/admin/schools}">Schools</a>
                             </li>
-                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                            <li sec:authorize="hasAnyRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/}">Classes</a>
                             </li>
-                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                            <li sec:authorize="hasAnyRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/}">Teachers</a>
                             </li>
-                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                            <li sec:authorize="hasAnyRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/}">Students</a>
                             </li>
-                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                            <li sec:authorize="hasAnyRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/admin/schedule}">Scheduling</a>
                             </li>
                             

@@ -15,7 +15,7 @@
         <link th:replace="../templates/header:: bootstraptheme" />
         <script th:replace="../templates/header:: bootstrapjs" />
         
-        <title>Schedule</title>
+        <title>Schedule Templates</title>
         
     </head>
     <body>
@@ -23,12 +23,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-8">
-                    Setup templates:
-                    <a th:href="@{/system/schedule/templates}">Templates</a>
-                    Setup school schedules:
-                    <a th:href="@{/system/schedule/year}">School Year</a>
-                    <a th:href="@{/system/schedule/gradingperiod}">Grading Period</a>
-                    <a th:href="@{/system/schedule/classtimeblock}">Class Time Blocks</a>
+                    <a th:href="@{/system/schedule/templates/year}">School Year</a>
+                    <a th:href="@{/system/schedule/templates/gradingperiod}">Grading Period</a>
+                    <a th:href="@{/system/schedule/templates/classtimeblock}">Class Time Blocks</a>
                 </div>
             </div>
         </div>
