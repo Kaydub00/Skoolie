@@ -38,5 +38,89 @@ public class ClassTimeBlockTemplateBean implements Serializable {
     @Max(59)
     @Min(0)
     private Integer endMinutes;
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the startHour
+     */
+    public Integer getStartHour() {
+        return startHour;
+    }
+
+    /**
+     * @param startHour the startHour to set
+     */
+    public void setStartHour(Integer startHour) {
+        this.startHour = startHour;
+    }
+
+    /**
+     * @return the startMinute
+     */
+    public Integer getStartMinute() {
+        return startMinute;
+    }
+
+    /**
+     * @param startMinute the startMinute to set
+     */
+    public void setStartMinute(Integer startMinute) {
+        this.startMinute = startMinute;
+    }
+
+    /**
+     * @return the endHour
+     */
+    public Integer getEndHour() {
+        return endHour;
+    }
+
+    /**
+     * @param endHour the endHour to set
+     */
+    public void setEndHour(Integer endHour) {
+        this.endHour = endHour;
+    }
+
+    /**
+     * @return the endMinutes
+     */
+    public Integer getEndMinutes() {
+        return endMinutes;
+    }
+
+    /**
+     * @param endMinutes the endMinutes to set
+     */
+    public void setEndMinutes(Integer endMinutes) {
+        this.endMinutes = endMinutes;
+    }
     
 }
