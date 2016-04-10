@@ -68,7 +68,7 @@
                             
                             
                             <!--/* Admin menus */-->
-                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                            <li sec:authorize="hasRole('ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/admin/schools}">Schools</a>
                             </li>
                             <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
@@ -81,6 +81,7 @@
                                 <a th:href="@{/}">Students</a>
                             </li>
                             <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
+                                <a th:href="@{/admin/schedule}">Scheduling</a>
                             </li>
                             
                             
@@ -91,7 +92,7 @@
                                 <ul class="dropdown-menu">
                                     <li><a th:href="@{/system/users}">Users</a></li>
                                     <li><a th:href="@{/system/schools}">Schools</a></li>
-                                    <li><a th:href="@{/}">Here</a></li>
+                                    <li><a th:href="@{/system/schedule}">Scheduling</a></li>
                                 </ul>
                             </li>
                             

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 @Entity
 @Table(name = "USR_TYPE")

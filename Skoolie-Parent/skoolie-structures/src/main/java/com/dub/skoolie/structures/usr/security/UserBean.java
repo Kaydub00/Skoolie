@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
 
 /**
  *
@@ -12,10 +14,13 @@ import java.util.List;
  */
 public class UserBean implements Serializable {
     
+    @Size(min = 6, max = 50)
     private String username;
     
+    @Size(min = 8)
     private String password;
     
+    @Email
     private String email;
     
     private Integer enabled;
@@ -26,8 +31,10 @@ public class UserBean implements Serializable {
     
     private Boolean firstlogin;
     
+    @Size(min = 2, max = 80)
     private String firstName;
     
+    @Size(min = 2, max = 80)
     private String lastName;
     
     private List<RoleBean> roles = new ArrayList();

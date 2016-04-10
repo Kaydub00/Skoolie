@@ -10,7 +10,7 @@ import com.dub.skoolie.structures.school.SchoolBean;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public interface SchoolService extends BaseCrudService<SchoolBean,Long> {
     

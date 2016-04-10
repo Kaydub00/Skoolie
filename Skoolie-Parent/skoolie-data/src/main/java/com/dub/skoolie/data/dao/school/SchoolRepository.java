@@ -10,7 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public interface SchoolRepository extends CrudRepository<School, Long> {
     

@@ -61,13 +61,18 @@
                             <h4>Add User</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="#" th:action="@{/system/users}" th:object="${newuser}" method="post" role="form">
+                            <form action="#" th:action="@{/system/users}" th:object="${userBean}" method="post" role="form">
                                 <div class="form-group">
                                     <label for="username">Username</label><input class="form-control" id="username" type="text" th:field="*{username}" />
+                                    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">username Error</span>
                                     <label for="password">Password</label><input class="form-control" id="password" type="password" th:field="*{password}" />
+                                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</span>
                                     <label for="email">Email</label><input class="form-control" id="email" type="text" th:field="*{email}"/>
+                                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</span>
                                     <label for="lastName">Last Name</label><input class="form-control" id="lastName" type="text" th:field="*{lastName}"/>
+                                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName Error</span>
                                     <label for="firstName">First Name</label><input class="form-control" id="firstName" type="text" th:field="*{firstName}"/>
+                                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">firstName Error</span>
                                     <label for="type">Type</label><select class="form-control" id="type" th:field="*{type}">
                                         <option th:each="type : ${allUserTypes}"
                                                 th:value="${type}"

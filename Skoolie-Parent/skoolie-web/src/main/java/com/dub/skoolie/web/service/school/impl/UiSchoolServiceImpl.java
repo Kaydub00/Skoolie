@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 @Service
 public class UiSchoolServiceImpl implements UiSchoolService {

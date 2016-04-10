@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 @Repository
 @Transactional("skooliecoreTransactionManager")

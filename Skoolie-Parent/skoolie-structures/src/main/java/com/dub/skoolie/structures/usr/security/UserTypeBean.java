@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public class UserTypeBean implements Serializable {
     

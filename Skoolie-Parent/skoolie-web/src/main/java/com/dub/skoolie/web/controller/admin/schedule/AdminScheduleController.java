@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.web.controller.system;
+package com.dub.skoolie.web.controller.admin.schedule;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Kevin W
  */
 @Controller
-public class SystemController {
+public class AdminScheduleController {
     
-    @RequestMapping("/system")
+    @RequestMapping("/admin/schedule")
     public ModelAndView index(Model model) {
-        return new ModelAndView("system/index");
+        return new ModelAndView("admin/index");
     }
     
 }

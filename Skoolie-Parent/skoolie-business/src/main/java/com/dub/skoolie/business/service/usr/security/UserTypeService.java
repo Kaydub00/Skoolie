@@ -10,7 +10,7 @@ import com.dub.skoolie.structures.usr.security.UserTypeBean;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public interface UserTypeService extends BaseCrudService<UserTypeBean,String>{
     

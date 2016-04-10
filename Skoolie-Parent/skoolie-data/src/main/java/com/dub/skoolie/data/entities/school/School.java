@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 @Entity
 @Table(name = "SCL_SCHOOL")

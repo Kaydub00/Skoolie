@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 @Transactional("skooliecoreTransactionManager")
 @Service

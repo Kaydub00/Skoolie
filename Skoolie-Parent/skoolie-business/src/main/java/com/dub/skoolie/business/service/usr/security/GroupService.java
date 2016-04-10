@@ -10,7 +10,7 @@ import com.dub.skoolie.structures.usr.security.GroupBean;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public interface GroupService extends BaseCrudService<GroupBean,String>{
     

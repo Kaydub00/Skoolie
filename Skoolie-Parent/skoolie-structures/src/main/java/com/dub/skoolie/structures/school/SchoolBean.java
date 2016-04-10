@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public class SchoolBean implements Serializable {
     

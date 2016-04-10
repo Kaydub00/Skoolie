@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author Gaming
+ * @author Kevin W
  */
 public interface UiSchoolService {
     
