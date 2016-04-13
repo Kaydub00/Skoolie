@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+    <head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <script th:replace="../templates/header:: jquery" />
+        <script th:replace="../templates/header:: jqueryui" />
+        <link th:replace="../templates/header:: jqueryuicss" />
+        <link th:replace="../templates/header:: bootstrap" />
+        <link th:replace="../templates/header:: bootstraptheme" />
+        <script th:replace="../templates/header:: bootstrapjs" />
+        
+        <title>Class Time Block Template</title>
+        
+    </head>
+    <body>
+        <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container">
+            <div class="row">
+                <h1>Class Time Block Templates</h1>
+            </div>
+            <div class="row">
+                <div class="col-xs-2 col-xs-offset-10">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addTemplateModal">Add Template</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Start Hour</th>
+                                <th>Start Minutes</th>
+                                <th>End Hour</th>
+                                <th>End Minutes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="ctb : ${classTimeBlockTemplateBeans}" >
+                                <td th:text="${ctb.name}">null</td>
+                                <td th:text="${ctb.startHour}">null</td>
+                                <td th:text="${ctb.startMinute}">null</td>
+                                <td th:text="${ctb.endHour}">null</td>
+                                <td th:text="${ctb.endMinute}">null</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="addTemplateModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4>Add Time Block Template</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/schedule/templates/classtimeblock}" th:object="${classTimeBlockTemplateBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label><input class="form-control" id="name" type="text" th:field="*{name}" />
+                                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">username Error</span>
+                            
+                                    <label for="startHour">Start Hour</label><input class="form-control" id="startHour" type="text" th:field="*{startHour}" />
+                                    <span th:if="${#fields.hasErrors('startHour')}" th:errors="*{startHour}">Start Date Error</span>
+                                    
+                                    <label for="startMinute">Start Minute</label><input class="form-control" id="startMinute" type="text" th:field="*{startMinute}" />
+                                    <span th:if="${#fields.hasErrors('startMinute')}" th:errors="*{startMinute}">Start Date Error</span>
+                            
+                                    <label for="endHour">End Hour</label><input class="form-control" id="endHour" type="text" th:field="*{endHour}" />
+                                    <span th:if="${#fields.hasErrors('endHour')}" th:errors="*{endHour}">End Date Error</span>
+                                    
+                                    <label for="endMinute">End Hour</label><input class="form-control" id="endMinute" type="text" th:field="*{endMinute}" />
+                                    <span th:if="${#fields.hasErrors('endMinute')}" th:errors="*{endMinute}">End Date Error</span>
+                                    
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-primary" data-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                $("#startDate").datepicker();
+                $("#endDate").datepicker();
+            })
+        </script>
+    </body>
+</html>

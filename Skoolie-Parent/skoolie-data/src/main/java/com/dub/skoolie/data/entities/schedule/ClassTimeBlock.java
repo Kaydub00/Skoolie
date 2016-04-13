@@ -41,7 +41,7 @@ public class ClassTimeBlock implements Serializable {
     private Integer endHour;
     
     @Column(name="END_MINUTES")
-    private Integer endMinutes;
+    private Integer endMinute;
     
     @ManyToOne
     @JoinColumn(name="GRADING_PERIOD_ID")
@@ -120,15 +120,15 @@ public class ClassTimeBlock implements Serializable {
     /**
      * @return the endMinutes
      */
-    public Integer getEndMinutes() {
-        return endMinutes;
+    public Integer getEndMinute() {
+        return endMinute;
     }
 
     /**
      * @param endMinutes the endMinutes to set
      */
-    public void setEndMinutes(Integer endMinutes) {
-        this.endMinutes = endMinutes;
+    public void setEndMinute(Integer endMinute) {
+        this.endMinute = endMinute;
     }
 
     /**

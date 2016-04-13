@@ -37,7 +37,7 @@ public class ClassTimeBlockTemplateBean implements Serializable {
     
     @Max(59)
     @Min(0)
-    private Integer endMinutes;
+    private Integer endMinute;
 
     /**
      * @return the id
@@ -112,15 +112,15 @@ public class ClassTimeBlockTemplateBean implements Serializable {
     /**
      * @return the endMinutes
      */
-    public Integer getEndMinutes() {
-        return endMinutes;
+    public Integer getEndMinute() {
+        return endMinute;
     }
 
     /**
      * @param endMinutes the endMinutes to set
      */
-    public void setEndMinutes(Integer endMinutes) {
-        this.endMinutes = endMinutes;
+    public void setEndMinute(Integer endMinute) {
+        this.endMinute = endMinute;
     }
     
 }

@@ -26,7 +26,7 @@ public class SystemSchoolYearTemplateController {
     @Autowired
     UiSchoolYearTemplateService uiSchoolYearTemplateServiceImpl;
     
-    @RequestMapping(value="/system/schedule/templates/year", method=RequestMethod.GET)
+    @RequestMapping(value="/system/schedule/templates/schoolyear", method=RequestMethod.GET)
     public ModelAndView index(Model model) {
         SchoolYearTemplateBean schoolYearTemplateBean = new SchoolYearTemplateBean();
         model.addAttribute("schoolYearTemplateBean", schoolYearTemplateBean);
@@ -34,7 +34,7 @@ public class SystemSchoolYearTemplateController {
         return new ModelAndView("system/schedule/templates/schoolyear");
     }
     
-    @RequestMapping(value="/system/schedule/templates/year", method=RequestMethod.POST)
+    @RequestMapping(value="/system/schedule/templates/schoolyear", method=RequestMethod.POST)
     public ModelAndView addYearTemplate(@Valid SchoolYearTemplateBean schoolYearTemplateBean, BindingResult result,Model model) {
         if(result.hasErrors()) {
             model.addAttribute("schoolYearTemplateBean", schoolYearTemplateBean);
@@ -42,7 +42,7 @@ public class SystemSchoolYearTemplateController {
             return new ModelAndView("system/schedule/templates/schoolyear");
         }
         uiSchoolYearTemplateServiceImpl.addSchoolYearTemplate(schoolYearTemplateBean);
-        return new ModelAndView("redirect:/system/schedule/templates/year");
+        return new ModelAndView("redirect:/system/schedule/templates/schoolyear");
     }
     
 }

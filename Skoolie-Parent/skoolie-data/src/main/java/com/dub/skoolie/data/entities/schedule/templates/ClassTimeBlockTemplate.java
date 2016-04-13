@@ -39,7 +39,7 @@ public class ClassTimeBlockTemplate implements Serializable {
     private Integer endHour;
     
     @Column(name="END_MINUTES")
-    private Integer endMinutes;
+    private Integer endMinute;
 
     /**
      * @return the id
@@ -114,14 +114,14 @@ public class ClassTimeBlockTemplate implements Serializable {
     /**
      * @return the endMinutes
      */
-    public Integer getEndMinutes() {
-        return endMinutes;
+    public Integer getEndMinute() {
+        return endMinute;
     }
 
     /**
      * @param endMinutes the endMinutes to set
      */
-    public void setEndMinutes(Integer endMinutes) {
-        this.endMinutes = endMinutes;
+    public void setEndMinute(Integer endMinute) {
+        this.endMinute = endMinute;
     }
 }

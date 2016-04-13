@@ -26,7 +26,7 @@ public class AdminSchoolYearTemplateController {
     @Autowired
     UiSchoolYearTemplateService uiSchoolYearTemplateServiceImpl;
     
-    @RequestMapping(value="/admin/schedule/templates/year", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/schedule/templates/schoolyear", method=RequestMethod.GET)
     public ModelAndView index(Model model) {
         SchoolYearTemplateBean schoolYearTemplateBean = new SchoolYearTemplateBean();
         model.addAttribute("schoolYearTemplateBean", schoolYearTemplateBean);
@@ -34,7 +34,7 @@ public class AdminSchoolYearTemplateController {
         return new ModelAndView("admin/schedule/templates/schoolyear");
     }
     
-    @RequestMapping(value="/admin/schedule/templates/year", method=RequestMethod.POST)
+    @RequestMapping(value="/admin/schedule/templates/schoolyear", method=RequestMethod.POST)
     public ModelAndView addYearTemplate(@Valid SchoolYearTemplateBean schoolYearTemplateBean, BindingResult result,Model model) {
         //check if user is a district admin before they can add templates?
         if(result.hasErrors()) {
@@ -43,7 +43,7 @@ public class AdminSchoolYearTemplateController {
             return new ModelAndView("admin/schedule/templates/schoolyear");
         }
         uiSchoolYearTemplateServiceImpl.addSchoolYearTemplate(schoolYearTemplateBean);
-        return new ModelAndView("redirect:/admin/schedule/templates/year");
+        return new ModelAndView("redirect:/admin/schedule/templates/schoolyear");
     }
     
 }

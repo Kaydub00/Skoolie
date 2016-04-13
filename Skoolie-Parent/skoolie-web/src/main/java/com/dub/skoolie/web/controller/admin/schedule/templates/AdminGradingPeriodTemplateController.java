@@ -5,7 +5,16 @@
  */
 package com.dub.skoolie.web.controller.admin.schedule.templates;
 
+import com.dub.skoolie.structures.schedule.templates.GradingPeriodTemplateBean;
+import com.dub.skoolie.web.service.schedule.templates.UiGradingPeriodTemplateService;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  *
@@ -13,5 +22,27 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class AdminGradingPeriodTemplateController {
+    
+    @Autowired
+    UiGradingPeriodTemplateService uiGradingPeriodTemplateServiceImpl;
+    
+    @RequestMapping(value="/admin/schedule/templates/gradingperiod", method=RequestMethod.GET)
+    public ModelAndView index(Model model) {
+        GradingPeriodTemplateBean gradingPeriodTemplateBean = new GradingPeriodTemplateBean();
+        model.addAttribute("gradingPeriodTemplateBean", gradingPeriodTemplateBean);
+        model.addAttribute("gradingPeriodTemplateBeans", uiGradingPeriodTemplateServiceImpl.getGradingPeriodTemplates());
+        return new ModelAndView("admin/schedule/templates/gradingperiod");
+    }
+    
+    @RequestMapping(value="/admin/schedule/templates/gradingperiod", method=RequestMethod.POST)
+    public ModelAndView addGradingPeriodTemplate(@Valid GradingPeriodTemplateBean gradingPeriodTemplateBean, BindingResult result,Model model) {
+        if(result.hasErrors()) {
+            model.addAttribute("gradingPeriodTemplateBean", gradingPeriodTemplateBean);
+            model.addAttribute("gradingPeriodTemplateBeans", uiGradingPeriodTemplateServiceImpl.getGradingPeriodTemplates());
+            return new ModelAndView("admin/schedule/templates/gradingperiod");
+        }
+        uiGradingPeriodTemplateServiceImpl.addGradingPeriodTemplate(gradingPeriodTemplateBean);
+        return new ModelAndView("redirect:/admin/schedule/templates/gradingperiod");
+    }
     
 }
