@@ -43,8 +43,8 @@
                         <tbody>
                             <tr th:each="yr : ${schoolYearBeans}" >
                                 <td th:text="${yr.name}">null</td>
-                                <td th:text="${#calendars.format(yr.startDate, 'MMMM dd yyyy')}">null</td>
-                                <td th:text="${#calendars.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(yr.startDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
                                 <td th:text="${yr.school.name}"></td>
                             </tr>
                         </tbody>
@@ -72,7 +72,7 @@
                                     
                                     <label for="school">School</label><select class="form-control" id="type" th:field="*{school}">
                                         <option th:each="school : ${allSchools}"
-                                                th:value="${school}"
+                                                th:value="${school.id}"
                                                 th:text="${school.name}">Type</option>
                                     </select>
                                     
