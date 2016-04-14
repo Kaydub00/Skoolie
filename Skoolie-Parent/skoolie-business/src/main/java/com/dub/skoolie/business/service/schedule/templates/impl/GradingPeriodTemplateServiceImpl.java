@@ -31,10 +31,12 @@ public class GradingPeriodTemplateServiceImpl implements GradingPeriodTemplateSe
     GradingPeriodTemplateRepository repo;
     
     @Override
-    public void updateEntity(GradingPeriodTemplateBean entity) {
+    public GradingPeriodTemplateBean updateEntity(GradingPeriodTemplateBean entity) {
         GradingPeriodTemplate gp = new  GradingPeriodTemplate();
         mapper.map(entity, gp);
-        repo.save(gp);
+        gp = repo.save(gp);
+        mapper.map(gp,entity);
+        return entity;
     }
 
     @Override

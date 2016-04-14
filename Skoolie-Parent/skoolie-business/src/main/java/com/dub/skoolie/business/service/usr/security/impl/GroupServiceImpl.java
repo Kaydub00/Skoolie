@@ -31,7 +31,7 @@ public class GroupServiceImpl implements GroupService {
     GroupRepository repo;
 
     @Override
-    public void updateEntity(GroupBean entity) {
+    public GroupBean updateEntity(GroupBean entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -15,18 +15,18 @@
         <link th:replace="../templates/header:: bootstraptheme" />
         <script th:replace="../templates/header:: bootstrapjs" />
         
-        <title>School Year Template</title>
+        <title>School Year</title>
         
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
         <div class="container">
             <div class="row">
-                <h1>Class Year Templates</h1>
+                <h1>School Year</h1>
             </div>
             <div class="row">
                 <div class="col-xs-2 col-xs-offset-10">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addTemplateModal">Add Template</a>
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addObjectModal">Create School Year</a>
                 </div>
             </div>
             <div class="row">
@@ -37,27 +37,29 @@
                                 <th>Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
+                                <th>School</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="yr : ${schoolYearTemplateBeans}" >
+                            <tr th:each="yr : ${schoolYearBeans}" >
                                 <td th:text="${yr.name}">null</td>
                                 <td th:text="${#calendars.format(yr.startDate, 'MMMM dd yyyy')}">null</td>
                                 <td th:text="${#calendars.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${yr.school.name}"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
             
-            <div id="addTemplateModal" class="modal fade" role="dialog">
+            <div id="addObjectModal" class="modal fade" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4>Add Year Template</h4>
+                            <h4>Add Year</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="#" th:action="@{/admin/schedule/templates/schoolyear}" th:object="${schoolYearTemplateBean}" method="post" role="form">
+                            <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
                                 <div class="form-group">
                                     <label for="name">Name</label><input class="form-control" id="name" type="text" th:field="*{name}" />
                                     <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">username Error</span>
@@ -67,6 +69,13 @@
                             
                                     <label for="endDate">End Date (MM/DD/YYYY)</label><input class="form-control" id="endDate" type="text" th:field="*{endDate}" />
                                     <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}">End Date Error</span>
+                                    
+                                    <label for="school">School</label><select class="form-control" id="type" th:field="*{school}">
+                                        <option th:each="school : ${allSchools}"
+                                                th:value="${school}"
+                                                th:text="${school.name}">Type</option>
+                                    </select>
+                                    
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                         

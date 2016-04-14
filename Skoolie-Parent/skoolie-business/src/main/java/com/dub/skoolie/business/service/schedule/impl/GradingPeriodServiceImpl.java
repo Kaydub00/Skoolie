@@ -31,10 +31,12 @@ public class GradingPeriodServiceImpl implements GradingPeriodService {
     GradingPeriodRepository repo;
 
     @Override
-    public void updateEntity(GradingPeriodBean entity) {
+    public GradingPeriodBean updateEntity(GradingPeriodBean entity) {
         GradingPeriod gp = new  GradingPeriod();
         mapper.map(entity, gp);
-        repo.save(gp);
+        gp = repo.save(gp);
+        mapper.map(gp,entity);
+        return entity;
     }
 
     @Override

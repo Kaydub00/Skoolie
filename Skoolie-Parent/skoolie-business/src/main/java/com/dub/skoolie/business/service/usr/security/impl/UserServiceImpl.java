@@ -37,20 +37,24 @@ public class UserServiceImpl implements UserService {
     
     @Override
     //@Secured("ROLE_USER")
-    public void updateEntity(UserBean entity) {
+    public UserBean updateEntity(UserBean entity) {
         User user = new User();
         if(entity.getPassword() == null || entity.getPassword().isEmpty()) {
             User origuser = new User();
             origuser = repo.findOne(entity.getUsername());
             entity.setPassword(origuser.getPassword());
             mapper.map(entity, user);
-            repo.save(user);
+            user = repo.save(user);
+            mapper.map(user, entity);
+            return entity;
         } else {
             mapper.map(entity, user);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             String encpwd = encoder.encode(user.getPassword());
             user.setPassword(encpwd);
-            repo.save(user);
+            user = repo.save(user);
+            mapper.map(user, entity);
+            return entity;
         }
     }
     

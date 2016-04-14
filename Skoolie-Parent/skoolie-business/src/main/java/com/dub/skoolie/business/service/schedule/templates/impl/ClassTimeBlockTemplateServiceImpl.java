@@ -32,10 +32,12 @@ public class ClassTimeBlockTemplateServiceImpl implements ClassTimeBlockTemplate
     
     
     @Override
-    public void updateEntity(ClassTimeBlockTemplateBean entity) {
+    public ClassTimeBlockTemplateBean updateEntity(ClassTimeBlockTemplateBean entity) {
         ClassTimeBlockTemplate ctb = new  ClassTimeBlockTemplate();
         mapper.map(entity, ctb);
-        repo.save(ctb);
+        ctb = repo.save(ctb);
+        mapper.map(ctb,entity);
+        return entity;
     }
 
     @Override

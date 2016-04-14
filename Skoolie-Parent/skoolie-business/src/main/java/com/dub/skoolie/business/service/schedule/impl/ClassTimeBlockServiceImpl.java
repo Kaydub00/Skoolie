@@ -31,10 +31,13 @@ public class ClassTimeBlockServiceImpl implements ClassTimeBlockService {
     ClassTimeBlockRepository repo;
     
     @Override
-    public void updateEntity(ClassTimeBlockBean entity) {
+    public ClassTimeBlockBean updateEntity(ClassTimeBlockBean entity) {
         ClassTimeBlock ctb = new  ClassTimeBlock();
         mapper.map(entity, ctb);
-        repo.save(ctb);
+        ctb = repo.save(ctb);
+        mapper.map(ctb,entity);
+        return entity;
+        
     }
 
     @Override

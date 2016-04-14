@@ -31,10 +31,12 @@ public class SchoolYearServiceImpl implements SchoolYearService {
     SchoolYearRepository repo;
 
     @Override
-    public void updateEntity(SchoolYearBean entity) {
+    public SchoolYearBean updateEntity(SchoolYearBean entity) {
         SchoolYear yr = new  SchoolYear();
         mapper.map(entity, yr);
-        repo.save(yr);
+        yr = repo.save(yr);
+        mapper.map(yr,entity);
+        return entity;
     }
 
     @Override

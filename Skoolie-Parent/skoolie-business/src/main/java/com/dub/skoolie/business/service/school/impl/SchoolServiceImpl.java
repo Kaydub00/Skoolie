@@ -31,10 +31,12 @@ public class SchoolServiceImpl implements SchoolService {
     SchoolRepository repo;
 
     @Override
-    public void updateEntity(SchoolBean entity) {
+    public SchoolBean updateEntity(SchoolBean entity) {
         School skl = new  School();
         mapper.map(entity, skl);
-        repo.save(skl);
+        skl = repo.save(skl);
+        mapper.map(skl,entity);
+        return entity;
     }
 
     @Override

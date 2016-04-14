@@ -41,7 +41,7 @@ public class UserTypeServiceImpl implements UserTypeService {
     }
 
     @Override
-    public void updateEntity(UserTypeBean entity) {
+    public UserTypeBean updateEntity(UserTypeBean entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
