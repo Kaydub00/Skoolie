@@ -42,8 +42,8 @@
                         <tbody>
                             <tr th:each="gptb : ${gradingPeriodTemplateBeans}" >
                                 <td th:text="${gptb.name}">null</td>
-                                <td th:text="${#calendars.format(gptb.startDate, 'MMMM dd yyyy')}">null</td>
-                                <td th:text="${#calendars.format(gptb.endDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(gptb.startDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(gptb.endDate, 'MMMM dd yyyy')}">null</td>
                             </tr>
                         </tbody>
                     </table>

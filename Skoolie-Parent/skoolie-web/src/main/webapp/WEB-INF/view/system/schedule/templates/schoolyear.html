@@ -42,8 +42,8 @@
                         <tbody>
                             <tr th:each="yr : ${schoolYearTemplateBeans}" >
                                 <td th:text="${yr.name}">null</td>
-                                <td th:text="${#calendars.format(yr.startDate, 'MMMM dd yyyy')}">null</td>
-                                <td th:text="${#calendars.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(yr.startDate, 'MMMM dd yyyy')}">null</td>
+                                <td th:text="${#dates.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
                             </tr>
                         </tbody>
                     </table>
