@@ -44,7 +44,7 @@ public class SystemSchoolController {
             return new ModelAndView("system/school/schools");
         }
         uiSchoolServiceImpl.addSchool(schoolBean);
-        return new ModelAndView("redirect:/system/school/schools");
+        return new ModelAndView("redirect:/system/schools");
     }
     
     @RequestMapping(value="/system/schools/{id}", method=RequestMethod.GET)
