@@ -34,6 +34,7 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
+                                <th>School</th>
                                 <th>Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
@@ -41,6 +42,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="gpb : ${gradingPeriodBeans}" >
+                                <td th:text="${gpb.schoolYear.school.name}">null</td>
                                 <td th:text="${gpb.name}">null</td>
                                 <td th:text="${#dates.format(gpb.startDate, 'MMMM dd yyyy')}">null</td>
                                 <td th:text="${#dates.format(gpb.endDate, 'MMMM dd yyyy')}">null</td>

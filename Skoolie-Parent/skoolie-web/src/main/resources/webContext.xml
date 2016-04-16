@@ -24,6 +24,7 @@
         <property name="converters">
             <list>
                 <bean class="com.dub.skoolie.web.forms.conversion.IdToSchoolConverter"/>
+                <bean class="com.dub.skoolie.web.forms.conversion.IdToSchoolYearConverter"/>
                 <bean class="com.dub.skoolie.web.forms.conversion.IdToGradingPeriodConverter"/>
             </list>
         </property>
