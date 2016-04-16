@@ -14,7 +14,7 @@ import org.springframework.core.convert.converter.Converter;
  *
  * @author Kevin W
  */
-public class IdToGradingPeriodConversion implements Converter<String, GradingPeriodBean>{
+public class IdToGradingPeriodConverter implements Converter<String, GradingPeriodBean>{
     
     @Autowired
     GradingPeriodService gradingPeriodServiceImpl;
