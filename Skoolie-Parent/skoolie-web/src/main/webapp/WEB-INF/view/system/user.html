@@ -21,6 +21,9 @@
     </head>
     <body> 
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        
+        <div class="container-fluid">
+        
         <div class="container">
             <div class="row">
                 <h1 th:text="${user.username}">User Page</h1>
@@ -65,5 +68,9 @@
                 </div>
             </div>
         </div>
+            
+        </div>
+        
+        
     </body>
 </html>

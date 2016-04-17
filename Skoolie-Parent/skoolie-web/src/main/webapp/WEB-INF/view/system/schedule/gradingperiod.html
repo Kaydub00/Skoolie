@@ -20,6 +20,10 @@
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        
+        
+        <div class="container-fluid">
+        
         <div class="container">
             <div class="row">
                 <h1>Grading Period</h1>
@@ -34,16 +38,18 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>School</th>
                                 <th>Name</th>
+                                <th>School</th>
+                                <th>School Year</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="gpb : ${gradingPeriodBeans}" >
-                                <td th:text="${gpb.schoolYear.school.name}">null</td>
                                 <td th:text="${gpb.name}">null</td>
+                                <td th:text="${gpb.schoolYear.school.name}">null</td>
+                                <td th:text="${gpb.schoolYear.name}">null</td>
                                 <td th:text="${#dates.format(gpb.startDate, 'MMMM dd yyyy')}">null</td>
                                 <td th:text="${#dates.format(gpb.endDate, 'MMMM dd yyyy')}">null</td>
                             </tr>
@@ -88,6 +94,10 @@
                 </div>
             </div>
         </div>
+            
+        </div>
+        
+        
         <script type="text/javascript">
             $(function() {
                 $("#startDate").datepicker();
