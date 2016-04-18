@@ -7,7 +7,16 @@
     </head>
     
     <body>
-        <div th:fragment="schedule">
+        <div th:fragment="system-schedule">
+            <div id="sidebar" class="col-xs-2">
+                <ul class="sidebar-nav">
+                    <li><a th:href="@{/system/schedule}">Schedule</a></li>
+                    <li><a th:href="@{/system/schedule/schoolyear}">School Year</a></li>
+                    <li><a th:href="@{/system/schedule/gradingperiod}">Grading Period</a></li>
+                    <li><a th:href="@{/system/schedule/classtimeblock}">Class Time Block</a></li>
+                    <li><a th:href="@{/system/schedule/templates}">Templates</a></li>
+                </ul>
+            </div>
         </div>
     </body>
 </html>
