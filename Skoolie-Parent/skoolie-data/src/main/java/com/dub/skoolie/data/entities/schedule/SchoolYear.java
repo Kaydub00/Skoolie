@@ -9,6 +9,7 @@ import com.dub.skoolie.data.entities.school.School;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,7 +46,7 @@ public class SchoolYear implements Serializable {
     @JoinColumn(name="SCHOOL_ID")
     private School school;
     
-    @OneToMany(mappedBy="schoolYear")
+    @OneToMany(mappedBy="schoolYear", cascade = CascadeType.ALL)
     private List<GradingPeriod> gradingPeriods;
 
     /**
