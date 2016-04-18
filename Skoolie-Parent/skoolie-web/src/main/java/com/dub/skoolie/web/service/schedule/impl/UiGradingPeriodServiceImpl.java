@@ -51,5 +51,10 @@ public class UiGradingPeriodServiceImpl implements UiGradingPeriodService{
     public List<SchoolYearBean> getSchoolYears() {
         return schoolYearServiceImpl.getAll();
     }
+
+    @Override
+    public void deleteGradingPeriod(Long id) {
+        gradingPeriodServiceImpl.deleteByID(id);
+    }
     
 }

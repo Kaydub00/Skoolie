@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +44,12 @@ public class SystemClassTimeBlockController {
             return new ModelAndView("system/schedule/classtimeblock");
         }
         uiClassTimeBlockServiceImpl.addClassTimeBlock(classTimeBlockBean);
+        return new ModelAndView("redirect:/system/schedule/classtimeblock");
+    }
+    
+    @RequestMapping(value="/system/schedule/classtimeblock/delete", method=RequestMethod.POST)
+    public ModelAndView deleteClassTimeBlock(@RequestParam("classtimeblock") String id, Model model) {
+        uiClassTimeBlockServiceImpl.deleteClassTimeBlock(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/classtimeblock");
     }
     

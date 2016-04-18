@@ -50,6 +50,7 @@
                                         <th>End Date</th>
                                         <th>Grading Periods</th>
                                         <th>Time Blocks</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,25 @@
                                         <td th:text="${#dates.format(yr.endDate, 'MMMM dd yyyy')}">null</td>
                                         <td></td>
                                         <td></td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary" th:attr="data-target='#deleteModal' + ${yr.id}" data-toggle="modal">Delete</a>
+                                            
+                                            <div th:id="${'deleteModal' + yr.id}" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Delete</h4>
+                                                        </div>
+                                                        <div class="modal-body">Are you sure you wish to delete?
+                                                            <form action="#" th:action="@{/system/schedule/schoolyear/delete}" method="post">
+                                                                <input type="hidden" name="schoolyear" th:value="${yr.id}"/>
+                                                                <button type="submit" class="btn btn-primary">Okay</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -98,7 +118,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>

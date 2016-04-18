@@ -50,6 +50,7 @@
                                         <th>School Year</th>
                                         <th>Start Date</th>
                                         <th>End Date</th>
+                                        <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,6 +60,25 @@
                                         <td th:text="${gpb.schoolYear.name}">null</td>
                                         <td th:text="${#dates.format(gpb.startDate, 'MMMM dd yyyy')}">null</td>
                                         <td th:text="${#dates.format(gpb.endDate, 'MMMM dd yyyy')}">null</td>
+                                        <td>
+                                            <a href="#" class="btn btn-primary" th:attr="data-target='#deleteModal' + ${gpb.id}" data-toggle="modal">Delete</a>
+                                            
+                                            <div th:id="${'deleteModal' + gpb.id}" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Delete</h4>
+                                                        </div>
+                                                        <div class="modal-body">Are you sure you wish to delete?
+                                                            <form action="#" th:action="@{/system/schedule/gradingperiod/delete}" method="post">
+                                                                <input type="hidden" name="gradingperiod" th:value="${gpb.id}"/>
+                                                                <button type="submit" class="btn btn-primary">Okay</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

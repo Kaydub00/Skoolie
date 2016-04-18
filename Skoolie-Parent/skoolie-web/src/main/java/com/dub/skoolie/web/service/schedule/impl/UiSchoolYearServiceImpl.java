@@ -51,5 +51,10 @@ public class UiSchoolYearServiceImpl implements UiSchoolYearService {
     public List<SchoolBean> getAllSchools() {
         return schoolServiceImpl.getAll();
     }
+
+    @Override
+    public void deleteSchoolYear(Long id) {
+        schoolYearServiceImpl.deleteByID(id);
+    }
     
 }

@@ -25,4 +25,6 @@ public interface UiSchoolYearService {
     
     public List<SchoolBean> getAllSchools();
     
+    public void deleteSchoolYear(Long id);
+    
 }

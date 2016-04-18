@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +44,12 @@ public class SystemGradingPeriodController {
             return new ModelAndView("system/schedule/gradingperiod");
         }
         uiGradingPeriodServiceImpl.addGradingPeriod(gradingPeriodBean);
+        return new ModelAndView("redirect:/system/schedule/gradingperiod");
+    }
+    
+    @RequestMapping(value="/system/schedule/gradingperiod/delete", method=RequestMethod.POST)
+    public ModelAndView deleteClassTimeBlock(@RequestParam("gradingperiod") String id, Model model) {
+        uiGradingPeriodServiceImpl.deleteGradingPeriod(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/gradingperiod");
     }
 }

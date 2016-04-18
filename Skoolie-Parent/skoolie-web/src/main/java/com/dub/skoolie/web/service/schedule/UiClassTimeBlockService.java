@@ -25,4 +25,6 @@ public interface UiClassTimeBlockService {
     
     public List<GradingPeriodBean> getGradingPeriods();
     
+    public void deleteClassTimeBlock(Long id);
+    
 }

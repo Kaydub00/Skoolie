@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -43,6 +44,12 @@ public class SystemSchoolYearController {
             return new ModelAndView("system/schedule/schoolyear");
         }
         uiSchoolYearServiceImpl.addSchoolYear(schoolYearBean);
+        return new ModelAndView("redirect:/system/schedule/schoolyear");
+    }
+    
+    @RequestMapping(value="/system/schedule/schoolyear/delete", method=RequestMethod.POST)
+    public ModelAndView deleteSchoolYear(@RequestParam("schoolyear") String id, Model model) {
+        uiSchoolYearServiceImpl.deleteSchoolYear(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/schoolyear");
     }
     
