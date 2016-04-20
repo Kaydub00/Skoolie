@@ -23,7 +23,126 @@
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
         <div class="container-fluid">
             <div class="row">
-                <h1 th:text="${school.name}">School</h1>
+                <div class="col-sm-11 col-sm-offset-1">
+                    <h1 th:text="${school.name}">School</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    sidebar
+                </div>
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            School Schedule
+                        </div>
+                        <div class="panel-body" style="max-height: 300px;overflow-y: scroll;">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#schoolyear">School Year</a></li>
+                                <li><a data-toggle="tab" href="#gradingperiod">Grading Period</a></li>
+                                <li><a data-toggle="tab" href="#classtimeblock">Class Time Block</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div id="schoolyear" class="tab-pane fade in active">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>School Year</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="schoolYearBean : ${school.schoolYears}">
+                                                <td th:text="${schoolYearBean.name}"></td>
+                                                <td th:text="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}"></td>
+                                                <td th:text="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}"></td>
+                                                <td>
+                                                    <a href="#" class="btn btn-primary" th:attr="data-target='#editModal' + ${schoolYearBean.id}" data-toggle="modal">Edit</a>
+                                                    <div th:id="${'editModal' + schoolYearBean.id}" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 th:text="${'Edit: ' + schoolYearBean.name}">Edit</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
+                                                                        <div class="form-group">
+                                                                            <label for="name">Name</label>
+                                                                            <input class="form-control" id="name" name="name" type="text" th:value="${schoolYearBean.name}" />
+                                                                                    
+                                                                            <label for="startDate">Start Date (MM/DD/YYYY)</label>
+                                                                            <input class="form-control" type="text" id="startDate" name="startDate" th:value="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}" />
+                                                                                    
+                                                                            <label for="endDate">End Date (MM/DD/YYYY)</label>
+                                                                            <input class="form-control" id="endDate" name="endDate" type="text" th:value="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}" />
+                                    
+                                                                            <input type="hidden" th:value="${schoolYearBean.school.id}" id="school" name="school"/>
+                                                                            <input type="hidden" th:value="${schoolYearBean.id}" name="id" id="id"/>
+                                    
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary">Submit</button>                        
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="gradingperiod" class="tab-pane fade">
+                                    <div th:each="schoolYearBean : ${school.schoolYears}">
+                                        <h4 th:text="${schoolYearBean.name}">School Year</h4>
+                                        <table class="table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="gradingPeriodBean : ${schoolYearBean.gradingPeriods}">
+                                                    <td th:text="${gradingPeriodBean.name}"></td>
+                                                    <td th:text="${#dates.format(gradingPeriodBean.startDate, 'MMMM dd yyyy')}"></td>
+                                                    <td th:text="${#dates.format(gradingPeriodBean.endDate, 'MMMM dd yyyy')}"></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary" th:attr="data-target='#editGPModal' + ${gradingPeriodBean.id}" data-toggle="modal">Edit</a>
+                                                        <div th:id="${'editGPModal' + gradingPeriodBean.id}" class="modal fade" role="dialog">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h4 th:text="${'Edit: ' + gradingPeriodBean.name}">Edit</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <form action="#" th:action="@{/system/schedule/gradingperiod}" th:object="${gradingPeriodBean}" method="post" role="form">
+                                                                            
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id="classtimeblock" class="tab-pane fade">
+                                    <p>class time block</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-6">
+                    
+                </div>
             </div>
         </div>
     </body>

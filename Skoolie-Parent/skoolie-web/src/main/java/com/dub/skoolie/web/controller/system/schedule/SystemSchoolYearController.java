@@ -7,6 +7,7 @@ package com.dub.skoolie.web.controller.system.schedule;
 
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
 import com.dub.skoolie.web.service.schedule.UiSchoolYearService;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,21 +37,24 @@ public class SystemSchoolYearController {
     }
     
     @RequestMapping(value="/system/schedule/schoolyear", method=RequestMethod.POST)
-    public ModelAndView addSchoolYear(@Valid SchoolYearBean schoolYearBean, BindingResult result, Model model) {
+    public ModelAndView editSchoolYear(@Valid SchoolYearBean schoolYearBean, BindingResult result, Model model, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
+            if(!referrer.equals("/system/schedule/schoolyear")) {
+                return new ModelAndView("redirect:" + referrer);
+            }
             model.addAttribute("schoolYearBeans", uiSchoolYearServiceImpl.getSchoolYears());
             model.addAttribute("schoolYearBean", schoolYearBean);
             model.addAttribute("allSchools", uiSchoolYearServiceImpl.getAllSchools());
             return new ModelAndView("system/schedule/schoolyear");
         }
         uiSchoolYearServiceImpl.addSchoolYear(schoolYearBean);
-        return new ModelAndView("redirect:/system/schedule/schoolyear");
+        return new ModelAndView("redirect:" + referrer);
     }
     
     @RequestMapping(value="/system/schedule/schoolyear/delete", method=RequestMethod.POST)
     public ModelAndView deleteSchoolYear(@RequestParam("schoolyear") String id, Model model) {
         uiSchoolYearServiceImpl.deleteSchoolYear(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/schoolyear");
-    }
-    
+    }    
 }
