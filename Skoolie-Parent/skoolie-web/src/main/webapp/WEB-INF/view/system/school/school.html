@@ -34,20 +34,20 @@
                 <div class="col-sm-2 col-xs-1">
                     <div th:replace="../templates/sidebar :: system-school">Side Bar</div>
                 </div>
-                <div class="col-sm-4 col-xs-11">
+                <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             School Info
                         </div>
                         <div class="panel-body">
-                            <label>Name</label><span th:text="${schoolBean.name}"/>
-                            <label>Address</label><span th:text="${schoolBean.address}"/>
-                            <label>City, ST Zip</label><span th:text="${schoolBean.city + ', ' + schoolBean.state + ' ' + schoolBean.postal"/>
-                            <label>Phone</label><span th:text="${schoolBean.phone}"/>
+                            <label>Name</label><span th:text="${schoolBean.name}"/><br/>
+                            <label>Address</label><span th:text="${schoolBean.address}"/><br/>
+                            <label>City, ST Zip</label><span th:text="${schoolBean.city + ', ' + schoolBean.state + ' ' + schoolBean.postal}"/><br/>
+                            <label>Phone</label><span th:text="${schoolBean.phone}"/><br/>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 col-xs-12">
+                <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-2">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             School Schedule
@@ -209,8 +209,8 @@
                     </div>
                     
                 </div>
-                <div class="col-sm-2 col-xs-12">
-                    
+                <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-2">
+                    Other content
                 </div>
             </div>
         </div>
