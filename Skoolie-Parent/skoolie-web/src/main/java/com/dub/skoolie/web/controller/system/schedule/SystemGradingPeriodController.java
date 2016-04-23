@@ -7,6 +7,7 @@ package com.dub.skoolie.web.controller.system.schedule;
 
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.web.service.schedule.UiGradingPeriodService;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,15 +37,19 @@ public class SystemGradingPeriodController {
     }
     
     @RequestMapping(value="/system/schedule/gradingperiod", method=RequestMethod.POST)
-    public ModelAndView addGradingPeriod(@Valid GradingPeriodBean gradingPeriodBean, BindingResult result, Model model) {
+    public ModelAndView addGradingPeriod(@Valid GradingPeriodBean gradingPeriodBean, BindingResult result, Model model, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
+            if(!referrer.equals("/system/schedule/gradingperiod")) {
+                return new ModelAndView("redirect:" + referrer);
+            }
             model.addAttribute("gradingPeriodBeans", uiGradingPeriodServiceImpl.getGradingPeriods());
             model.addAttribute("gradingPeriodBean", gradingPeriodBean);
             model.addAttribute("schoolYears", uiGradingPeriodServiceImpl.getSchoolYears());
             return new ModelAndView("system/schedule/gradingperiod");
         }
         uiGradingPeriodServiceImpl.addGradingPeriod(gradingPeriodBean);
-        return new ModelAndView("redirect:/system/schedule/gradingperiod");
+        return new ModelAndView("redirect:" + referrer);
     }
     
     @RequestMapping(value="/system/schedule/gradingperiod/delete", method=RequestMethod.POST)

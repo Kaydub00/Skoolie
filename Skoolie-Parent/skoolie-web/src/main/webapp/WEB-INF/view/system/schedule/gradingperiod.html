@@ -14,6 +14,7 @@
         <link th:replace="../templates/header:: bootstrap" />
         <link th:replace="../templates/header:: bootstraptheme" />
         <script th:replace="../templates/header:: bootstrapjs" />
+        <script th:replace="../templates/header:: modal-dropdown-fix"/>
         
         <link th:replace="../templates/header:: sidebarcss" />
         
@@ -129,7 +130,10 @@
                     changeMonth: true,
                     changeYear: true
                 });
-                $("#endDate").datepicker();
+                $("#endDate").datepicker(
+                    changeMonth: true,
+                    changeYear: true
+                });
             })
         </script>
     </body>

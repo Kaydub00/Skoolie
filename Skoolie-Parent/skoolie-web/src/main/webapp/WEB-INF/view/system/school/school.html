@@ -14,6 +14,9 @@
         <link th:replace="../templates/header:: bootstrap" />
         <link th:replace="../templates/header:: bootstraptheme" />
         <script th:replace="../templates/header:: bootstrapjs" />
+        <script th:replace="../templates/header:: modal-dropdown-fix"/>
+        
+        <link th:replace="../templates/header:: sidebarcss" />
         
         
         <title>Skoolie School</title>
@@ -24,14 +27,27 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-11 col-sm-offset-1">
-                    <h1 th:text="${school.name}">School</h1>
+                    <h1 th:text="${schoolBean.name}">School</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-2">
-                    sidebar
+                <div class="col-sm-2 col-xs-1">
+                    <div th:replace="../templates/sidebar :: system-school">Side Bar</div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-xs-11">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            School Info
+                        </div>
+                        <div class="panel-body">
+                            <label>Name</label><span th:text="${schoolBean.name}"/>
+                            <label>Address</label><span th:text="${schoolBean.address}"/>
+                            <label>City, ST Zip</label><span th:text="${schoolBean.city + ', ' + schoolBean.state + ' ' + schoolBean.postal"/>
+                            <label>Phone</label><span th:text="${schoolBean.phone}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             School Schedule
@@ -54,7 +70,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="schoolYearBean : ${school.schoolYears}">
+                                            <tr th:each="schoolYearBean : ${schoolBean.schoolYears}">
                                                 <td th:text="${schoolYearBean.name}"></td>
                                                 <td th:text="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}"></td>
                                                 <td th:text="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}"></td>
@@ -73,10 +89,12 @@
                                                                             <input class="form-control" id="name" name="name" type="text" th:value="${schoolYearBean.name}" />
                                                                                     
                                                                             <label for="startDate">Start Date (MM/DD/YYYY)</label>
-                                                                            <input class="form-control" name="startDate" th:id="${'startDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}" />
+                                                                            <input class="form-control" name="startDate" th:id="${'startDate' + schoolYearBean.id}" 
+                                                                                   th:value="${#dates.format(schoolYearBean.startDate, 'MM/dd/yyyy')}" />
                                                                                     
                                                                             <label for="endDate">End Date (MM/DD/YYYY)</label>
-                                                                            <input class="form-control" id="endDate" name="endDate" th:id="${'endDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}" />
+                                                                            <input class="form-control" id="endDate" name="endDate" th:id="${'endDate' + schoolYearBean.id}" 
+                                                                                   th:value="${#dates.format(schoolYearBean.endDate, 'MM/dd/yyyy')}" />
                                     
                                                                             <input type="hidden" th:value="${schoolYearBean.school.id}" id="school" name="school"/>
                                                                             <input type="hidden" th:value="${schoolYearBean.id}" name="id" id="id"/>
@@ -88,11 +106,13 @@
                                                                         $(function() {
                                                                             $(/*[[${'#startDate' + schoolYearBean.id}]]*/).datepicker({
                                                                                 changeMonth: true,
-                                                                                changeYear: true
+                                                                                changeYear: true,
+                                                                                defaultDate: /*[[${#dates.format(schoolYearBean.startDate, 'MM/dd/yyyy')}]]*/
                                                                             });
                                                                             $(/*[[${'#endDate' + schoolYearBean.id}]]*/).datepicker({
                                                                                 changeMonth: true,
-                                                                                changeYear: true
+                                                                                changeYear: true,
+                                                                                defaultDate: /*[[${#dates.format(schoolYearBean.endDate, 'MM/dd/yyyy')}]]*/
                                                                             });
                                                                         })
                                                                         
@@ -107,7 +127,7 @@
                                     </table>
                                 </div>
                                 <div id="gradingperiod" class="tab-pane fade">
-                                    <div th:each="schoolYearBean : ${school.schoolYears}">
+                                    <div th:each="schoolYearBean : ${schoolBean.schoolYears}">
                                         <h4 th:text="${schoolYearBean.name}">School Year</h4>
                                         <table class="table table-striped table-hover">
                                             <thead>
@@ -133,8 +153,44 @@
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <form action="#" th:action="@{/system/schedule/gradingperiod}" th:object="${gradingPeriodBean}" method="post" role="form">
-                                                                            
+                                                                            <div class="form-group">
+                                                                                <label for="name">Name</label>
+                                                                                <input class="form-control" id="name" type="text" name="name"
+                                                                                                                     th:value="${gradingPeriodBean.name}" />
+                                                
+                                                                                <label for="startDate">Start Date (MM/DD/YYYY)</label>
+                                                                                <input class="form-control" th:id="${'startDategp' + gradingPeriodBean.id}" 
+                                                                                       name="startDate" type="text" th:value="${#dates.format(gradingPeriodBean.startDate, 'MM/dd/yyyy')}" />
+                            
+                                                                                <label for="endDate">End Date (MM/DD/YYYY)
+                                                                                </label><input class="form-control" th:id="${'endDategp' + gradingPeriodBean.id}" 
+                                                                                      name="endDate" type="text" th:value="${#dates.format(gradingPeriodBean.endDate, 'MM/dd/yyyy')}" />
+                                                                                
+                                                                                <input type="hidden" th:value="${gradingPeriodBean.schoolYear.id}" name="schoolYear"/>
+                                                                                <input type="hidden" th:value="${gradingPeriodBean.id}" name="id"/>
+                                    
+                                                                            </div>
+                                                                            <button type="submit" class="btn btn-primary">Submit</button>
                                                                         </form>
+                                                                        <script type="text/javascript" th:inline="javascript">
+                                                                        $(function() {
+                                                                            $(/*[[${'#startDategp' + gradingPeriodBean.id}]]*/).datepicker({
+                                                                                changeMonth: true,
+                                                                                changeYear: true,
+                                                                                minDate: /*[[${#dates.format(gradingPeriodBean.schoolYear.startDate, 'MM/dd/yyyy')}]]*/,
+                                                                                maxDate: /*[[${#dates.format(gradingPeriodBean.schoolYear.endDate, 'MM/dd/yyyy')}]]*/,
+                                                                                defaultDate: /*[[${#dates.format(gradingPeriodBean.startDate, 'MM/dd/yyyy')}]]*/
+                                                                            });
+                                                                            $(/*[[${'#endDategp' + gradingPeriodBean.id}]]*/).datepicker({
+                                                                                changeMonth: true,
+                                                                                changeYear: true,
+                                                                                minDate: /*[[${#dates.format(gradingPeriodBean.schoolYear.startDate, 'MM/dd/yyyy')}]]*/,
+                                                                                maxDate: /*[[${#dates.format(gradingPeriodBean.schoolYear.endDate, 'MM/dd/yyyy')}]]*/,
+                                                                                defaultDate: /*[[${#dates.format(gradingPeriodBean.endDate, 'MM/dd/yyyy')}]]*/
+                                                                            });
+                                                                        })
+                                                                        
+                                                                    </script>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -153,7 +209,7 @@
                     </div>
                     
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-2 col-xs-12">
                     
                 </div>
             </div>

@@ -28,7 +28,7 @@ public class SchoolBean implements Serializable {
     private String address;
     
     @NotNull
-    @Size(min=8, max=180)
+    @Size(min=3, max=180)
     private String city;
     
     @NotNull

@@ -50,7 +50,7 @@ public class SystemSchoolController {
     @RequestMapping(value="/system/schools/{id}", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean skl = uiSchoolServiceImpl.getSchool(school);
-        model.addAttribute("school", skl);
+        model.addAttribute("schoolBean", skl);
         return new ModelAndView("system/school/school");
     }
     
