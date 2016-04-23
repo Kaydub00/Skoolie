@@ -73,10 +73,10 @@
                                                                             <input class="form-control" id="name" name="name" type="text" th:value="${schoolYearBean.name}" />
                                                                                     
                                                                             <label for="startDate">Start Date (MM/DD/YYYY)</label>
-                                                                            <input class="form-control" id="startDate" name="startDate" th:name="${'startDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}" />
+                                                                            <input class="form-control" name="startDate" th:id="${'startDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}" />
                                                                                     
                                                                             <label for="endDate">End Date (MM/DD/YYYY)</label>
-                                                                            <input class="form-control" id="endDate" name="endDate" th:name="${'endDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}" />
+                                                                            <input class="form-control" id="endDate" name="endDate" th:id="${'endDate' + schoolYearBean.id}" th:value="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}" />
                                     
                                                                             <input type="hidden" th:value="${schoolYearBean.school.id}" id="school" name="school"/>
                                                                             <input type="hidden" th:value="${schoolYearBean.id}" name="id" id="id"/>
@@ -84,6 +84,19 @@
                                                                         </div>
                                                                         <button type="submit" class="btn btn-primary">Submit</button>                        
                                                                     </form>
+                                                                    <script type="text/javascript" th:inline="javascript">
+                                                                        $(function() {
+                                                                            $(/*[[${'#startDate' + schoolYearBean.id}]]*/).datepicker({
+                                                                                changeMonth: true,
+                                                                                changeYear: true
+                                                                            });
+                                                                            $(/*[[${'#endDate' + schoolYearBean.id}]]*/).datepicker({
+                                                                                changeMonth: true,
+                                                                                changeYear: true
+                                                                            });
+                                                                        })
+                                                                        
+                                                                    </script>
                                                                 </div>
                                                             </div>
                                                         </div>

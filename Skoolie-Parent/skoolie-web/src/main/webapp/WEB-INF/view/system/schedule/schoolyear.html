@@ -124,7 +124,10 @@
         </div>
         <script type="text/javascript">
             $(function() {
-                $("#startDate").datepicker();
+                $("#startDate").datepicker({
+                    changeMonth: true,
+                    changeYear: true
+                });
                 $("#endDate").datepicker();
             })
         </script>
