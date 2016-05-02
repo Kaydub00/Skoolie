@@ -202,7 +202,80 @@
                                     </div>
                                 </div>
                                 <div id="classtimeblock" class="tab-pane fade">
-                                    <p>class time block</p>
+                                    <div th:each="schoolYearBean : ${schoolBean.schoolYears}">
+                                        <div th:each="gradingPeriodBean : ${schoolYearBean.gradingPeriods}">
+                                            <h4 th:text="${gradingPeriodBean.schoolYear.name + ' ' + gradingPeriodBean.name}">Grading period</h4>
+                                            <table class="table table-striped table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Start Time</th>
+                                                        <th>End Time</th>
+                                                        <th>Edit</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="classTimeBlockBean : ${gradingPeriodBean.classTimeBlocks}">
+                                                        <td th:text="${classTimeBlockBean.gradingPeriod.name + ' ' + classTimeBlockBean.name}"></td>
+                                                        <td th:text="${classTimeBlockBean.startHour + ':' + classTimeBlockBean.startMinute}"></td>
+                                                        <td th:text="${classTimeBlockBean.endHour + ':' + classTimeBlockBean.endMinute}"></td>
+                                                        <td>
+                                                            <a href="#" class="btn btn-primary" th:attr="data-target='#editCTBModal' + ${classTimeBlockBean.id}" data-toggle="modal">Edit</a>
+                                                            <div th:id="${'editCTBModal' + classTimeBlockBean.id}" class="modal fade" role="dialog">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h4 th:text="${'Edit: ' + classTimeBlockBean.name}">Edit</h4>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form action="#" th:action="@{/system/schedule/classtimeblock}" th:object="${classTimeBlockBean}" method="post" role="form">
+                                                                                <div class="form-group">
+                                                                                    <label for="name">Name</label><input class="form-control" id="name" name="name" type="text" th:value="${classTimeBlockBean.name}" />
+                                                                                    
+                                                                                    <label for="startHour">Start Hour</label>
+                                                                                    <select class="form-control" id="startHour" name="startHour">
+                                                                                        <option th:value="${classTimeBlockBean.startHour}" th:text="${classTimeBlockBean.startHour}">00</option>
+                                                                                        <option th:each="i : ${#numbers.sequence(0,23)}"
+                                                                                                th:value="${i}" th:text="${#numbers.formatInteger(i,2)}">Hour</option>
+                                                                                    </select>
+                                                                                    
+                                                                                    <label for="startMinute">Start Minute</label>
+                                                                                    <select class="form-control" id="startMinute" name="startMinute">
+                                                                                        <option th:value="${classTimeBlockBean.startMinute}" th:text="${classTimeBlockBean.startMinute}">00</option>
+                                                                                        <option th:each="i : ${#numbers.sequence(0,59)}"
+                                                                                                th:value="${i}" th:text="${#numbers.formatInteger(i,2)}">Minute</option>
+                                                                                    </select>
+                                                                                    
+                                                                                    <label for="endHour">End Hour</label>
+                                                                                    <select class="form-control" id="endHour" name="endHour">
+                                                                                        <option th:value="${classTimeBlockBean.endHour}" th:text="${classTimeBlockBean.endHour}">00</option>
+                                                                                        <option th:each="i : ${#numbers.sequence(0,23)}"
+                                                                                                th:value="${i}" th:text="${#numbers.formatInteger(i,2)}">Hour</option>
+                                                                                    </select>
+                                                                                    
+                                                                                    <label for="endMinute">End Minute</label>
+                                                                                    <select class="form-control" id="endMinute" name="endMinute">
+                                                                                        <option th:value="${classTimeBlockBean.endMinute}" th:text="${classTimeBlockBean.endMinute}">00</option>
+                                                                                        <option th:each="i : ${#numbers.sequence(0,59)}"
+                                                                                                th:value="${i}" th:text="${#numbers.formatInteger(i,2)}">Minute</option>
+                                                                                    </select>
+                                                                                    
+                                                                                    <input type="hidden" th:value="${classTimeBlockBean.gradingPeriod.id}" name="gradingPeriod"/>
+                                                                                    <input type="hidden" th:value="${classTimeBlockBean.id}" name="id"/>
+                                                                                    
+                                                                                </div>
+                                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +283,7 @@
                     
                 </div>
                 <div class="col-sm-2 col-sm-offset-0 col-xs-10 col-xs-offset-2">
-                    Other content
+                    <p>Extra content</p>
                 </div>
             </div>
         </div>

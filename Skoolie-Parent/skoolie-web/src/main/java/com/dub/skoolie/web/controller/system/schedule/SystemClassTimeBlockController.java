@@ -7,6 +7,7 @@ package com.dub.skoolie.web.controller.system.schedule;
 
 import com.dub.skoolie.structures.schedule.ClassTimeBlockBean;
 import com.dub.skoolie.web.service.schedule.UiClassTimeBlockService;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,15 +37,19 @@ public class SystemClassTimeBlockController {
     }
     
     @RequestMapping(value="/system/schedule/classtimeblock", method=RequestMethod.POST)
-    public ModelAndView addClassTimeBlock(@Valid ClassTimeBlockBean classTimeBlockBean, BindingResult result, Model model) {
+    public ModelAndView addClassTimeBlock(@Valid ClassTimeBlockBean classTimeBlockBean, BindingResult result, Model model, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
+            if(!referrer.equals("/system/schedule/classtimeblock")) {
+                return new ModelAndView("redirect:" + referrer);
+            }
             model.addAttribute("classTimeBlockBeans", uiClassTimeBlockServiceImpl.getClassTimeBlocks());
             model.addAttribute("classTimeBlockBean", classTimeBlockBean);
             model.addAttribute("gradingPeriods", uiClassTimeBlockServiceImpl.getGradingPeriods());
             return new ModelAndView("system/schedule/classtimeblock");
         }
         uiClassTimeBlockServiceImpl.addClassTimeBlock(classTimeBlockBean);
-        return new ModelAndView("redirect:/system/schedule/classtimeblock");
+        return new ModelAndView("redirect:" + referrer);
     }
     
     @RequestMapping(value="/system/schedule/classtimeblock/delete", method=RequestMethod.POST)

@@ -53,7 +53,7 @@ public class SystemGradingPeriodController {
     }
     
     @RequestMapping(value="/system/schedule/gradingperiod/delete", method=RequestMethod.POST)
-    public ModelAndView deleteClassTimeBlock(@RequestParam("gradingperiod") String id, Model model) {
+    public ModelAndView deleteGradingPeriod(@RequestParam("gradingperiod") String id, Model model) {
         uiGradingPeriodServiceImpl.deleteGradingPeriod(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/gradingperiod");
     }

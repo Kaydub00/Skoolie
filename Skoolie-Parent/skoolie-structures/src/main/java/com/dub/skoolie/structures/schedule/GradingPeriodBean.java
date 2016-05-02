@@ -6,6 +6,7 @@
 package com.dub.skoolie.structures.schedule;
 
 import java.util.Date;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,6 +23,8 @@ public class GradingPeriodBean {
     private String name;
     
     private SchoolYearBean schoolYear;
+    
+    private List<ClassTimeBlockBean> classTimeBlocks;
     
     @NotNull
     private Date startDate;
@@ -97,6 +100,20 @@ public class GradingPeriodBean {
      */
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    /**
+     * @return the classTimeBlocks
+     */
+    public List<ClassTimeBlockBean> getClassTimeBlocks() {
+        return classTimeBlocks;
+    }
+
+    /**
+     * @param classTimeBlocks the classTimeBlocks to set
+     */
+    public void setClassTimeBlocks(List<ClassTimeBlockBean> classTimeBlocks) {
+        this.classTimeBlocks = classTimeBlocks;
     }
     
 }
