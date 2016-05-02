@@ -5,20 +5,35 @@
  */
 package com.dub.skoolie.data.entities.schedule.events;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Kevin W
  */
-public class SchoolEvent {
+@Entity
+@Table(name = "SCHOOL_EVENTS")
+public class SchoolEvent implements Serializable {
     
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
     
+    @Column(name="NAME", length=140)
     private String name;
     
+    @Column(name="START_DATE_TIME")
     private Date start;
     
+    @Column(name="END_DATE_TIME")
     private Date end;
     
 }
