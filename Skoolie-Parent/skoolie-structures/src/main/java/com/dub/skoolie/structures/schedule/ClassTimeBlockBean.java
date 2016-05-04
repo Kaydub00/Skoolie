@@ -5,6 +5,8 @@
  */
 package com.dub.skoolie.structures.schedule;
 
+import com.dub.skoolie.structures.courses.SchoolClassBean;
+import java.util.List;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -39,6 +41,8 @@ public class ClassTimeBlockBean {
     @Max(59)
     @Min(0)
     private Integer endMinute;
+    
+    private List<SchoolClassBean> schoolClasses;
 
     /**
      * @return the id
@@ -136,6 +140,24 @@ public class ClassTimeBlockBean {
      */
     public void setEndMinute(Integer endMinute) {
         this.endMinute = endMinute;
+    }
+
+    /**
+     * @return the schoolClasses
+     */
+    public List<SchoolClassBean> getSchoolClasses() {
+        return schoolClasses;
+    }
+
+    /**
+     * @param schoolClasses the schoolClasses to set
+     */
+    public void setSchoolClasses(List<SchoolClassBean> schoolClasses) {
+        this.schoolClasses = schoolClasses;
+    }
+    
+    public void addSchoolClass(SchoolClassBean schoolClass) {
+        this.schoolClasses.add(schoolClass);
     }
     
 }

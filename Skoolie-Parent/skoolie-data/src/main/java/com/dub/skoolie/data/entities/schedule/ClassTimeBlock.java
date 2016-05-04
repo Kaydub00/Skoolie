@@ -5,7 +5,9 @@
  */
 package com.dub.skoolie.data.entities.schedule;
 
+import com.dub.skoolie.data.entities.courses.SchoolClass;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -46,6 +49,9 @@ public class ClassTimeBlock implements Serializable {
     @ManyToOne
     @JoinColumn(name="GRADING_PERIOD_ID")
     private GradingPeriod gradingPeriod;
+    
+    @OneToMany(mappedBy="classTimeBlock")
+    private List<SchoolClass> schoolClasses;
 
     /**
      * @return the id
@@ -143,6 +149,24 @@ public class ClassTimeBlock implements Serializable {
      */
     public void setGradingPeriod(GradingPeriod gradingPeriod) {
         this.gradingPeriod = gradingPeriod;
+    }
+
+    /**
+     * @return the schoolClasses
+     */
+    public List<SchoolClass> getSchoolClasses() {
+        return schoolClasses;
+    }
+
+    /**
+     * @param schoolClasses the schoolClasses to set
+     */
+    public void setSchoolClasses(List<SchoolClass> schoolClasses) {
+        this.schoolClasses = schoolClasses;
+    }
+    
+    public void addSchoolClass(SchoolClass schoolClass) {
+        this.schoolClasses.add(schoolClass);
     }
     
 }

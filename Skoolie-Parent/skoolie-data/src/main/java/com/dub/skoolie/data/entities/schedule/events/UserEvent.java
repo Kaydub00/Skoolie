@@ -20,7 +20,7 @@ import javax.persistence.Table;
  * @author Kevin W
  */
 @Entity
-@Table(name = "USER_EVENTS")
+@Table(name = "EVT_USER_EVENTS")
 public class UserEvent implements Serializable {
     
     @Id

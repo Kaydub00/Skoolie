@@ -19,7 +19,7 @@ import javax.persistence.Table;
  * @author Kevin W
  */
 @Entity
-@Table(name = "DISTRICT_EVENTS")
+@Table(name = "EVT_DISTRICT_EVENTS")
 public class DistrictEvent implements Serializable {
     
     @Id
