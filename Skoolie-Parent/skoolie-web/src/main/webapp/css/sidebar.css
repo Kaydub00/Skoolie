@@ -9,13 +9,16 @@ and open the template in the editor.
 */
 
 #sidebar {
-    position:fixed;
-    margin-left: -25px;
-    background: #2aabd2;
-    width: 15%;
-    height: 100%;
-    overflow-y: auto;
-    border: inset 2px #999;
+   background-image: linear-gradient(to bottom, #337ab7 0px, #265a88 100%);
+   background-repeat: repeat-x;
+   border-color: #245580;
+   border-radius: 10px;
+   border: 2px inset #999999;
+   height: 100%;
+   margin-left: -25px;
+   overflow-y: auto;
+   position: fixed;
+   width: 15%;
 }
 
 .sidebar-nav {
@@ -35,7 +38,7 @@ and open the template in the editor.
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 .sidebar-nav li a:hover {
