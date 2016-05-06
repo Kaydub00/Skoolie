@@ -19,7 +19,7 @@
         <link th:replace="../templates/header:: sidebarcss" />
         
         
-        <title>Skoolie School</title>
+        <title th:text="${schoolBean.name}">Skoolie School</title>
         
     </head>
     <body> 
@@ -76,11 +76,12 @@
                                                 <td th:text="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}"></td>
                                                 <td>
                                                     <a href="#" class="btn btn-primary" th:attr="data-target='#editModal' + ${schoolYearBean.id}" data-toggle="modal">Edit</a>
-                                                    <div th:id="${'editModal' + schoolYearBean.id}" class="modal fade" role="dialog">
+                                                    <div th:id="${'editModal' + schoolYearBean.id}" class="modal fade">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h4 th:text="${'Edit: ' + schoolYearBean.name}">Edit</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
@@ -115,6 +116,8 @@
                                                                                 defaultDate: /*[[${#dates.format(schoolYearBean.endDate, 'MM/dd/yyyy')}]]*/
                                                                             });
                                                                         })
+                                                                        
+                                                                        $(/*[[${'editModal' + schoolYearBean.id}]]*/).draggable({handle: ".modal-header"});
                                                                         
                                                                     </script>
                                                                 </div>

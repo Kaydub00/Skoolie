@@ -52,5 +52,10 @@ public class HomeController {
     public ModelAndView login() {
         return new ModelAndView("login");
     }
+    
+    @RequestMapping("/acct")
+    public ModelAndView getAcct() {
+        return new ModelAndView("account");
+    }
 
 }
