@@ -75,15 +75,16 @@
                                                 <td th:text="${#dates.format(schoolYearBean.startDate, 'MMMM dd yyyy')}"></td>
                                                 <td th:text="${#dates.format(schoolYearBean.endDate, 'MMMM dd yyyy')}"></td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary" th:attr="data-target='#editModal' + ${schoolYearBean.id}" data-toggle="modal">Edit</a>
+                                                    <a href="#" class="btn btn-primary" th:attr="data-target='#editModal' + ${schoolYearBean.id}" data-toggle="modal" data-backdrop="false">Edit</a>
                                                     <div th:id="${'editModal' + schoolYearBean.id}" class="modal fade">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h4 th:text="${'Edit: ' + schoolYearBean.name}">Edit</h4>
+                                                                <div class="modal-header">                                                                    
                                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 th:text="${'Edit: ' + schoolYearBean.name}">Edit</h4>
                                                                 </div>
                                                                 <div class="modal-body">
+                                                                    
                                                                     <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
                                                                         <div class="form-group">
                                                                             <label for="name">Name</label>
@@ -117,7 +118,7 @@
                                                                             });
                                                                         })
                                                                         
-                                                                        $(/*[[${'editModal' + schoolYearBean.id}]]*/).draggable({handle: ".modal-header"});
+                                                                        $(/*[[${'#editModal' + schoolYearBean.id}]]*/).draggable({handle: ".modal-header"});
                                                                         
                                                                     </script>
                                                                 </div>
@@ -147,11 +148,12 @@
                                                     <td th:text="${#dates.format(gradingPeriodBean.startDate, 'MMMM dd yyyy')}"></td>
                                                     <td th:text="${#dates.format(gradingPeriodBean.endDate, 'MMMM dd yyyy')}"></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary" th:attr="data-target='#editGPModal' + ${gradingPeriodBean.id}" data-toggle="modal">Edit</a>
+                                                        <a href="#" class="btn btn-primary" th:attr="data-target='#editGPModal' + ${gradingPeriodBean.id}" data-toggle="modal"  data-backdrop="false">Edit</a>
                                                         <div th:id="${'editGPModal' + gradingPeriodBean.id}" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                         <h4 th:text="${'Edit: ' + gradingPeriodBean.name}">Edit</h4>
                                                                     </div>
                                                                     <div class="modal-body">
@@ -193,6 +195,8 @@
                                                                             });
                                                                         })
                                                                         
+                                                                        $(/*[[${'#editGPModal' + gradingPeriodBean.id}]]*/).draggable({handle: ".modal-header"});
+                                                                        
                                                                     </script>
                                                                     </div>
                                                                 </div>
@@ -223,11 +227,12 @@
                                                         <td th:text="${classTimeBlockBean.startHour + ':' + classTimeBlockBean.startMinute}"></td>
                                                         <td th:text="${classTimeBlockBean.endHour + ':' + classTimeBlockBean.endMinute}"></td>
                                                         <td>
-                                                            <a href="#" class="btn btn-primary" th:attr="data-target='#editCTBModal' + ${classTimeBlockBean.id}" data-toggle="modal">Edit</a>
+                                                            <a href="#" class="btn btn-primary" th:attr="data-target='#editCTBModal' + ${classTimeBlockBean.id}" data-toggle="modal"  data-backdrop="false">Edit</a>
                                                             <div th:id="${'editCTBModal' + classTimeBlockBean.id}" class="modal fade" role="dialog">
                                                                 <div class="modal-dialog">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                                                             <h4 th:text="${'Edit: ' + classTimeBlockBean.name}">Edit</h4>
                                                                         </div>
                                                                         <div class="modal-body">
@@ -269,6 +274,9 @@
                                                                                 </div>
                                                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                                                             </form>
+                                                                            <script type="text/javascript" th:inline="javascript">
+                                                                                $(/*[[${'#editCTBModal' + classTimeBlockBean.id}]]*/).draggable({handle: ".modal-header"});
+                                                                            </script>
                                                                         </div>
                                                                     </div>
                                                                 </div>
