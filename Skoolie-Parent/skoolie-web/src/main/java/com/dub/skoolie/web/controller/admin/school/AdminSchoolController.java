@@ -7,6 +7,7 @@ package com.dub.skoolie.web.controller.admin.school;
 
 import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.school.UiSchoolService;
+import java.security.Principal;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -48,12 +49,21 @@ public class AdminSchoolController {
         return new ModelAndView("redirect:/admin/school/schools");
     }
     
-    @Secured("ROLE_DISTRICT_ADMIN")
+    @Secured("ROLE_SCHOOL_ADMIN")
     @RequestMapping(value="/admin/schools/{id}", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean skl = uiSchoolServiceImpl.getSchool(school);
         model.addAttribute("school", skl);
         return new ModelAndView("admin/school/school");
+    }
+    
+    @Secured("ROLE_SCHOOL_ADMIN")
+    @RequestMapping(value="/admin/school")
+    public ModelAndView getSchool(Model model, Principal principal) {
+        // need to figure out how I'm going to associate users with schools still
+        String username = principal.getName();
+        String id = username;
+        return new ModelAndView("redirect://admin/schools/" + id);
     }
     
 }

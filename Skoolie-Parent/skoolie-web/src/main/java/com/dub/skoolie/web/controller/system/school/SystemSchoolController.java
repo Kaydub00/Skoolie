@@ -7,6 +7,7 @@ package com.dub.skoolie.web.controller.system.school;
 
 import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.school.UiSchoolService;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,14 +38,18 @@ public class SystemSchoolController {
     }
     
     @RequestMapping(value="/system/schools", method=RequestMethod.POST)
-    public ModelAndView addSchool(@Valid SchoolBean schoolBean, BindingResult result, Model model) {
+    public ModelAndView addSchool(@Valid SchoolBean schoolBean, BindingResult result, Model model, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
+            if(!referrer.equals("/system/schools")) {
+                return new ModelAndView("redirect:" + referrer);
+            }
             model.addAttribute("schoolBean", schoolBean);
             model.addAttribute("schools", uiSchoolServiceImpl.getSchools());
             return new ModelAndView("system/school/schools");
         }
         uiSchoolServiceImpl.addSchool(schoolBean);
-        return new ModelAndView("redirect:/system/schools");
+        return new ModelAndView("redirect:" + referrer);
     }
     
     @RequestMapping(value="/system/schools/{id}", method=RequestMethod.GET)

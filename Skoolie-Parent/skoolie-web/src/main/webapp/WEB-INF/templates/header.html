@@ -73,6 +73,9 @@
                             <li sec:authorize="hasRole('ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/admin/schools}">Schools</a>
                             </li>
+                            <li sec:authorize="hasRole('ROLE_SCHOOL_ADMIN')">
+                                <a th:href="@{/admin/school}">School</a>
+                            </li>
                             <li sec:authorize="hasAnyRole('ROLE_SCHOOL_ADMIN,ROLE_DISTRICT_ADMIN')">
                                 <a th:href="@{/}">Classes</a>
                             </li>
