@@ -16,7 +16,7 @@
         <script th:replace="../templates/header:: bootstrapjs" />
         
         
-        <title>Skoolie</title>
+        <title th:text="${userBean.username}">Skoolie</title>
         
     </head>
     <body> 
@@ -24,7 +24,7 @@
         
         <div class="container-fluid">
             <div class="row">
-                <h1 th:text="${user.username}">User Page</h1>
+                <h1>Edit User</h1>
             </div>
             <div class="row">
                 <div class=" col-xs-8">
@@ -40,9 +40,9 @@
                             <div class="tab-content">
                                 <div id="user" class="tab-pane fade in active">
                                     <ul>
-                                        <li th:text="${user.username}">null</li>
-                                        <li th:text="${user.email}">null</li>
-                                        <li th:text="${user.type}">null</li>
+                                        <li th:text="${userBean.username}">null</li>
+                                        <li th:text="${userBean.email}">null</li>
+                                        <li th:text="${userBean.type}">null</li>
                                     </ul>
                                 </div>
                                 
@@ -50,13 +50,30 @@
                                 
                                 <!--/* Different tabs per type of user, need to fix this */-->
                                 <div id="type" class="tab-pane fade">
-                                    <div th:switch="${user.type}">
-                                        <h2 th:case="'DISTRICT_ADMIN'">testing admin</h2>
-                                        <h2 th:case="'STUDENT'">Student</h2>
-                                        <h2 th:case="'TEACHER'">Teacher</h2>
-                                        <h2 th:case="'SCHOOL_ADMIN'">School Admin</h2>
-                                        <h2 th:case="'PARENT'">Parent</h2>
-                                        <h2 th:case="'SYSTEM'">System</h2>
+                                    <div th:switch="${userBean.type}">
+                                        <div th:case="'DISTRICT_ADMIN'">
+                                            <h2 th:text="${districtAdminBean.username}">USername</h2>
+                                        </div>
+                                        
+                                        <div th:case="'STUDENT'">
+                                            
+                                        </div>
+                                        
+                                        <div th:case="'TEACHER'">
+                                            
+                                        </div>
+                                        
+                                        <div th:case="'SCHOOL_ADMIN'">
+                                            
+                                        </div>
+                                        
+                                        <div th:case="'PARENT'">
+                                            
+                                        </div>
+                                        
+                                        <div th:case="'SYSTEM'">
+                                            
+                                        </div>
                                     </div>
                                 </div>
                                 

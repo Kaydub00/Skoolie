@@ -5,17 +5,17 @@
  */
 package com.dub.skoolie.web.controller.system;
 
+import com.dub.skoolie.structures.people.faculty.DistrictAdminBean;
+import com.dub.skoolie.structures.people.faculty.SchoolAdminBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
-import com.dub.skoolie.structures.usr.security.UserTypeBean;
+import com.dub.skoolie.web.service.people.faculty.UiDistrictAdminService;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
-import java.util.ArrayList;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +30,9 @@ public class SystemUserController {
     
     @Autowired
     UiUserService uiUserServiceImpl;
+    
+    @Autowired
+    UiDistrictAdminService uiDistrictAdminServiceImpl;
     
     @RequestMapping(value="/system/users", method=RequestMethod.GET)
     public ModelAndView getUsers(Model model) {
@@ -56,8 +59,28 @@ public class SystemUserController {
     
     @RequestMapping(value="/system/users/{username}", method=RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("username") String username, Model model) {
-        UserBean user = uiUserServiceImpl.getUser(username);
-        model.addAttribute("user", user);
+        UserBean userBean = uiUserServiceImpl.getUser(username);
+        model.addAttribute("userBean", userBean);
+        
+        switch (userBean.getType()) {
+            case "DISTRICT_ADMIN": 
+                DistrictAdminBean districtAdminBean;
+                if(null != uiDistrictAdminServiceImpl.getDistrictAdmin(userBean.getUsername())) {
+                    districtAdminBean = uiDistrictAdminServiceImpl.getDistrictAdmin(userBean.getUsername());
+                } else {
+                    districtAdminBean = new DistrictAdminBean();
+                    districtAdminBean.setUser(userBean);
+                    districtAdminBean.setUsername(userBean.getUsername());
+                }
+                model.addAttribute("districtAdminBean", districtAdminBean);
+                break;
+            case "SCHOOL_ADMIN":
+                SchoolAdminBean schoolAdminBean = new SchoolAdminBean();
+                schoolAdminBean.setUser(userBean);
+                schoolAdminBean.setUsername(userBean.getUsername());
+                model.addAttribute("schoolAdminBean", schoolAdminBean);
+                break;                
+        }
         return new ModelAndView("system/user");
     }
     

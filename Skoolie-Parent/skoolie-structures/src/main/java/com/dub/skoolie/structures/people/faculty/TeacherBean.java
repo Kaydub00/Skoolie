@@ -19,5 +19,33 @@ public class TeacherBean extends MailableUserPerson implements Serializable {
     private SchoolBean primarySchool;
     
     private List<SchoolBean> availableSchools;
+
+    /**
+     * @return the primarySchool
+     */
+    public SchoolBean getPrimarySchool() {
+        return primarySchool;
+    }
+
+    /**
+     * @param primarySchool the primarySchool to set
+     */
+    public void setPrimarySchool(SchoolBean primarySchool) {
+        this.primarySchool = primarySchool;
+    }
+
+    /**
+     * @return the availableSchools
+     */
+    public List<SchoolBean> getAvailableSchools() {
+        return availableSchools;
+    }
+
+    /**
+     * @param availableSchools the availableSchools to set
+     */
+    public void setAvailableSchools(List<SchoolBean> availableSchools) {
+        this.availableSchools = availableSchools;
+    }
     
 }

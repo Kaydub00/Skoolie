@@ -2,7 +2,6 @@
 package com.dub.skoolie.web.service.usr.security;
 
 import com.dub.skoolie.structures.usr.security.UserBean;
-import com.dub.skoolie.structures.usr.security.UserTypeBean;
 import java.util.List;
 
 /**

@@ -7,11 +7,13 @@ package com.dub.skoolie.structures.people.faculty;
 
 import com.dub.skoolie.structures.people.MailableUserPerson;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author Kevin W
  */
 public class DistrictAdminBean extends MailableUserPerson implements Serializable {
+    
     
 }
