@@ -53,6 +53,24 @@
                                     <div th:switch="${userBean.type}">
                                         <div th:case="'DISTRICT_ADMIN'">
                                             <h2 th:text="${districtAdminBean.username}">USername</h2>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addDistrictAdminModal">Edit/Add Admin</a>
+                                            <div id="addDistrictAdminModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Edit District Admin</h4>                                                            
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="#" th:action="@{/system/people/faculty/districtadmin}" th:object="${districtAdminBean}" method="post" role="form">
+                                                                <div class="form-group">
+                                                                    <label for="username">Username</label><span th:text="${districtAdminBean.username}"></span>
+                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <div th:case="'STUDENT'">
