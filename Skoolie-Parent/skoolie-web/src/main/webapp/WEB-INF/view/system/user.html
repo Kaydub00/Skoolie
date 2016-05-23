@@ -27,7 +27,7 @@
                 <h1>Edit User</h1>
             </div>
             <div class="row">
-                <div class=" col-xs-8">
+                <div class="col-sm-8 col-sm-offset-1 col-xs-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <h3 class="panel-title">User Details</h3>
@@ -35,7 +35,7 @@
                         <div class="panel-body">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#user">User</a></li>
-                                <li><a data-toggle="tab" href="#type">Type</a></li>
+                                <li><a data-toggle="tab" href="#type" th:text="${userBean.type}">Type</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="user" class="tab-pane fade in active">
@@ -64,7 +64,7 @@
                                         </div>
                                         
                                         <div th:case="'SCHOOL_ADMIN'">
-                                            
+                                            <h2 th:text="${schoolAdminBean.username}">USername</h2>
                                         </div>
                                         
                                         <div th:case="'PARENT'">

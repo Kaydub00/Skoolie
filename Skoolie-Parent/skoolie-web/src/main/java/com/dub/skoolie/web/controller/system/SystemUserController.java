@@ -7,8 +7,11 @@ package com.dub.skoolie.web.controller.system;
 
 import com.dub.skoolie.structures.people.faculty.DistrictAdminBean;
 import com.dub.skoolie.structures.people.faculty.SchoolAdminBean;
+import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import com.dub.skoolie.web.service.people.faculty.UiDistrictAdminService;
+import com.dub.skoolie.web.service.people.faculty.UiSchoolAdminService;
+import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
 import javax.validation.Valid;
@@ -33,6 +36,12 @@ public class SystemUserController {
     
     @Autowired
     UiDistrictAdminService uiDistrictAdminServiceImpl;
+    
+    @Autowired
+    UiSchoolAdminService uiSchoolAdminServiceImpl;
+    
+    @Autowired
+    UiTeacherService uiTeacherServiceImpl;
     
     @RequestMapping(value="/system/users", method=RequestMethod.GET)
     public ModelAndView getUsers(Model model) {
@@ -61,7 +70,7 @@ public class SystemUserController {
     public ModelAndView getUser(@PathVariable("username") String username, Model model) {
         UserBean userBean = uiUserServiceImpl.getUser(username);
         model.addAttribute("userBean", userBean);
-        
+        //Different user types have different UI objects
         switch (userBean.getType()) {
             case "DISTRICT_ADMIN": 
                 DistrictAdminBean districtAdminBean;
@@ -75,11 +84,38 @@ public class SystemUserController {
                 model.addAttribute("districtAdminBean", districtAdminBean);
                 break;
             case "SCHOOL_ADMIN":
-                SchoolAdminBean schoolAdminBean = new SchoolAdminBean();
-                schoolAdminBean.setUser(userBean);
-                schoolAdminBean.setUsername(userBean.getUsername());
+                SchoolAdminBean schoolAdminBean;
+                if(null != uiSchoolAdminServiceImpl.getSchoolAdmin(userBean.getUsername())) {
+                    schoolAdminBean = uiSchoolAdminServiceImpl.getSchoolAdmin(userBean.getUsername());
+                } else {
+                    schoolAdminBean = new SchoolAdminBean();
+                    schoolAdminBean.setUser(userBean);
+                    schoolAdminBean.setUsername(userBean.getUsername());
+                }
                 model.addAttribute("schoolAdminBean", schoolAdminBean);
-                break;                
+                break;
+            case "TEACHER":
+                TeacherBean teacherBean;
+                if(null != uiTeacherServiceImpl.getTeacher(userBean.getUsername())) {
+                    teacherBean = uiTeacherServiceImpl.getTeacher(userBean.getUsername());
+                } else {
+                    teacherBean = new TeacherBean();
+                    teacherBean.setUser(userBean);
+                    teacherBean.setUsername(userBean.getUsername());
+                }
+                model.addAttribute("teacherBean", teacherBean);
+                break;
+            case "STUDENT":
+                //StudentBean studentBean = new StudentBean();
+                //model.addAttribute("studentBean", studentBean);
+                break;
+            case "PARENT":
+                //ParentBean parentBean = new ParentBean();
+                //model.addAttribute("parentBean", parentBean);
+                break;
+            case "SYSTEM":
+                break;
+                
         }
         return new ModelAndView("system/user");
     }

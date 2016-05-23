@@ -25,32 +25,32 @@ public class UiSchoolAdminServiceImpl implements UiSchoolAdminService {
 
     @Override
     public List<SchoolAdminBean> getSchoolAdmins() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return schoolAdminServiceImpl.getAll();
     }
 
     @Override
     public SchoolAdminBean getSchoolAdmin(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return schoolAdminServiceImpl.getByID(username);
     }
 
     @Override
     public void updateSchoolAdmin(SchoolAdminBean user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        schoolAdminServiceImpl.updateEntity(user);
     }
 
     @Override
     public void addSchoolAdmin(SchoolAdminBean user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        schoolAdminServiceImpl.updateEntity(user);
     }
 
     @Override
     public void deleteSchoolAdminByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        schoolAdminServiceImpl.deleteByID(username);
     }
 
     @Override
     public void deleteSchoolAdmin(SchoolAdminBean user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        schoolAdminServiceImpl.deleteEntity(user);
     }
     
 }
