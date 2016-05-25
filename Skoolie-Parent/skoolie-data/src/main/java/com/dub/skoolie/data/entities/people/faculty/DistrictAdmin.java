@@ -8,6 +8,7 @@ package com.dub.skoolie.data.entities.people.faculty;
 import com.dub.skoolie.data.entities.usr.security.User;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,12 +26,11 @@ import javax.persistence.Table;
 public class DistrictAdmin implements Serializable {
     
     @Id
-    @Column(name="USERNAME", length=50)
+    @Column(name="USER_USERNAME", length=50)
     private String username;
     
-    @JoinColumn(name = "USERNAME")
+    @JoinColumn(name = "USERNAME", nullable=true, insertable=true, updatable=true)
     @OneToOne
-    @MapsId
     private User user;
     
     @Column(name="ADDRESS", length=180)

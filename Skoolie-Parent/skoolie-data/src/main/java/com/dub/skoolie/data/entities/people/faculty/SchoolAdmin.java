@@ -26,12 +26,11 @@ import javax.persistence.Table;
 public class SchoolAdmin {
     
     @Id
-    @Column(name="USERNAME", length=50)
+    @Column(name="USER_USERNAME", length=50)
     private String username;
     
-    @JoinColumn(name = "USERNAME")
+    @JoinColumn(name = "USERNAME", nullable=true, insertable=true, updatable=true)
     @OneToOne
-    @MapsId
     private User user;
     
     @Column(name="ADDRESS", length=180)
