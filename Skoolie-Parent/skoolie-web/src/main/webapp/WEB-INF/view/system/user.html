@@ -64,8 +64,14 @@
                                                             <form action="#" th:action="@{/system/people/faculty/districtadmin}" th:object="${districtAdminBean}" method="post" role="form">
                                                                 <div class="form-group">
                                                                     <label for="username">Username</label><span th:text="${districtAdminBean.username}"></span>
+                                                                    <input type="hidden" name="user" id="user" th:value="${districtAdminBean.user.username}"/>
                                                                     <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
+                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
                                                                 </div>
+                                                                
+                                                                <button type="submit" class="btn btn-primary">Submit</button>
                                                             </form>
                                                         </div>
                                                     </div>
