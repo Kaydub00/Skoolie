@@ -48,7 +48,7 @@ public class SystemTeacherController {
             }
         }
         uiTeacherServiceImpl.addTeacher(teacherBean);
-        return new ModelAndView("");
+        return new ModelAndView("redirect:" + referrer);
     }
     
 }

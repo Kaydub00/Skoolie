@@ -48,7 +48,7 @@ public class SystemSchoolAdminController {
             }
         }
         uiSchoolAdminServiceImpl.addSchoolAdmin(schoolAdminBean);
-        return new ModelAndView("");
+        return new ModelAndView("redirect:" + referrer);
     }
     
 }

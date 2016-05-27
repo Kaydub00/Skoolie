@@ -52,7 +52,13 @@
                                 <div id="type" class="tab-pane fade">
                                     <div th:switch="${userBean.type}">
                                         <div th:case="'DISTRICT_ADMIN'">
-                                            <h2 th:text="${districtAdminBean.username}">USername</h2>
+                                            <h2 th:text="${districtAdminBean.username}">Username</h2>
+                                            <ul>
+                                                <li><span th:text="${districtAdminBean.address}"></span></li>
+                                                <li><span th:text="${districtAdminBean.city}"></span></li>
+                                                <li><span th:text="${districtAdminBean.postal}"></span></li>
+                                                <li><span th:text="${districtAdminBean.state}"></span></li>
+                                            </ul>
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addDistrictAdminModal">Edit/Add Admin</a>
                                             <div id="addDistrictAdminModal" class="modal fade" role="dialog">
                                                 <div class="modal-dialog">
@@ -89,7 +95,38 @@
                                         </div>
                                         
                                         <div th:case="'SCHOOL_ADMIN'">
-                                            <h2 th:text="${schoolAdminBean.username}">USername</h2>
+                                            <h2 th:text="${schoolAdminBean.username}">Username</h2>
+                                            <ul>
+                                                <li><span th:text="${schoolAdminBean.address}"></span></li>
+                                                <li><span th:text="${schoolAdminBean.city}"></span></li>
+                                                <li><span th:text="${schoolAdminBean.postal}"></span></li>
+                                                <li><span th:text="${schoolAdminBean.state}"></span></li>
+                                            </ul>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolAdminModal">Edit/Add Admin</a>
+                                            <div id="addSchoolAdminModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Edit School Admin</h4>                                                            
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="#" th:action="@{/system/people/faculty/schooladmin}" th:object="${schoolAdminBean}" method="post" role="form">
+                                                                <div class="form-group">
+                                                                    <label for="username">Username</label><span th:text="${schoolAdminBean.username}"></span>
+                                                                    <input type="hidden" name="username" id="username" th:value="${schoolAdminBean.user.username}"/>
+                                                                    <input type="hidden" name="user" id="user" th:value="${schoolAdminBean.user.username}"/>
+                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
+                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                </div>
+                                                                
+                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <div th:case="'PARENT'">

@@ -48,7 +48,7 @@ public class SystemDistrictAdminController {
             }
         }
         uiDistrictAdminServiceImpl.addDistrictAdmin(districtAdminBean);
-        return new ModelAndView("");
+        return new ModelAndView("redirect:" + referrer);
     }
     
 }
