@@ -13,8 +13,8 @@ Once this is completed, create a database.properties file in the skoolie-data pr
 
 This file needs the following attributes:
 
-database.url = jdbc:mysql://{ip address or url}
-database.user = {dbuser}
-database.password = {dbpassword}
-database.coredb = {db name}
-database.driver = com.mysql.jdbc.Driver
+*database.url = jdbc:mysql://{ip address or url}
+*database.user = {dbuser}
+*database.password = {dbpassword}
+*database.coredb = {db name}
+*database.driver = com.mysql.jdbc.Driver
