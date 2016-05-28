@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.data.entities.people.faculty;
+package com.dub.skoolie.data.entities.people.parents;
 
 import com.dub.skoolie.data.entities.usr.security.User;
 import java.io.Serializable;
@@ -20,8 +20,8 @@ import javax.persistence.Table;
  * @author Kevin W
  */
 @Entity
-@Table(name = "PPL_DISTRICT_ADMINS")
-public class DistrictAdmin implements Serializable {
+@Table(name = "PPL_PARENTS")
+public class Parent implements Serializable {
     
     @Id
     @Column(name="USER_USERNAME", length=50)
@@ -177,6 +177,5 @@ public class DistrictAdmin implements Serializable {
     public void setDob(Date dob) {
         this.dob = dob;
     }
-
     
 }

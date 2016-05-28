@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.structures.people.faculty;
+package com.dub.skoolie.structures.people.students;
 
 import com.dub.skoolie.structures.people.MailableUserPerson;
 import com.dub.skoolie.structures.school.SchoolBean;
@@ -13,9 +13,9 @@ import java.io.Serializable;
  *
  * @author Kevin W
  */
-public class SchoolAdminBean extends MailableUserPerson implements Serializable {
+public class StudentBean extends MailableUserPerson implements Serializable {
     
-    private SchoolBean primarySchool;    
+    private SchoolBean primarySchool;
 
     /**
      * @return the primarySchool
@@ -30,4 +30,5 @@ public class SchoolAdminBean extends MailableUserPerson implements Serializable 
     public void setPrimarySchool(SchoolBean primarySchool) {
         this.primarySchool = primarySchool;
     }
+    
 }

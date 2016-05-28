@@ -91,7 +91,38 @@
                                         </div>
                                         
                                         <div th:case="'TEACHER'">
-                                            
+                                            <h2 th:text="${teacherBean.username}">Username</h2>
+                                            <ul>
+                                                <li><span th:text="${teacherBean.address}"></span></li>
+                                                <li><span th:text="${teacherBean.city}"></span></li>
+                                                <li><span th:text="${teacherBean.postal}"></span></li>
+                                                <li><span th:text="${teacherBean.state}"></span></li>
+                                            </ul>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addTeacherModal">Edit/Add Teacher</a>
+                                            <div id="addTeacherModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4>Edit Teacher</h4>                                                            
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="#" th:action="@{/system/people/faculty/teacher}" th:object="${teacherBean}" method="post" role="form">
+                                                                <div class="form-group">
+                                                                    <label for="username">Username</label><span th:text="${teacherBean.username}"></span>
+                                                                    <input type="hidden" name="username" id="username" th:value="${teacherBean.user.username}"/>
+                                                                    <input type="hidden" name="user" id="user" th:value="${teacherBean.user.username}"/>
+                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
+                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                </div>
+                                                                
+                                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <div th:case="'SCHOOL_ADMIN'">

@@ -19,7 +19,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -64,13 +63,13 @@ public class Teacher implements Serializable {
     @JoinColumn(name="PRIMARY_SCHOOL_ID")
     private School primarySchool;
     
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
             name="USR_TEACHER_SCHOOLS",
-            joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME"),
-            inverseJoinColumns = @JoinColumn(name = "SCHOOL_ID", referencedColumnName = "ID")
+            joinColumns = @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME", nullable=true),
+            inverseJoinColumns = @JoinColumn(name = "SCHOOL_ID", referencedColumnName = "ID", nullable=true)
     )
-    private List<School> availableSchools;
+    private List<School> availableSchools;*/
 
     /**
      * @return the username
@@ -215,14 +214,16 @@ public class Teacher implements Serializable {
     /**
      * @return the availableSchools
      */
+    /*
     public List<School> getAvailableSchools() {
         return availableSchools;
-    }
+    }*/
 
     /**
      * @param availableSchools the availableSchools to set
      */
+    /*
     public void setAvailableSchools(List<School> availableSchools) {
         this.availableSchools = availableSchools;
-    }
+    }*/
 }

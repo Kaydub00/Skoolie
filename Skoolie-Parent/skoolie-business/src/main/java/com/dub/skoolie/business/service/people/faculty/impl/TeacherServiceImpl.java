@@ -52,6 +52,7 @@ public class TeacherServiceImpl implements TeacherService {
     public TeacherBean getByID(String id) {
         TeacherBean t = new TeacherBean();
         try {
+            Teacher teach = repo.findOne(id);
             mapper.map(repo.findOne(id), t);
         } catch(MappingException e) {
             //need to log this

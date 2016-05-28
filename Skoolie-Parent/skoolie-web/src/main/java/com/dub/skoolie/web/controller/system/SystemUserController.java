@@ -8,6 +8,8 @@ package com.dub.skoolie.web.controller.system;
 import com.dub.skoolie.structures.people.faculty.DistrictAdminBean;
 import com.dub.skoolie.structures.people.faculty.SchoolAdminBean;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
+import com.dub.skoolie.structures.people.parents.ParentBean;
+import com.dub.skoolie.structures.people.students.StudentBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import com.dub.skoolie.web.service.people.faculty.UiDistrictAdminService;
 import com.dub.skoolie.web.service.people.faculty.UiSchoolAdminService;
@@ -106,10 +108,12 @@ public class SystemUserController {
                 model.addAttribute("teacherBean", teacherBean);
                 break;
             case "STUDENT":
+                StudentBean studentBean;
                 //StudentBean studentBean = new StudentBean();
                 //model.addAttribute("studentBean", studentBean);
                 break;
             case "PARENT":
+                ParentBean parentBean;
                 //ParentBean parentBean = new ParentBean();
                 //model.addAttribute("parentBean", parentBean);
                 break;
