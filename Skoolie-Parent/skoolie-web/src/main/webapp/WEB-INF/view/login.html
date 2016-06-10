@@ -19,25 +19,30 @@
         
     </head>
     <body>
-      <div class="jumbotron">
-        <h1>Welcome to Skoolie</h1>
-        <p>Skoolie is a School Information System built on Java and the Spring platform.</p>
-      </div>
-        <div class="container">
-            <div class="row">
-                <div class="well col-sm-6 col-md-4 col-md-offset-4">
+        <div class="container-fluid">
+            <div class="row">   
+		<div class="well col">
+                    <div class="jumbotron">
+                         <h1>Welcome to Skoolie</h1>
+                         <p>Skoolie is a School Information System built on Java and the Spring platform.</p>
+                    </div>
+                </div>
+            </div>
+        
+             <div class="row">
+                 <div class="well col-sm-5 col-sm-offset-4 col-md-4 col-md-offset-4">
                      <h1 class="text-center login-title">Sign in to Skoolie</h1>
                          <div class="account-wall">
-                             <form class="form-horizontal" name="loginForm" method="POST" action="/skoolie-web-1.0/j_spring_security_check">
-                                <input name="username" value="" class="form-control" required="true" autofocus="true" placeholder="User Name" type="text"/><br/>
-                                <input name="password" value="" class="form-control" placeholder="Password" type="password"/><br/>
-                                <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
-                                <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden" />
+                            <form class="form-horizontal" name="loginForm" method="POST" action="/skoolie-web-1.0/j_spring_security_check">
+                               <input name="username" value="" class="form-control" required="true" autofocus="true" placeholder="User Name" type="text"/><br/>
+                               <input name="password" value="" class="form-control" placeholder="Password" type="password"/><br/>
+                               <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                               <input name="${_csrf.parameterName}" value="${_csrf.token}" type="hidden"/>
                              </form>
                          </div>
-                </div>
-             </div>
-       </div>
+                 </div>
+            </div>
+        </div>
     </body>
     
     
