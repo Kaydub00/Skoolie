@@ -16,6 +16,10 @@ import java.io.Serializable;
 public class StudentBean extends MailableUserPerson implements Serializable {
     
     private SchoolBean primarySchool;
+    
+    //May have mailing address different than address
+    
+    //Do we need a local student id?
 
     /**
      * @return the primarySchool

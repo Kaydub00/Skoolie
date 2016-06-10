@@ -11,7 +11,9 @@ package com.dub.skoolie.structures.people;
  */
 public abstract class MailablePerson extends Person {
     
-    protected String address;
+    protected String addressOne;
+    
+    private String addressTwo;
     
     protected String city;
     
@@ -22,15 +24,15 @@ public abstract class MailablePerson extends Person {
     /**
      * @return the address
      */
-    public String getAddress() {
-        return address;
+    public String getAddressOne() {
+        return addressOne;
     }
 
     /**
      * @param address the address to set
      */
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddressOne(String addressOne) {
+        this.addressOne = addressOne;
     }
 
     /**
@@ -73,6 +75,20 @@ public abstract class MailablePerson extends Person {
      */
     public void setState(String state) {
         this.state = state;
+    }
+
+    /**
+     * @return the addressTwo
+     */
+    public String getAddressTwo() {
+        return addressTwo;
+    }
+
+    /**
+     * @param addressTwo the addressTwo to set
+     */
+    public void setAddressTwo(String addressTwo) {
+        this.addressTwo = addressTwo;
     }
     
 }

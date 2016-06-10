@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SystemSubjectController {
     
-    @Autowired
+    //@Autowired
     UiSubjectService uiSubjectServiceImpl;
     
     @RequestMapping(value="/system/subjects", method=RequestMethod.GET)
@@ -42,7 +42,7 @@ public class SystemSubjectController {
     public ModelAndView addDistrictAdmin(@Valid SubjectBean subjectBean, BindingResult result, Model model, HttpServletRequest request) {
         String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
-            if(!referrer.equals("/system/people/faculty/districtadmin")) {
+            if(!referrer.equals("/system/subjects")) {
                 return new ModelAndView("redirect:" + referrer);
             }
         }
