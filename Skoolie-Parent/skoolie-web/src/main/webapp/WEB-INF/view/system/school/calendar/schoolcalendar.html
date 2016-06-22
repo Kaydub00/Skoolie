@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+    <head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <script th:replace="../templates/header:: jquery" />
+        <script th:replace="../templates/header:: jqueryui" />
+        <link th:replace="../templates/header:: jqueryuicss" />
+        <link th:replace="../templates/header:: bootstrap" />
+        <link th:replace="../templates/header:: bootstraptheme" />
+        <script th:replace="../templates/header:: bootstrapjs" />
+        
+        <script th:replace="../templates/header:: moment"/>
+        
+        <script th:replace="../templates/header:: fullcalendarjs"/>
+        
+        <link th:replace="../templates/header:: fullcalendarcss"/>
+        <link th:replace="../templates/header:: fullcalendarcssprint"/>
+        
+        
+        <title>School Calendar</title>
+        
+    </head>
+    <body> 
+        <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <h1>School</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-1">
+                    <div id="calendar">
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    editable: true,
+                    dayClick: function(date, jsEvent, view) {
+                        alert("clicked on: " + date.format());
+                        $(this).css('background-color', 'blue');
+                    }
+                })
+            })
+        </script>
+    </body>
+</html>
