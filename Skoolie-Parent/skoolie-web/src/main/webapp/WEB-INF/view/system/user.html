@@ -54,7 +54,7 @@
                                         <div th:case="'DISTRICT_ADMIN'">
                                             <h2 th:text="${districtAdminBean.username}">Username</h2>
                                             <ul>
-                                                <li><span th:text="${districtAdminBean.address}"></span></li>
+                                                <li><span th:text="${districtAdminBean.addressOne}"></span></li>
                                                 <li><span th:text="${districtAdminBean.city}"></span></li>
                                                 <li><span th:text="${districtAdminBean.postal}"></span></li>
                                                 <li><span th:text="${districtAdminBean.state}"></span></li>
@@ -72,10 +72,10 @@
                                                                     <label for="username">Username</label><span th:text="${districtAdminBean.username}"></span>
                                                                     <input type="hidden" name="username" id="username" th:value="${districtAdminBean.user.username}"/>
                                                                     <input type="hidden" name="user" id="user" th:value="${districtAdminBean.user.username}"/>
-                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
-                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
-                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
-                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                    <label for="addressOne">Address</label><input class="form-control" id="addressOne" type="text" name="addressOne" />
+                                                                    <label for="city">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="state">State</label><input class="form-control" id="state" type="text" name="state" />
                                                                 </div>
                                                                 
                                                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -93,7 +93,7 @@
                                         <div th:case="'TEACHER'">
                                             <h2 th:text="${teacherBean.username}">Username</h2>
                                             <ul>
-                                                <li><span th:text="${teacherBean.address}"></span></li>
+                                                <li><span th:text="${teacherBean.addressOne}"></span></li>
                                                 <li><span th:text="${teacherBean.city}"></span></li>
                                                 <li><span th:text="${teacherBean.postal}"></span></li>
                                                 <li><span th:text="${teacherBean.state}"></span></li>
@@ -111,10 +111,10 @@
                                                                     <label for="username">Username</label><span th:text="${teacherBean.username}"></span>
                                                                     <input type="hidden" name="username" id="username" th:value="${teacherBean.user.username}"/>
                                                                     <input type="hidden" name="user" id="user" th:value="${teacherBean.user.username}"/>
-                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
-                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
-                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
-                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                    <label for="addressOne">Address</label><input class="form-control" id="addressOne" type="text" name="addressOne" />
+                                                                    <label for="city">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="state">State</label><input class="form-control" id="state" type="text" name="state" />
                                                                 </div>
                                                                 
                                                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -128,7 +128,7 @@
                                         <div th:case="'SCHOOL_ADMIN'">
                                             <h2 th:text="${schoolAdminBean.username}">Username</h2>
                                             <ul>
-                                                <li><span th:text="${schoolAdminBean.address}"></span></li>
+                                                <li><span th:text="${schoolAdminBean.addressOne}"></span></li>
                                                 <li><span th:text="${schoolAdminBean.city}"></span></li>
                                                 <li><span th:text="${schoolAdminBean.postal}"></span></li>
                                                 <li><span th:text="${schoolAdminBean.state}"></span></li>
@@ -146,10 +146,10 @@
                                                                     <label for="username">Username</label><span th:text="${schoolAdminBean.username}"></span>
                                                                     <input type="hidden" name="username" id="username" th:value="${schoolAdminBean.user.username}"/>
                                                                     <input type="hidden" name="user" id="user" th:value="${schoolAdminBean.user.username}"/>
-                                                                    <label for="address">Address</label><input class="form-control" id="address" type="text" name="address" />
-                                                                    <label for="address">City</label><input class="form-control" id="city" type="text" name="city" />
-                                                                    <label for="address">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
-                                                                    <label for="address">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                    <label for="addressOne">Address</label><input class="form-control" id="addressOne" type="text" name="addressOne" />
+                                                                    <label for="city">City</label><input class="form-control" id="city" type="text" name="city" />
+                                                                    <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
+                                                                    <label for="state">State</label><input class="form-control" id="state" type="text" name="state" />
                                                                 </div>
                                                                 
                                                                 <button type="submit" class="btn btn-primary">Submit</button>

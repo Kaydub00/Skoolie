@@ -44,7 +44,7 @@
             
         </div>
         
-        <script type="text/javascript">
+        <script type="text/javascript" th:inline="javascript">
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
                     header: {
@@ -56,7 +56,8 @@
                     dayClick: function(date, jsEvent, view) {
                         alert("clicked on: " + date.format());
                         $(this).css('background-color', 'blue');
-                    }
+                    },
+                    events: /*[[@{/system/schools/events/{id}(id=${schoolBean.id})}]]*/
                 })
             })
         </script>
