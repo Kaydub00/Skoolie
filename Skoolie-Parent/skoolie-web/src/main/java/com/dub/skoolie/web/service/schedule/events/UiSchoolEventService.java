@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.service.schedule.events;
 
 import com.dub.skoolie.structures.schedule.events.SchoolEventBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.List;
 
 /**
@@ -23,5 +24,9 @@ public interface UiSchoolEventService {
     public SchoolEventBean getSchoolEvent(Long id);
     
     public void deleteSchoolEvent(Long id);
+    
+    public List<SchoolEventBean> getSchoolEventsBySchool(Long id);
+    
+    public List<SchoolEventBean> getSchoolEventsBySchool(SchoolBean school);
     
 }

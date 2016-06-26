@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.data.entities.schedule.events;
 
+import com.dub.skoolie.data.entities.district.District;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,5 +38,79 @@ public class DistrictEvent implements Serializable {
     
     @Column(name="END_DATE_TIME")
     private Date end;
+    
+    @ManyToOne
+    @JoinColumn(name="DISTRICT_ID")
+    private District district;
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the start
+     */
+    public Date getStart() {
+        return start;
+    }
+
+    /**
+     * @param start the start to set
+     */
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    /**
+     * @return the end
+     */
+    public Date getEnd() {
+        return end;
+    }
+
+    /**
+     * @param end the end to set
+     */
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    /**
+     * @return the district
+     */
+    public District getDistrict() {
+        return district;
+    }
+
+    /**
+     * @param district the district to set
+     */
+    public void setDistrict(District district) {
+        this.district = district;
+    }
     
 }

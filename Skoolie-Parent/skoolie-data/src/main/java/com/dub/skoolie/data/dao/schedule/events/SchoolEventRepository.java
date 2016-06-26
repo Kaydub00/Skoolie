@@ -6,12 +6,16 @@
 package com.dub.skoolie.data.dao.schedule.events;
 
 import com.dub.skoolie.data.entities.schedule.events.SchoolEvent;
-import org.springframework.data.repository.CrudRepository;
+import com.dub.skoolie.data.entities.school.School;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Kevin W
  */
-public interface SchoolEventRepository extends CrudRepository<SchoolEvent, Long>{
+public interface SchoolEventRepository extends JpaRepository<SchoolEvent, Long>{
+    
+    public List<SchoolEvent> findBySchool(School school);
     
 }

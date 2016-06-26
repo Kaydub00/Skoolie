@@ -47,7 +47,7 @@ public class SystemSchoolEventController {
     
     @RequestMapping(value="/system/schedule/events/school/{id}", method=RequestMethod.GET)
     public @ResponseBody String getSchoolEvents(@PathVariable("id") Long school) throws JsonProcessingException {
-        List<SchoolEventBean> schoolEventBeans = uiSchoolEventServiceImpl.getSchoolEvents();
+        List<SchoolEventBean> schoolEventBeans = uiSchoolEventServiceImpl.getSchoolEventsBySchool(school);
         //JsonObjectBuilder object = Json.createObjectBuilder().add("id", "1").add("title", "Test event").add("allDay", "").add("end", "2016-06-06 14:00:00").add("start","2016-06-06 12:00:00");
         //JsonObjectBuilder object2 = Json.createObjectBuilder().add("id", "2").add("title", "Test event 2").add("allDay", "").add("end", "2016-06-26 14:00:00").add("start","2016-06-26 12:00:00");
         ObjectMapper mapper = new ObjectMapper();

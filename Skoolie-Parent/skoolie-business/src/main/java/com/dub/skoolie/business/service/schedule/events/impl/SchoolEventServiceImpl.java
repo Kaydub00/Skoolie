@@ -7,8 +7,11 @@ package com.dub.skoolie.business.service.schedule.events.impl;
 
 import com.dub.skoolie.business.service.schedule.events.SchoolEventService;
 import com.dub.skoolie.data.dao.schedule.events.SchoolEventRepository;
+import com.dub.skoolie.data.dao.school.SchoolRepository;
 import com.dub.skoolie.data.entities.schedule.events.SchoolEvent;
+import com.dub.skoolie.data.entities.school.School;
 import com.dub.skoolie.structures.schedule.events.SchoolEventBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -29,6 +32,9 @@ public class SchoolEventServiceImpl implements SchoolEventService {
     
     @Autowired
     SchoolEventRepository repo;
+    
+    @Autowired
+    SchoolRepository schoolRepo;
 
     @Override
     public SchoolEventBean updateEntity(SchoolEventBean entity) {
@@ -64,6 +70,22 @@ public class SchoolEventServiceImpl implements SchoolEventService {
             newlist.add(mapper.map(se, SchoolEventBean.class));
         }
         return newlist;
+    }
+
+    @Override
+    public List<SchoolEventBean> getSchoolEventsBySchoolId(Long id) {
+        School school = schoolRepo.findOne(id);
+        List<SchoolEventBean> newlist = new ArrayList<>();
+        Iterable<SchoolEvent> list = repo.findBySchool(school);
+        for(SchoolEvent se : list) {
+            newlist.add(mapper.map(se, SchoolEventBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<SchoolEventBean> getSchoolEventsBySchool(SchoolBean school) {
+        return this.getSchoolEventsBySchoolId(school.getId());
     }
     
 }

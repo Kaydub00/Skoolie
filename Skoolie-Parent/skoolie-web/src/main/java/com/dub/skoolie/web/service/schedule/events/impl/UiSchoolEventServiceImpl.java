@@ -7,6 +7,7 @@ package com.dub.skoolie.web.service.schedule.events.impl;
 
 import com.dub.skoolie.business.service.schedule.events.SchoolEventService;
 import com.dub.skoolie.structures.schedule.events.SchoolEventBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.schedule.events.UiSchoolEventService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,16 @@ public class UiSchoolEventServiceImpl implements UiSchoolEventService {
     @Override
     public void deleteSchoolEvent(Long id) {
         schoolEventServiceImpl.deleteByID(id);
+    }
+
+    @Override
+    public List<SchoolEventBean> getSchoolEventsBySchool(Long id) {
+        return schoolEventServiceImpl.getSchoolEventsBySchoolId(id);
+    }
+
+    @Override
+    public List<SchoolEventBean> getSchoolEventsBySchool(SchoolBean school) {
+        return schoolEventServiceImpl.getSchoolEventsBySchool(school);
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.structures.schedule.events;
 
+import com.dub.skoolie.structures.district.DistrictBean;
 import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,8 @@ public class DistrictEventBean implements Serializable {
     
     @NotNull
     private Date end;
+    
+    //private DistrictBean district;
 
     /**
      * @return the id

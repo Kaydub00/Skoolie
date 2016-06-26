@@ -5,13 +5,17 @@
  */
 package com.dub.skoolie.data.entities.schedule.events;
 
+import com.dub.skoolie.data.entities.school.School;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,6 +39,10 @@ public class SchoolEvent implements Serializable {
     
     @Column(name="END_DATE_TIME")
     private Date end;
+    
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="SCHOOL_ID")
+    private School school;
 
     /**
      * @return the id
@@ -90,6 +98,20 @@ public class SchoolEvent implements Serializable {
      */
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    /**
+     * @return the school
+     */
+    public School getSchool() {
+        return school;
+    }
+
+    /**
+     * @param school the school to set
+     */
+    public void setSchool(School school) {
+        this.school = school;
     }
     
 }

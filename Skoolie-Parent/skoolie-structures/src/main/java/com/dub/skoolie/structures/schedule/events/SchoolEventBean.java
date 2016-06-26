@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.structures.schedule.events;
 
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.io.Serializable;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,9 @@ public class SchoolEventBean implements Serializable {
     
     @NotNull
     private Date end;
+    
+    //problems json serializing when I have this relationship mapped over...
+    //private SchoolBean school;
 
     /**
      * @return the id
