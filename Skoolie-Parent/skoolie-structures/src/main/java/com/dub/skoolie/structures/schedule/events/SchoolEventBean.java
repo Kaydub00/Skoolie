@@ -30,7 +30,9 @@ public class SchoolEventBean implements Serializable {
     private Date end;
     
     //problems json serializing when I have this relationship mapped over...
-    //private SchoolBean school;
+    private SchoolBean school;
+    
+    private String title;
 
     /**
      * @return the id
@@ -86,6 +88,34 @@ public class SchoolEventBean implements Serializable {
      */
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    /**
+     * @return the school
+     */
+    public SchoolBean getSchool() {
+        return school;
+    }
+
+    /**
+     * @param school the school to set
+     */
+    public void setSchool(SchoolBean school) {
+        this.school = school;
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
     
 }

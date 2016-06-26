@@ -6,6 +6,7 @@
 package com.dub.skoolie.structures.schedule;
 
 import com.dub.skoolie.structures.courses.SchoolClassBean;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.util.List;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -24,6 +25,7 @@ public class ClassTimeBlockBean {
     @Size(min=2, max=40)
     private String name;
     
+    @JsonBackReference
     private GradingPeriodBean gradingPeriod;
     
     @Max(23)

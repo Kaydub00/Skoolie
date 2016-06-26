@@ -43,6 +43,9 @@ public class SchoolEvent implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="SCHOOL_ID")
     private School school;
+    
+    @Column(name="TITLE")
+    private String title;
 
     /**
      * @return the id
@@ -112,6 +115,20 @@ public class SchoolEvent implements Serializable {
      */
     public void setSchool(School school) {
         this.school = school;
+    }
+
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
     }
     
 }

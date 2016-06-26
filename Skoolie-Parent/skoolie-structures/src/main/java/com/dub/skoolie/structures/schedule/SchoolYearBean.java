@@ -6,6 +6,7 @@
 package com.dub.skoolie.structures.schedule;
 
 import com.dub.skoolie.structures.school.SchoolBean;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -30,7 +31,7 @@ public class SchoolYearBean implements Serializable {
     @NotNull
     private Date endDate;
     
-    
+    @JsonBackReference
     private SchoolBean school;
     
     private List<GradingPeriodBean> gradingPeriods;

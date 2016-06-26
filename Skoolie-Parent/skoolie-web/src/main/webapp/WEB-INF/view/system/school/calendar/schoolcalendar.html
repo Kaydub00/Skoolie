@@ -57,6 +57,25 @@
                         alert("clicked on: " + date.format());
                         $(this).css('background-color', 'blue');
                     },
+                    eventClick: function(event, element) {
+                        event.title="Clicked!";
+                        $('#calendar').fullCalendar('updateEvent', event);
+                    },
+                    eventDrop: function(event, delta, revertFunc) {
+                        alert(event.name + "was dropped on " + event.start.format());
+                        var starttime = event.start.format('MM/DD/YYYY');
+                        var endtime = event.end.format('MM/DD/YYYY');
+                        if(!confirm("Are you sure about this change?")) {
+                            revertFunc();
+                        } else {
+                            $.ajax({
+                                url: /*[[@{/system/schedule/events/school}]]*/ "../system/schedule/events/school",
+                                type: "POST",
+                                data: {name: event.name, start: starttime, end: endtime, id: event.id, school: event.school.id}
+                            });
+                            $('#calendar').fullCalendar('updateEvent', event);
+                        }
+                    },
                     events: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/
                 })
             })
