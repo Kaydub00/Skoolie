@@ -3,15 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.data.entities.schedule.events;
+package com.dub.skoolie.data.entities.district;
 
+import com.dub.skoolie.data.entities.school.School;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -19,22 +21,19 @@ import javax.persistence.Table;
  * @author Kevin W
  */
 @Entity
-@Table(name = "EVT_SCHOOL_EVENTS")
-public class SchoolEvent implements Serializable {
+@Table(name = "DST_DISTRICT")
+public class District implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
     
-    @Column(name="NAME", length=140)
+    @Column(name="NAME", length=180)
     private String name;
     
-    @Column(name="START_DATE_TIME")
-    private Date start;
-    
-    @Column(name="END_DATE_TIME")
-    private Date end;
+    @OneToMany(mappedBy="district")
+    private List<School> schools;
 
     /**
      * @return the id
@@ -65,31 +64,17 @@ public class SchoolEvent implements Serializable {
     }
 
     /**
-     * @return the start
+     * @return the schools
      */
-    public Date getStart() {
-        return start;
+    public List<School> getSchools() {
+        return schools;
     }
 
     /**
-     * @param start the start to set
+     * @param schools the schools to set
      */
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    /**
-     * @return the end
-     */
-    public Date getEnd() {
-        return end;
-    }
-
-    /**
-     * @param end the end to set
-     */
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setSchools(List<School> schools) {
+        this.schools = schools;
     }
     
 }

@@ -11,7 +11,7 @@ import com.dub.skoolie.data.entities.schedule.GradingPeriod;
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import java.util.ArrayList;
 import java.util.List;
-import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class GradingPeriodServiceImpl implements GradingPeriodService {
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
     
     @Autowired
     GradingPeriodRepository repo;

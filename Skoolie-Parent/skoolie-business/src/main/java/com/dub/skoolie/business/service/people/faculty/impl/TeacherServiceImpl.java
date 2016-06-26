@@ -11,20 +11,22 @@ import com.dub.skoolie.data.entities.people.faculty.Teacher;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import java.util.ArrayList;
 import java.util.List;
-import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.dozer.MappingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Kevin W
  */
+@Transactional("skooliecoreTransactionManager")
 @Service
 public class TeacherServiceImpl implements TeacherService {
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
     
     @Autowired
     TeacherRepository repo;

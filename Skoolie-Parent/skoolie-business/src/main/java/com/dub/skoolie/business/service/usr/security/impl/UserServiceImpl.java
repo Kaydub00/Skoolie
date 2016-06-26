@@ -3,17 +3,13 @@ package com.dub.skoolie.business.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.GroupService;
 import com.dub.skoolie.business.service.usr.security.UserService;
-import com.dub.skoolie.data.dao.usr.security.GroupRepository;
 import com.dub.skoolie.data.dao.usr.security.UserRepository;
 import com.dub.skoolie.data.entities.usr.security.User;
-import com.dub.skoolie.structures.usr.security.GroupBean;
-import com.dub.skoolie.structures.usr.security.RoleBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import java.util.ArrayList;
 import java.util.List;
-import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl implements UserService {
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
     
     @Autowired
     UserRepository repo;

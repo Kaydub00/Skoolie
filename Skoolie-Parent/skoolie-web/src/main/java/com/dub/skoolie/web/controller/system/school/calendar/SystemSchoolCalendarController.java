@@ -37,7 +37,7 @@ public class SystemSchoolCalendarController {
         return new ModelAndView("system/school/calendar/schoolcalendar");
     }
     
-    @RequestMapping(value="/system/schools/events/{id}", method=RequestMethod.GET)
+    //@RequestMapping(value="/system/schools/events/{id}", method=RequestMethod.GET)
     public @ResponseBody String getSchoolEvents(@PathVariable("id") Long school) {
         JsonObjectBuilder object = Json.createObjectBuilder().add("id", "1").add("title", "Test event").add("allDay", "").add("end", "2016-06-06 14:00:00").add("start","2016-06-06 12:00:00");
         JsonObjectBuilder object2 = Json.createObjectBuilder().add("id", "2").add("title", "Test event 2").add("allDay", "").add("end", "2016-06-26 14:00:00").add("start","2016-06-26 12:00:00");

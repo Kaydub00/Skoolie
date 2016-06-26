@@ -4,12 +4,10 @@ package com.dub.skoolie.business.service.usr.security.impl;
 import com.dub.skoolie.business.service.usr.security.RoleService;
 import com.dub.skoolie.data.dao.usr.security.RoleRepository;
 import com.dub.skoolie.data.entities.usr.security.Role;
-import com.dub.skoolie.data.entities.usr.security.User;
 import com.dub.skoolie.structures.usr.security.RoleBean;
-import com.dub.skoolie.structures.usr.security.UserBean;
 import java.util.ArrayList;
 import java.util.List;
-import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +24,7 @@ public class RoleServiceImpl implements RoleService {
     RoleRepository repo;
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
 
     @Override
     public List<RoleBean> getAllRoles() {

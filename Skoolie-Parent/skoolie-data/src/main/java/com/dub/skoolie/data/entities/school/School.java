@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.data.entities.school;
 
+import com.dub.skoolie.data.entities.district.District;
 import com.dub.skoolie.data.entities.schedule.SchoolYear;
 import java.io.Serializable;
 import java.util.List;
@@ -14,6 +15,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -50,6 +53,10 @@ public class School implements Serializable {
     
     @OneToMany(mappedBy="school", cascade = CascadeType.ALL)
     private List<SchoolYear> schoolYears;
+    
+    @ManyToOne
+    @JoinColumn(name="DISTRICT_ID")
+    private District district;
 
     /**
      * @return the id
@@ -161,6 +168,20 @@ public class School implements Serializable {
      */
     public void setSchoolYears(List<SchoolYear> schoolYears) {
         this.schoolYears = schoolYears;
+    }
+
+    /**
+     * @return the district
+     */
+    public District getDistrict() {
+        return district;
+    }
+
+    /**
+     * @param district the district to set
+     */
+    public void setDistrict(District district) {
+        this.district = district;
     }
     
 }

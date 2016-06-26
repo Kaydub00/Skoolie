@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.structures.school;
 
+import com.dub.skoolie.structures.district.DistrictBean;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
 import java.io.Serializable;
 import java.util.List;
@@ -44,6 +45,8 @@ public class SchoolBean implements Serializable {
     private String phone;
     
     private List<SchoolYearBean> schoolYears;
+    
+    private DistrictBean district;
 
     public Long getId() {
         return id;
@@ -119,6 +122,20 @@ public class SchoolBean implements Serializable {
      */
     public void setSchoolYears(List<SchoolYearBean> schoolYears) {
         this.schoolYears = schoolYears;
+    }
+
+    /**
+     * @return the district
+     */
+    public DistrictBean getDistrict() {
+        return district;
+    }
+
+    /**
+     * @param district the district to set
+     */
+    public void setDistrict(DistrictBean district) {
+        this.district = district;
     }
     
 }

@@ -12,6 +12,7 @@ import com.dub.skoolie.structures.schedule.events.DistrictEventBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class DistrictEventServiceImpl implements DistrictEventService {
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
     
     @Autowired
     DistrictEventRepository repo;

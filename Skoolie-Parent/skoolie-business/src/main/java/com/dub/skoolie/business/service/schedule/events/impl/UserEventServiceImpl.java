@@ -11,7 +11,7 @@ import com.dub.skoolie.data.entities.schedule.events.UserEvent;
 import com.dub.skoolie.structures.schedule.events.UserEventBean;
 import java.util.ArrayList;
 import java.util.List;
-import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserEventServiceImpl implements UserEventService {
     
     @Autowired
-    DozerBeanMapper mapper;
+    Mapper mapper;
     
     @Autowired
     UserEventRepository repo;
