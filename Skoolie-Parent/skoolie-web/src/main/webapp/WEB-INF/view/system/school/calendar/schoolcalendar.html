@@ -35,7 +35,15 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-8 col-xs-offset-1">
+                <div class="col-xs-1">
+                    <div class="row">
+                        <div id="eventdragger" class="draggable">Event</div>
+                    </div>
+                    <div class="row">
+                        <div id="halfdaydragger" class="draggable">Half Day</div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
                     <div id="calendar">
                         
                     </div>
@@ -47,6 +55,13 @@
         <script type="text/javascript" th:inline="javascript">
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
+                    droppable: true,
+                    drop: function(date) {
+                        alert("dropped on " + date.format());
+                    },
+                    eventReceive: function(event) {
+                        alert("dropped " + event.title + " on " + event.start.format());
+                    },
                     header: {
                         left: 'prev,next today',
                         center: 'title',
@@ -71,13 +86,23 @@
                             $.ajax({
                                 url: /*[[@{/system/schedule/events/school}]]*/ "../system/schedule/events/school",
                                 type: "POST",
-                                data: {name: event.name, start: starttime, end: endtime, id: event.id, school: event.school.id}
+                                data: {name: event.name, title: event.title, start: starttime, end: endtime, id: event.id, school: event.school.id}
                             });
                             $('#calendar').fullCalendar('updateEvent', event);
                         }
                     },
-                    events: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/
-                })
+                    eventSources: [
+                        {
+                            url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",                            
+                        }
+                    ]
+                });
+                
+                $('.draggable').draggable({
+                    revert: true
+                });
+                $('#eventdragger').data('event', { title: 'my event' });
+                $('#halfdaydragger').data('event', { title: 'HalfDay'});
             })
         </script>
     </body>
