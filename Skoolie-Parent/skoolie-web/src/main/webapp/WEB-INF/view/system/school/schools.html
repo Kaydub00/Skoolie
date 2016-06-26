@@ -42,7 +42,9 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Address</th>
-                                <th>City State Zip</th>
+                                <th>City</th>
+                              	<th>State</th>
+                              	<th>Zip</th>
                                 <th>Phone</th>
                             </tr>
                         </thead>
@@ -51,6 +53,8 @@
                                 <td><a th:href="@{/system/schools/{id}(id=${school.id})}" th:text="${school.name}">null</a></td>
                                 <td th:text="${school.address}">null</td>
                                 <td th:text="${school.city}">null</td>
+                                <td th:text="${school.state}">null</td>
+                                <td th:text="${school.postal}">null</td>
                                 <td th:text="${school.phone}">null</td>
                             </tr>
                         </tbody>
