@@ -30,17 +30,21 @@
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-11 col-sm-offset-1">
-                    <h1>School</h1>
+                <div class="col-sm-10 col-sm-offset-2">
+                    <h1 th:text="${schoolBean.name}">School</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-1">
-                    <div class="row">
-                        <div id="eventdragger" class="draggable">Event</div>
-                    </div>
-                    <div class="row">
-                        <div id="halfdaydragger" class="draggable">Half Day</div>
+                <div class="col-xs-2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            School Events
+                        </div>
+                        <div class="panel-body">
+                            <div id="eventdragger" class="draggable">Event</div>
+                    
+                            <div id="halfdaydragger" class="draggable">Half Day</div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-xs-8">
@@ -61,6 +65,14 @@
                     },
                     eventReceive: function(event) {
                         alert("dropped " + event.title + " on " + event.start.format());
+                        var starttime = event.start.format('MM/DD/YYYY');
+                        var genericname = "Event";
+                        var schoolid = /*[[${schoolBean.id}]]*/ null;
+                        $.ajax({
+                            url: /*[[@{/system/schedule/events/school}]]*/ "../system/schedule/events/school",
+                            type: "POST",
+                            data: {name: event.name, title: event.title, start: starttime, name: genericname, school: schoolid}
+                        });
                     },
                     header: {
                         left: 'prev,next today',

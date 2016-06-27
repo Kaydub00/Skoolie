@@ -26,7 +26,6 @@ public class SchoolEventBean implements Serializable {
     @NotNull
     private Date start;
     
-    @NotNull
     private Date end;
     
     //problems json serializing when I have this relationship mapped over...
