@@ -28,7 +28,6 @@ public class SchoolEventBean implements Serializable {
     
     private Date end;
     
-    //problems json serializing when I have this relationship mapped over...
     private SchoolBean school;
     
     private String title;

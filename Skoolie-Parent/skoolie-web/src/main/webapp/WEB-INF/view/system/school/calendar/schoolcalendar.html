@@ -44,6 +44,9 @@
                             <div id="eventdragger" class="draggable">Event</div>
                     
                             <div id="halfdaydragger" class="draggable">Half Day</div>
+                            
+                            <div id="holidaydragger" class="draggable">Holiday</div>
+                            
                         </div>
                     </div>
                 </div>
@@ -80,6 +83,30 @@
                         right: 'month,agendaWeek,agendaDay'
                     },
                     editable: true,
+                    selectable: true,
+                    selectHelper: true,
+                    select: function(start, end) {
+                        var title = prompt('Event Title:');
+                        var evtname = "Event";
+                        var schoolid = /*[[${schoolBean.id}]]*/ null;
+                        var eventData;
+                        if(title) {
+                            eventData = {
+                                title: title,
+                                start: start.format('MM/DD/YYYY'),
+                                end: end.format('MM/DD/YYYY'),
+                                name: evtname,
+                                school: schoolid
+                            };
+                            $.ajax({
+                                url: /*[[@{/system/schedule/events/school}]]*/ "../system/schedule/events/school",
+                                type: "POST",
+                                data: eventData
+                            });
+                            $('#calendar').fullCalendar('renderEvent', eventData, true);
+                        }
+                        $('#calendar').fullCalendar('unselect');
+                    },
                     dayClick: function(date, jsEvent, view) {
                         alert("clicked on: " + date.format());
                         $(this).css('background-color', 'blue');
@@ -91,7 +118,12 @@
                     eventDrop: function(event, delta, revertFunc) {
                         alert(event.name + "was dropped on " + event.start.format());
                         var starttime = event.start.format('MM/DD/YYYY');
-                        var endtime = event.end.format('MM/DD/YYYY');
+                        if(event.end != null) {
+                            var endtime = event.end.format('MM/DD/YYYY');
+                        }
+                        if(event.name == null) {
+                            event.name = "Event";
+                        }
                         if(!confirm("Are you sure about this change?")) {
                             revertFunc();
                         } else {
@@ -105,7 +137,7 @@
                     },
                     eventSources: [
                         {
-                            url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",                            
+                            url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school"
                         }
                     ]
                 });
@@ -115,6 +147,8 @@
                 });
                 $('#eventdragger').data('event', { title: 'my event' });
                 $('#halfdaydragger').data('event', { title: 'HalfDay'});
+                $('#holidaydragger').data('event', { title: 'Holiday'});
+                
             })
         </script>
     </body>
