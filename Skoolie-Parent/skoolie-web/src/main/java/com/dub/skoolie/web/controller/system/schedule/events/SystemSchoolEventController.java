@@ -9,6 +9,8 @@ import com.dub.skoolie.structures.schedule.events.SchoolEventBean;
 import com.dub.skoolie.web.service.schedule.events.UiSchoolEventService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -52,9 +54,11 @@ public class SystemSchoolEventController {
     @RequestMapping(value="/system/schedule/events/school/{id}", method=RequestMethod.GET)
     public @ResponseBody String getSchoolEvents(@PathVariable("id") Long school) throws JsonProcessingException {
         List<SchoolEventBean> schoolEventBeans = uiSchoolEventServiceImpl.getSchoolEventsBySchool(school);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         //JsonObjectBuilder object = Json.createObjectBuilder().add("id", "1").add("title", "Test event").add("allDay", "").add("end", "2016-06-06 14:00:00").add("start","2016-06-06 12:00:00");
         //JsonObjectBuilder object2 = Json.createObjectBuilder().add("id", "2").add("title", "Test event 2").add("allDay", "").add("end", "2016-06-26 14:00:00").add("start","2016-06-26 12:00:00");
         ObjectMapper mapper = new ObjectMapper();
+        //mapper.setDateFormat(df);
         //JsonArray array = Json.createArrayBuilder().add(object).add(object2).build();
         return mapper.writeValueAsString(schoolEventBeans);
     }

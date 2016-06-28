@@ -63,6 +63,7 @@
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
                     droppable: true,
+                    eventLimit: true,
                     drop: function(date) {
                         alert("dropped on " + date.format());
                     },
@@ -82,9 +83,10 @@
                         center: 'title',
                         right: 'month,agendaWeek,agendaDay'
                     },
-                    editable: true,
                     selectable: true,
                     selectHelper: true,
+                    editable: true,
+                    durationEditable: true,
                     select: function(start, end) {
                         var title = prompt('Event Title:');
                         var evtname = "Event";
@@ -109,7 +111,6 @@
                     },
                     dayClick: function(date, jsEvent, view) {
                         alert("clicked on: " + date.format());
-                        $(this).css('background-color', 'blue');
                     },
                     eventClick: function(event, element) {
                         event.title="Clicked!";
@@ -137,7 +138,9 @@
                     },
                     eventSources: [
                         {
-                            url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school"
+                            url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",
+                            editable: true,
+                            durationEditable: true,
                         }
                     ]
                 });

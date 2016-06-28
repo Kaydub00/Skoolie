@@ -54,6 +54,9 @@ public class School implements Serializable {
     @OneToMany(mappedBy="school", cascade = CascadeType.ALL)
     private List<SchoolYear> schoolYears;
     
+    @OneToMany(mappedBy="school", cascade = CascadeType.ALL)
+    private List<SchoolRoom> schoolRooms;
+    
     @ManyToOne
     @JoinColumn(name="DISTRICT_ID")
     private District district;
@@ -182,6 +185,20 @@ public class School implements Serializable {
      */
     public void setDistrict(District district) {
         this.district = district;
+    }
+
+    /**
+     * @return the schoolRooms
+     */
+    public List<SchoolRoom> getSchoolRooms() {
+        return schoolRooms;
+    }
+
+    /**
+     * @param schoolRooms the schoolRooms to set
+     */
+    public void setSchoolRooms(List<SchoolRoom> schoolRooms) {
+        this.schoolRooms = schoolRooms;
     }
     
 }
