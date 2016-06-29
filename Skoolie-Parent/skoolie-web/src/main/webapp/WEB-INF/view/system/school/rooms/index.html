@@ -39,7 +39,20 @@
                     <div class="row">
                         I'm going to want to include a visual map of the school here.<br/>
                         I can create that with canvas objects and just drawing on them. Lookup drag and drop ability as well, there's a way to do all of this via js.
+                        <table>
+                            <tr th:each="srb : ${schoolRoomBeans}" >
+                                <td th:text="${srb.name}">test</td>
+                                <td th:text="${srb.capacity}">100</td>
+                                <td th:text="${srb.school.name}">School name</td>
+                            </tr>
+                        </table>
                         
+                        <form th:action="@{/system/schools/{id}/rooms(id=${schoolBean.id})}" th:object="${schoolRoomBean}" method="post" role="form">
+                            <label for="name">Name</label><input class="form-control" id="name" type="text" th:field="*{name}" />
+                            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">username Error</span>
+                            
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
