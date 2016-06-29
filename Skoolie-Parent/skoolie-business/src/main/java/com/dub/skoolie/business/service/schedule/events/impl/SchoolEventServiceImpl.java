@@ -32,9 +32,6 @@ public class SchoolEventServiceImpl implements SchoolEventService {
     
     @Autowired
     SchoolEventRepository repo;
-    
-    @Autowired
-    SchoolRepository schoolRepo;
 
     @Override
     public SchoolEventBean updateEntity(SchoolEventBean entity) {
@@ -74,9 +71,8 @@ public class SchoolEventServiceImpl implements SchoolEventService {
 
     @Override
     public List<SchoolEventBean> getSchoolEventsBySchoolId(Long id) {
-        //I really feel like this should be cleaner... like I shouldn't need the schoolRepo in here...
         List<SchoolEventBean> newlist = new ArrayList<>();
-        Iterable<SchoolEvent> list = repo.findBySchool(schoolRepo.findOne(id));
+        Iterable<SchoolEvent> list = repo.findSchoolEventsBySchoolId(id);
         for(SchoolEvent se : list) {
             newlist.add(mapper.map(se, SchoolEventBean.class));
         }
