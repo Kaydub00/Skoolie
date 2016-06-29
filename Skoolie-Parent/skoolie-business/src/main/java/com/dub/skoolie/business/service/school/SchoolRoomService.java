@@ -6,7 +6,9 @@
 package com.dub.skoolie.business.service.school;
 
 import com.dub.skoolie.business.service.BaseCrudService;
+import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.structures.school.SchoolRoomBean;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,7 @@ import com.dub.skoolie.structures.school.SchoolRoomBean;
  */
 public interface SchoolRoomService extends BaseCrudService<SchoolRoomBean,Long> {
     
+    public List<SchoolRoomBean> getSchoolRoomsBySchoolId(Long id);
+    
+    public List<SchoolRoomBean> getSchoolRoomsBySchool(SchoolBean school);
 }

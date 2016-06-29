@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+    <head>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <script th:replace="../templates/header:: jquery" />
+        <script th:replace="../templates/header:: jqueryui" />
+        <link th:replace="../templates/header:: jqueryuicss" />
+        <link th:replace="../templates/header:: bootstrap" />
+        <link th:replace="../templates/header:: bootstraptheme" />
+        <script th:replace="../templates/header:: bootstrapjs" />
+        <script th:replace="../templates/header:: modal-dropdown-fix"/>
+        
+        <link th:replace="../templates/header:: sidebarcss" />
+        
+        
+        <title th:text="${schoolBean.name + ' rooms'}">Skoolie School</title>
+        
+    </head>
+    <body> 
+        <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <h1 th:text="${schoolBean.name}">School</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-xs-1">
+                    <div th:replace="../templates/sidebar :: system-school">Side Bar</div>
+                </div>
+                
+                <div class="col-sm-10 col-xs-11">
+                    <div class="row">
+                        I'm going to want to include a visual map of the school here.<br/>
+                        I can create that with canvas objects and just drawing on them. Lookup drag and drop ability as well, there's a way to do all of this via js.
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

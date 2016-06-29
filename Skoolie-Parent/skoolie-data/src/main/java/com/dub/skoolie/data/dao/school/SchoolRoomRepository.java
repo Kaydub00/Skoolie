@@ -5,7 +5,10 @@
  */
 package com.dub.skoolie.data.dao.school;
 
+import com.dub.skoolie.data.entities.school.School;
 import com.dub.skoolie.data.entities.school.SchoolRoom;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,4 +17,9 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface SchoolRoomRepository extends CrudRepository<SchoolRoom, Long> {
     
+    @Query("select r from SchoolRoom r "
+            + "where r.school.id = ?1")
+    List<SchoolRoom> findSchoolRoomsBySchoolId(Long id);
+    
+    public List<SchoolRoom> findBySchool(School school);
 }

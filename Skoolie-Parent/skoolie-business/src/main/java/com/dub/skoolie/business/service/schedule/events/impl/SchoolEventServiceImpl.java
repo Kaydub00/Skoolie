@@ -74,9 +74,9 @@ public class SchoolEventServiceImpl implements SchoolEventService {
 
     @Override
     public List<SchoolEventBean> getSchoolEventsBySchoolId(Long id) {
-        School school = schoolRepo.findOne(id);
+        //I really feel like this should be cleaner... like I shouldn't need the schoolRepo in here...
         List<SchoolEventBean> newlist = new ArrayList<>();
-        Iterable<SchoolEvent> list = repo.findBySchool(school);
+        Iterable<SchoolEvent> list = repo.findBySchool(schoolRepo.findOne(id));
         for(SchoolEvent se : list) {
             newlist.add(mapper.map(se, SchoolEventBean.class));
         }

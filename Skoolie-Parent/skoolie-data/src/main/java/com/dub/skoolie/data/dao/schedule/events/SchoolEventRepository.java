@@ -9,6 +9,7 @@ import com.dub.skoolie.data.entities.schedule.events.SchoolEvent;
 import com.dub.skoolie.data.entities.school.School;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  *
@@ -17,5 +18,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface SchoolEventRepository extends JpaRepository<SchoolEvent, Long>{
     
     public List<SchoolEvent> findBySchool(School school);
+    
+    @Query("select e from SchoolEvent e "
+            + "where e.school.id = ?1")
+    List<SchoolEvent> findSchoolEventsBySchoolId(Long id);
     
 }
