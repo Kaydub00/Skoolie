@@ -52,5 +52,16 @@ public class UiSchoolRoomServiceImpl implements UiSchoolRoomService {
     public List<SchoolRoomBean> getSchoolRoomsBySchool(Long id) {
         return schoolRoomServiceImpl.getSchoolRoomsBySchoolId(id);
     }
+
+    @Override
+    public void deleteSchoolRoom(SchoolRoomBean skl) {
+        schoolRoomServiceImpl.deleteEntity(skl);
+    }
+
+    @Override
+    public void deleteSchoolRoom(Long id) {
+        schoolRoomServiceImpl.deleteByID(id);
+    }
+    
     
 }

@@ -27,4 +27,8 @@ public interface UiSchoolRoomService {
     
     public List<SchoolRoomBean> getSchoolRoomsBySchool(Long id);
     
+    public void deleteSchoolRoom(SchoolRoomBean skl);
+    
+    public void deleteSchoolRoom(Long id);
+    
 }

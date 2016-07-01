@@ -20,6 +20,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -56,6 +57,13 @@ public class SystemSchoolRoomController {
             return new ModelAndView("system/school/schools");
         }
         uiSchoolRoomServiceImpl.addSchoolRoom(schoolRoomBean);
+        return new ModelAndView("redirect:" + referrer);
+    }
+    
+    @RequestMapping(value="/system/schools/{id}/rooms/delete", method=RequestMethod.POST)
+    public ModelAndView deleteSchoolRoom(@PathVariable("id") Long schoolid,@RequestParam("roomid") String roomid, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
+        uiSchoolRoomServiceImpl.deleteSchoolRoom(Long.parseLong(roomid));
         return new ModelAndView("redirect:" + referrer);
     }
     
