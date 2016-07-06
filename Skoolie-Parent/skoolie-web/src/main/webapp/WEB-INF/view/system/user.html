@@ -87,7 +87,7 @@
                                         </div>
                                         
                                         <div th:case="'STUDENT'">
-                                            
+                                            I'm a student
                                         </div>
                                         
                                         <div th:case="'TEACHER'">
@@ -126,13 +126,17 @@
                                         </div>
                                         
                                         <div th:case="'SCHOOL_ADMIN'">
-                                            <h2 th:text="${schoolAdminBean.username}">Username</h2>
-                                            <ul>
-                                                <li><span th:text="${schoolAdminBean.addressOne}"></span></li>
-                                                <li><span th:text="${schoolAdminBean.city}"></span></li>
-                                                <li><span th:text="${schoolAdminBean.postal}"></span></li>
-                                                <li><span th:text="${schoolAdminBean.state}"></span></li>
-                                            </ul>
+                                            <div class="row">
+                                                <h2 th:text="${schoolAdminBean.username}">Username</h2>
+                                            </div>
+                                            <div class="row">
+                                                <ul>
+                                                    <li><span th:text="${schoolAdminBean.addressOne}"></span></li>
+                                                    <li><span th:text="${schoolAdminBean.city}"></span></li>
+                                                    <li><span th:text="${schoolAdminBean.postal}"></span></li>
+                                                    <li><span th:text="${schoolAdminBean.state}"></span></li>
+                                                </ul>
+                                            </div>
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolAdminModal">Edit/Add Admin</a>
                                             <div id="addSchoolAdminModal" class="modal fade" role="dialog">
                                                 <div class="modal-dialog">
@@ -161,11 +165,11 @@
                                         </div>
                                         
                                         <div th:case="'PARENT'">
-                                            
+                                            I'm a parent
                                         </div>
                                         
                                         <div th:case="'SYSTEM'">
-                                            
+                                            I'm system
                                         </div>
                                     </div>
                                 </div>

@@ -38,8 +38,11 @@ public class Teacher implements Serializable {
     @OneToOne
     private User user;
     
-    @Column(name="ADDRESS", length=180)
-    private String address;
+    @Column(name="ADDRESS_ONE", length=180)
+    private String addressOne;
+    
+    @Column(name="ADDRESS_TWO", length=180)
+    private String addressTwo;
     
     @Column(name="CITY", length=120)
     private String city;
@@ -97,20 +100,6 @@ public class Teacher implements Serializable {
      */
     public void setUser(User user) {
         this.user = user;
-    }
-
-    /**
-     * @return the address
-     */
-    public String getAddress() {
-        return address;
-    }
-
-    /**
-     * @param address the address to set
-     */
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     /**
@@ -209,6 +198,34 @@ public class Teacher implements Serializable {
      */
     public void setPrimarySchool(School primarySchool) {
         this.primarySchool = primarySchool;
+    }
+
+    /**
+     * @return the addressOne
+     */
+    public String getAddressOne() {
+        return addressOne;
+    }
+
+    /**
+     * @param addressOne the addressOne to set
+     */
+    public void setAddressOne(String addressOne) {
+        this.addressOne = addressOne;
+    }
+
+    /**
+     * @return the addressTwo
+     */
+    public String getAddressTwo() {
+        return addressTwo;
+    }
+
+    /**
+     * @param addressTwo the addressTwo to set
+     */
+    public void setAddressTwo(String addressTwo) {
+        this.addressTwo = addressTwo;
     }
 
     /**

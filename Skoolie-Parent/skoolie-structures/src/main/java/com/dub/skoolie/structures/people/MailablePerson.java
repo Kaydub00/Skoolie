@@ -29,7 +29,7 @@ public abstract class MailablePerson extends Person {
     }
 
     /**
-     * @param address the address to set
+     * @param addressOne the address to set
      */
     public void setAddressOne(String addressOne) {
         this.addressOne = addressOne;

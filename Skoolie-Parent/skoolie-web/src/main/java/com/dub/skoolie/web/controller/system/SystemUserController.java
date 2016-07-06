@@ -119,7 +119,7 @@ public class SystemUserController {
                 model.addAttribute("studentBean", studentBean);
                 break;
             case "PARENT":
-                ParentBean parentBean =uiParentServiceImpl.getParent(userBean.getUsername());
+                ParentBean parentBean = uiParentServiceImpl.getParent(userBean.getUsername());
                 if(null == parentBean) {
                     parentBean = new ParentBean();
                     parentBean.setUser(userBean);
