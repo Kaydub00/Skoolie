@@ -112,6 +112,7 @@ public class SystemUserController {
                     teacherBean.setUser(userBean);
                     teacherBean.setUsername(userBean.getUsername());
                 }
+                model.addAttribute("allSchools", uiSchoolServiceImpl.getSchools());
                 model.addAttribute("teacherBean", teacherBean);
                 break;
             case "STUDENT":
@@ -121,6 +122,7 @@ public class SystemUserController {
                     studentBean.setUser(userBean);
                     studentBean.setUsername(userBean.getUsername());
                 }
+                model.addAttribute("allSchools", uiSchoolServiceImpl.getSchools());
                 model.addAttribute("studentBean", studentBean);
                 break;
             case "PARENT":
