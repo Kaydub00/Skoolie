@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.structures.people.faculty;
 
+import com.dub.skoolie.structures.district.DistrictBean;
 import com.dub.skoolie.structures.people.MailableUserPerson;
 import java.io.Serializable;
 import java.util.Date;
@@ -15,5 +16,20 @@ import java.util.Date;
  */
 public class DistrictAdminBean extends MailableUserPerson implements Serializable {
     
+    private DistrictBean district;
+
+    /**
+     * @return the district
+     */
+    public DistrictBean getDistrict() {
+        return district;
+    }
+
+    /**
+     * @param district the district to set
+     */
+    public void setDistrict(DistrictBean district) {
+        this.district = district;
+    }
     
 }

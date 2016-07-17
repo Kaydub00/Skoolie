@@ -96,7 +96,7 @@
                                                         <li class="list-group-item">
                                                             <h4>Zipcode</h4>
                                                             <span th:text="${districtAdminBean.postal}"></span>
-                                                        </li>                                                        
+                                                        </li>
                                                     </ul>
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addDistrictAdminModal">Edit/Add Admin</a>
                                                 </div>
@@ -131,7 +131,6 @@
                                                         Meh
                                                     </div>
                                                     <div class="row">
-                                                        Bye Felicia
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,14 +189,32 @@
                                                 <h2 th:text="${schoolAdminBean.username}">Username</h2>
                                             </div>
                                             <div class="row">
-                                                <ul>
-                                                    <li><span th:text="${schoolAdminBean.addressOne}"></span></li>
-                                                    <li><span th:text="${schoolAdminBean.city}"></span></li>
-                                                    <li><span th:text="${schoolAdminBean.postal}"></span></li>
-                                                    <li><span th:text="${schoolAdminBean.state}"></span></li>
-                                                </ul>
+                                                <div class="col-xs-6 col-xs-offset-1">
+                                                    <ul class="list-group">
+                                                        <li class="list-group-item">
+                                                            <h4>Address</h4>
+                                                            <span th:text="${schoolAdminBean.addressOne}"></span>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <h4>City</h4>
+                                                            <span th:text="${schoolAdminBean.city}"></span>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <h4>State</h4>
+                                                            <span th:text="${schoolAdminBean.state}"></span>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <h4>Zipcode</h4>
+                                                            <span th:text="${schoolAdminBean.postal}"></span>
+                                                        </li>
+                                                        <li class="list-group-item">
+                                                            <h4>Primary School</h4>
+                                                            <span th:text="${schoolAdminBean.primarySchool.name}"></span>
+                                                        </li>
+                                                    </ul>
+                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolAdminModal">Edit/Add Admin</a>
+                                                </div>
                                             </div>
-                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolAdminModal">Edit/Add Admin</a>
                                             <div id="addSchoolAdminModal" class="modal fade" role="dialog">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -210,10 +227,18 @@
                                                                     <label for="username">Username</label><span th:text="${schoolAdminBean.username}"></span>
                                                                     <input type="hidden" name="username" id="username" th:value="${schoolAdminBean.user.username}"/>
                                                                     <input type="hidden" name="user" id="user" th:value="${schoolAdminBean.user.username}"/>
-                                                                    <label for="addressOne">Address</label><input class="form-control" id="addressOne" type="text" name="addressOne" />
-                                                                    <label for="city">City</label><input class="form-control" id="city" type="text" name="city" />
-                                                                    <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
-                                                                    <label for="state">State</label><input class="form-control" id="state" type="text" name="state" />
+                                                                    <label for="addressOne">Address</label><input class="form-control" id="addressOne" type="text" name="addressOne" th:value="${schoolAdminBean.addressOne}"/>
+                                                                    <label for="city">City</label><input class="form-control" id="city" type="text" name="city" th:value="${schoolAdminBean.city}"/>
+                                                                    <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" th:value="${schoolAdminBean.postal}"/>
+                                                                    <label for="state">State</label><input class="form-control" id="state" type="text" name="state" th:value="${schoolAdminBean.state}"/>
+                                                                    <label for="primarySchool">Primary School</label>
+                                                                    <select class="form-control" th:field="*{primarySchool}">
+                                                                        <option th:each="school : ${allSchools}"
+                                                                                th:value="${school.id}"
+                                                                                th:text="${school.name}">
+                                                                            School
+                                                                        </option>
+                                                                    </select>
                                                                 </div>
                                                                 
                                                                 <button type="submit" class="btn btn-primary">Submit</button>

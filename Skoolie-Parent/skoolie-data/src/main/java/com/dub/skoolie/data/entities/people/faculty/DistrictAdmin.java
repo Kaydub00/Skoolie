@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.data.entities.people.faculty;
 
+import com.dub.skoolie.data.entities.district.District;
 import com.dub.skoolie.data.entities.usr.security.User;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -54,6 +56,10 @@ public class DistrictAdmin implements Serializable {
     
     @Column(name="DOB")
     private Date dob;
+    
+    @ManyToOne
+    @JoinColumn(name="DISTRICT_ID")
+    private District district;
 
     /**
      * @return the username
@@ -193,6 +199,20 @@ public class DistrictAdmin implements Serializable {
      */
     public void setAddressTwo(String addressTwo) {
         this.addressTwo = addressTwo;
+    }
+
+    /**
+     * @return the district
+     */
+    public District getDistrict() {
+        return district;
+    }
+
+    /**
+     * @param district the district to set
+     */
+    public void setDistrict(District district) {
+        this.district = district;
     }
 
     

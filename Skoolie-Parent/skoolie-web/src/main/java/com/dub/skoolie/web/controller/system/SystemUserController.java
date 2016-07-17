@@ -16,6 +16,7 @@ import com.dub.skoolie.web.service.people.faculty.UiSchoolAdminService;
 import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
 import com.dub.skoolie.web.service.people.parents.UiParentService;
 import com.dub.skoolie.web.service.people.students.UiStudentService;
+import com.dub.skoolie.web.service.school.UiSchoolService;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
 import javax.validation.Valid;
@@ -52,6 +53,9 @@ public class SystemUserController {
     
     @Autowired
     UiStudentService uiStudentServiceImpl;
+    
+    @Autowired
+    UiSchoolService uiSchoolServiceImpl;
     
     @RequestMapping(value="/system/users", method=RequestMethod.GET)
     public ModelAndView getUsers(Model model) {
@@ -99,6 +103,7 @@ public class SystemUserController {
                     schoolAdminBean.setUsername(userBean.getUsername());
                 }
                 model.addAttribute("schoolAdminBean", schoolAdminBean);
+                model.addAttribute("allSchools", uiSchoolServiceImpl.getSchools());
                 break;
             case "TEACHER":
                 TeacherBean teacherBean = uiTeacherServiceImpl.getTeacher(userBean.getUsername());
