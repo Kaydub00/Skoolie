@@ -33,6 +33,9 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
 
     @Override
     public SchoolAdminBean updateEntity(SchoolAdminBean entity) {
+        if(null == repo.findOne(entity.getUsername())) {
+            //create user's privileges
+        }
         SchoolAdmin sa = new  SchoolAdmin();
         mapper.map(entity, sa);
         sa = repo.save(sa);

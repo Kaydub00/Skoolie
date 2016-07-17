@@ -33,6 +33,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentBean updateEntity(StudentBean entity) {
+        if(null == repo.findOne(entity.getUsername())) {
+            //create user's privileges
+        }
         Student s = new  Student();
         mapper.map(entity, s);
         s = repo.save(s);

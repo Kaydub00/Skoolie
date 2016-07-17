@@ -33,6 +33,9 @@ public class DistrictAdminServiceImpl implements DistrictAdminService {
 
     @Override
     public DistrictAdminBean updateEntity(DistrictAdminBean entity) {
+        if(null == repo.findOne(entity.getUsername())) {
+            //create user's privileges
+        }
         DistrictAdmin da = new  DistrictAdmin();
         mapper.map(entity, da);
         da = repo.save(da);

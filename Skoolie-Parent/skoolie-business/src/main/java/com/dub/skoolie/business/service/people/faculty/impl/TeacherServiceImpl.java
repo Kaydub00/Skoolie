@@ -33,6 +33,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public TeacherBean updateEntity(TeacherBean entity) {
+        if(null == repo.findOne(entity.getUsername())) {
+            //create user's privileges
+        }
         Teacher t = new  Teacher();
         mapper.map(entity, t);
         t = repo.save(t);
