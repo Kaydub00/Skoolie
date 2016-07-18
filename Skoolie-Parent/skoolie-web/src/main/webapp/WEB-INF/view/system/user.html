@@ -328,7 +328,7 @@
                                     <script>
                                         $(function() {
                                             $("#userGroupsList, #availableGroupsList").sortable({
-                                                connectWith: ".connectedSortable",
+                                                connectWith: ".groupConnected",
                                                 update: function(event,ui) {
                                                     alert("You sure you want to do that?");
                                                 }
@@ -342,24 +342,41 @@
                                                     <h4>Edit Groups</h4>                                                            
                                                 </div>
                                                 <div class="modal-body">
-                                                    <ul id="userGroupsList" class="connectedSortable list-group">
-                                                        <li class="list-group-item">Item 1</li>
-                                                        <li class="list-group-item">Item 2</li>
-                                                        <li class="list-group-item">Item 3</li>
-                                                        <li class="list-group-item">Item 4</li>
-                                                    </ul>
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <ul id="userGroupsList" class="groupConnected list-group">
+                                                                <li class="list-group-item">Item 1</li>
+                                                                <li class="list-group-item">Item 2</li>
+                                                                <li class="list-group-item">Item 3</li>
+                                                                <li class="list-group-item">Item 4</li>
+                                                            </ul>
+                                                        </div>
                                                     
-                                                    <ul id="availableGroupsList" class="connectedSortable list-group">
-                                                        <li class="list-group-item">Item a</li>
-                                                        <li class="list-group-item">Item b</li>
-                                                        <li class="list-group-item">Item c</li>
-                                                        <li class="list-group-item">Item d</li>
-                                                    </ul>
+                                                        <div class="col-xs-6">
+                                                            <ul id="availableGroupsList" class="groupConnected list-group">
+                                                                <li class="list-group-item">Item a</li>
+                                                                <li class="list-group-item">Item b</li>
+                                                                <li class="list-group-item">Item c</li>
+                                                                <li class="list-group-item">Item d</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
                                                 </div>                                                    
                                             </div>                                                
                                         </div>
                                     </div>
                                     
+                                    
+                                    <script>
+                                        $(function() {
+                                            $("#userPermissionsList, #availablePermissionsList").sortable({
+                                                connectWith: ".permissionConnected",
+                                                update: function(event,ui) {
+                                                    alert("You sure you want to do that?");
+                                                }
+                                            }).disableSelection();
+                                        });
+                                    </script>
                                     <div id="editPermissions" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -367,7 +384,27 @@
                                                     <h4>Edit Permissions</h4>                                                            
                                                 </div>
                                                 <div class="modal-body">
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-xs-6">
+                                                                <ul id="userPermissionsList" class="permissionConnected list-group">
+                                                                    <li class="list-group-item">Item 1</li>
+                                                                    <li class="list-group-item">Item 2</li>
+                                                                    <li class="list-group-item">Item 3</li>
+                                                                    <li class="list-group-item">Item 4</li>
+                                                                </ul>
+                                                            </div>
                                                     
+                                                            <div class="col-xs-6">
+                                                                <ul id="availablePermissionsList" class="permissionConnected list-group">
+                                                                    <li class="list-group-item">Item a</li>
+                                                                    <li class="list-group-item">Item b</li>
+                                                                    <li class="list-group-item">Item c</li>
+                                                                    <li class="list-group-item">Item d</li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>                                                    
                                             </div>                                                
                                         </div>
