@@ -36,6 +36,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#user">User</a></li>
                                 <li><a data-toggle="tab" href="#type" th:text="${userBean.type}">Type</a></li>
+                                <li><a data-toggle="tab" href="#security">Security</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="user" class="tab-pane fade in active">
@@ -280,6 +281,99 @@
                                     </div>
                                 </div>
                                 
+                                <div id="security" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-xs-11 col-xs-offset-1">
+                                            <h2>Security</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-5 col-xs-offset-1">
+                                            <h4>Groups</h4>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <h4>Group Name</h4>
+                                                    <span>Group Desc</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h4>Group Name</h4>
+                                                    <span>Group Desc</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h4>Group Name</h4>
+                                                    <span>Group Desc</span>
+                                                </li>
+                                            </ul>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editGroups">Edit Groups</a>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <h4>Permissions</h4>
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <h4>Permission Name</h4>
+                                                    <span>Permission Desc</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h4>Permission Name</h4>
+                                                    <span>Permission Desc</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <h4>Permission Name</h4>
+                                                    <span>Permission Desc</span>
+                                                </li>
+                                            </ul>
+                                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#editPermissions">Edit Permissions</a>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $(function() {
+                                            $("#userGroupsList, #availableGroupsList").sortable({
+                                                connectWith: ".connectedSortable",
+                                                update: function(event,ui) {
+                                                    alert("You sure you want to do that?");
+                                                }
+                                            }).disableSelection();
+                                        });
+                                    </script>
+                                    <div id="editGroups" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4>Edit Groups</h4>                                                            
+                                                </div>
+                                                <div class="modal-body">
+                                                    <ul id="userGroupsList" class="connectedSortable list-group">
+                                                        <li class="list-group-item">Item 1</li>
+                                                        <li class="list-group-item">Item 2</li>
+                                                        <li class="list-group-item">Item 3</li>
+                                                        <li class="list-group-item">Item 4</li>
+                                                    </ul>
+                                                    
+                                                    <ul id="availableGroupsList" class="connectedSortable list-group">
+                                                        <li class="list-group-item">Item a</li>
+                                                        <li class="list-group-item">Item b</li>
+                                                        <li class="list-group-item">Item c</li>
+                                                        <li class="list-group-item">Item d</li>
+                                                    </ul>
+                                                </div>                                                    
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                    
+                                    <div id="editPermissions" class="modal fade" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4>Edit Permissions</h4>                                                            
+                                                </div>
+                                                <div class="modal-body">
+                                                    
+                                                </div>                                                    
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                    
+                                </div>                                
                             </div>
                         </div>
                     </div>                
