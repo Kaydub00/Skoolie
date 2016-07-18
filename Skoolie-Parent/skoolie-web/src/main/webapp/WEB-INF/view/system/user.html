@@ -97,6 +97,10 @@
                                                             <h4>Zipcode</h4>
                                                             <span th:text="${districtAdminBean.postal}"></span>
                                                         </li>
+                                                        <li class="list-group-item">
+                                                            <h4>District</h4>
+                                                            <span th:text="${districtAdminBean.district != null} ? ${districtAdminBean.district.name}"></span>
+                                                        </li>
                                                     </ul>
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addDistrictAdminModal">Edit/Add Admin</a>
                                                 </div>
@@ -117,7 +121,14 @@
                                                                         <label for="city">City</label><input class="form-control" id="city" type="text" name="city" />
                                                                         <label for="state">State</label><input class="form-control" id="state" type="text" name="state" />
                                                                         <label for="postal">Postal</label><input class="form-control" id="postal" type="text" name="postal" />
-                                                                        
+                                                                        <label for="primarySchool">Primary School</label>
+                                                                            <select class="form-control" th:field="*{district}">
+                                                                                <option th:each="district : ${allDistricts}"
+                                                                                        th:value="${district.id}"
+                                                                                        th:text="${district.name}">
+                                                                                    District
+                                                                                </option>
+                                                                            </select>
                                                                     </div>
                                                                 
                                                                     <button type="submit" class="btn btn-primary">Submit</button>

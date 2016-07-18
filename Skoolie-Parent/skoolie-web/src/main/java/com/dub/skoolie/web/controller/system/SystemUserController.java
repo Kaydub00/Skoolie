@@ -11,6 +11,7 @@ import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.structures.people.parents.ParentBean;
 import com.dub.skoolie.structures.people.students.StudentBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
+import com.dub.skoolie.web.service.district.UiDistrictService;
 import com.dub.skoolie.web.service.people.faculty.UiDistrictAdminService;
 import com.dub.skoolie.web.service.people.faculty.UiSchoolAdminService;
 import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
@@ -57,6 +58,9 @@ public class SystemUserController {
     @Autowired
     UiSchoolService uiSchoolServiceImpl;
     
+    @Autowired
+    UiDistrictService uiDistrictServiceImpl;
+    
     @RequestMapping(value="/system/users", method=RequestMethod.GET)
     public ModelAndView getUsers(Model model) {
         List<UserBean> users = uiUserServiceImpl.getUsers();
@@ -94,6 +98,7 @@ public class SystemUserController {
                     districtAdminBean.setUsername(userBean.getUsername());
                 }
                 model.addAttribute("districtAdminBean", districtAdminBean);
+                model.addAttribute("allDistricts", uiDistrictServiceImpl.getDistricts());
                 break;
             case "SCHOOL_ADMIN":
                 SchoolAdminBean schoolAdminBean = uiSchoolAdminServiceImpl.getSchoolAdmin(userBean.getUsername());
