@@ -345,10 +345,7 @@
                                                     <div class="row">
                                                         <div class="col-xs-6">
                                                             <ul id="userGroupsList" class="groupConnected list-group">
-                                                                <li class="list-group-item">Item 1</li>
-                                                                <li class="list-group-item">Item 2</li>
-                                                                <li class="list-group-item">Item 3</li>
-                                                                <li class="list-group-item">Item 4</li>
+                                                                <li th:each="groupBean : ${userBean.groups}" class="list-group-item"><span th:text="${groupBean.group}">Role</span></li>
                                                             </ul>
                                                         </div>
                                                     
@@ -388,10 +385,7 @@
                                                         <div class="row">
                                                             <div class="col-xs-6">
                                                                 <ul id="userPermissionsList" class="permissionConnected list-group">
-                                                                    <li class="list-group-item">Item 1</li>
-                                                                    <li class="list-group-item">Item 2</li>
-                                                                    <li class="list-group-item">Item 3</li>
-                                                                    <li class="list-group-item">Item 4</li>
+                                                                    <li th:each="roleBean : ${userBean.roles}" class="list-group-item"><span th:text="${roleBean.name}">Role</span></li>
                                                                 </ul>
                                                             </div>
                                                     
