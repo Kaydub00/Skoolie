@@ -10,6 +10,8 @@ import com.dub.skoolie.structures.people.faculty.SchoolAdminBean;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.structures.people.parents.ParentBean;
 import com.dub.skoolie.structures.people.students.StudentBean;
+import com.dub.skoolie.structures.usr.security.GroupBean;
+import com.dub.skoolie.structures.usr.security.RoleBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import com.dub.skoolie.web.service.district.UiDistrictService;
 import com.dub.skoolie.web.service.people.faculty.UiDistrictAdminService;
@@ -18,6 +20,8 @@ import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
 import com.dub.skoolie.web.service.people.parents.UiParentService;
 import com.dub.skoolie.web.service.people.students.UiStudentService;
 import com.dub.skoolie.web.service.school.UiSchoolService;
+import com.dub.skoolie.web.service.usr.security.UiGroupService;
+import com.dub.skoolie.web.service.usr.security.UiRoleService;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
 import javax.validation.Valid;
@@ -39,6 +43,12 @@ public class SystemUserController {
     
     @Autowired
     UiUserService uiUserServiceImpl;
+    
+    @Autowired
+    UiRoleService uiRoleServiceImpl;
+    
+    @Autowired
+    UiGroupService uiGroupServiceImpl;
     
     @Autowired
     UiDistrictAdminService uiDistrictAdminServiceImpl;
@@ -87,7 +97,11 @@ public class SystemUserController {
     @RequestMapping(value="/system/users/{username}", method=RequestMethod.GET)
     public ModelAndView getUser(@PathVariable("username") String username, Model model) {
         UserBean userBean = uiUserServiceImpl.getUser(username);
+        List<RoleBean> roles = uiRoleServiceImpl.getRoles();
+        List<GroupBean> groups = uiGroupServiceImpl.getGroups();
         model.addAttribute("userBean", userBean);
+        model.addAttribute("groups", groups);
+        model.addAttribute("roles", roles);
         //Different user types have different UI objects
         switch (userBean.getType()) {
             case "DISTRICT_ADMIN": 
