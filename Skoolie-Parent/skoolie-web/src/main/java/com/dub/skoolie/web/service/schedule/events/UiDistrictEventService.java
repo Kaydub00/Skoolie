@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.web.service.schedule.events;
 
+import com.dub.skoolie.structures.district.DistrictBean;
 import com.dub.skoolie.structures.schedule.events.DistrictEventBean;
 import java.util.List;
 
@@ -23,5 +24,9 @@ public interface UiDistrictEventService {
     public DistrictEventBean getDistrictEvent(Long id);
     
     public void deleteDistrictEvent(Long id);
+    
+    public List<DistrictEventBean> getDistrictEventsByDistrict(Long id);
+    
+    public List<DistrictEventBean> getDistrictEventsByDistrict(DistrictBean district);
     
 }

@@ -7,14 +7,21 @@ package com.dub.skoolie.web.controller.system.schedule.events;
 
 import com.dub.skoolie.structures.schedule.events.DistrictEventBean;
 import com.dub.skoolie.web.service.schedule.events.UiDistrictEventService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -38,6 +45,18 @@ public class SystemDistrictEventController {
         }
         uiDistrictEventServiceImpl.addDistrictEvent(districtEventBean);
         return new ModelAndView("system/schedule/events/index");
+    }
+    
+    @RequestMapping(value="/system/schedule/events/district/{id}", method=RequestMethod.GET)
+    public @ResponseBody String getDistrictEvents(@PathVariable("id") Long district) throws JsonProcessingException {
+        List<DistrictEventBean> districtEventBeans = uiDistrictEventServiceImpl.getDistrictEventsByDistrict(district);
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        //JsonObjectBuilder object = Json.createObjectBuilder().add("id", "1").add("title", "Test event").add("allDay", "").add("end", "2016-06-06 14:00:00").add("start","2016-06-06 12:00:00");
+        //JsonObjectBuilder object2 = Json.createObjectBuilder().add("id", "2").add("title", "Test event 2").add("allDay", "").add("end", "2016-06-26 14:00:00").add("start","2016-06-26 12:00:00");
+        ObjectMapper mapper = new ObjectMapper();
+        //mapper.setDateFormat(df);
+        //JsonArray array = Json.createArrayBuilder().add(object).add(object2).build();
+        return mapper.writeValueAsString(districtEventBeans);
     }
     
 }

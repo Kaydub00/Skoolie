@@ -8,6 +8,7 @@ package com.dub.skoolie.business.service.schedule.events.impl;
 import com.dub.skoolie.business.service.schedule.events.DistrictEventService;
 import com.dub.skoolie.data.dao.schedule.events.DistrictEventRepository;
 import com.dub.skoolie.data.entities.schedule.events.DistrictEvent;
+import com.dub.skoolie.structures.district.DistrictBean;
 import com.dub.skoolie.structures.schedule.events.DistrictEventBean;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,21 @@ public class DistrictEventServiceImpl implements DistrictEventService {
             newlist.add(mapper.map(de, DistrictEventBean.class));
         }
         return newlist;
+    }
+
+    @Override
+    public List<DistrictEventBean> getDistrictsByDistrictId(Long id) {
+        List<DistrictEventBean> newlist = new ArrayList<>();
+        Iterable<DistrictEvent> list = repo.findDistrictEventsByDistrictId(id);
+        for(DistrictEvent de : list) {
+            newlist.add(mapper.map(de, DistrictEventBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<DistrictEventBean> getDistrictsByDistrict(DistrictBean district) {
+        return this.getDistrictsByDistrictId(district.getId());
     }
     
 }

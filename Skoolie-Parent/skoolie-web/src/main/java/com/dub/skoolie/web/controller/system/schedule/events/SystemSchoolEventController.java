@@ -39,9 +39,6 @@ public class SystemSchoolEventController {
     public ModelAndView addSchoolEvent(@Valid SchoolEventBean schoolEventBean, BindingResult result, Model model, HttpServletRequest request) {
         String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
-            for ( ObjectError err : result.getAllErrors()) {
-                System.out.println(err.getDefaultMessage());
-            }
             if(!referrer.equals("/system/schedule/events/school")) {
                 return new ModelAndView("redirect:" + referrer);
             }

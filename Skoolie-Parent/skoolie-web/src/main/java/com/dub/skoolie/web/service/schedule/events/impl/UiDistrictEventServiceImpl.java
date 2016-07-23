@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.service.schedule.events.impl;
 
 import com.dub.skoolie.business.service.schedule.events.DistrictEventService;
+import com.dub.skoolie.structures.district.DistrictBean;
 import com.dub.skoolie.structures.schedule.events.DistrictEventBean;
 import com.dub.skoolie.web.service.schedule.events.UiDistrictEventService;
 import java.util.List;
@@ -45,6 +46,16 @@ public class UiDistrictEventServiceImpl implements UiDistrictEventService {
     @Override
     public void deleteDistrictEvent(Long id) {
         districtEventServiceImpl.deleteByID(id);
+    }
+
+    @Override
+    public List<DistrictEventBean> getDistrictEventsByDistrict(Long id) {
+        return districtEventServiceImpl.getDistrictsByDistrictId(id);
+    }
+
+    @Override
+    public List<DistrictEventBean> getDistrictEventsByDistrict(DistrictBean district) {
+        return districtEventServiceImpl.getDistrictsByDistrict(district);
     }
     
 }

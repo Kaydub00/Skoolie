@@ -141,6 +141,11 @@
                             url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",
                             editable: true,
                             durationEditable: true,
+                        },
+                        {
+                            url: /*[[@{/system/schedule/events/district/{id}(id=${schoolBean.district.id})}]]*/ "../system/schedule/events/district",
+                            editable: true,
+                            durationEditable: true,
                         }
                     ]
                 });
