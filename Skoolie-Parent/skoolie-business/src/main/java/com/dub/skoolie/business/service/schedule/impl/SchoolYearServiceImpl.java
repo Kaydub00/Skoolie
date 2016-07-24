@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.schedule.SchoolYearService;
 import com.dub.skoolie.data.dao.schedule.SchoolYearRepository;
 import com.dub.skoolie.data.entities.schedule.SchoolYear;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -64,5 +65,20 @@ public class SchoolYearServiceImpl implements SchoolYearService {
             newlist.add(mapper.map(yr, SchoolYearBean.class));
         }
         return newlist;
+    }
+
+    @Override
+    public List<SchoolYearBean> getSchoolYearBySchoolId(Long id) {
+        List<SchoolYearBean> newlist = new ArrayList<>();
+        Iterable<SchoolYear> list = repo.findSchoolYearsBySchoolId(id);
+        for(SchoolYear yr : list) {
+            newlist.add(mapper.map(yr, SchoolYearBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<SchoolYearBean> getSchoolYearBySchool(SchoolBean school) {
+        return this.getSchoolYearBySchoolId(school.getId());
     }
 }

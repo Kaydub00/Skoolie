@@ -7,6 +7,9 @@ package com.dub.skoolie.web.controller.system.schedule;
 
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
 import com.dub.skoolie.web.service.schedule.UiSchoolYearService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -56,5 +60,5 @@ public class SystemSchoolYearController {
     public ModelAndView deleteSchoolYear(@RequestParam("schoolyear") String id, Model model) {
         uiSchoolYearServiceImpl.deleteSchoolYear(Long.parseLong(id));
         return new ModelAndView("redirect:/system/schedule/schoolyear");
-    }    
+    }
 }

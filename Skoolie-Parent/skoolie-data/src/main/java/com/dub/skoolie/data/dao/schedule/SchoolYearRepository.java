@@ -6,6 +6,9 @@
 package com.dub.skoolie.data.dao.schedule;
 
 import com.dub.skoolie.data.entities.schedule.SchoolYear;
+import com.dub.skoolie.data.entities.school.School;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,4 +17,9 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface SchoolYearRepository extends CrudRepository<SchoolYear, Long>{
     
+    public List<SchoolYear> findBySchool(School school);
+    
+    @Query("select e from SchoolYear e "
+            + "where e.school.id = ?1")
+    List<SchoolYear> findSchoolYearsBySchoolId(Long id);
 }
