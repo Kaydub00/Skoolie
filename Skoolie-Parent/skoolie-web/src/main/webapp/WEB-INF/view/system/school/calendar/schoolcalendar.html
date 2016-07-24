@@ -117,6 +117,7 @@
                         $('#calendar').fullCalendar('updateEvent', event);
                     },
                     eventDrop: function(event, delta, revertFunc) {
+                        var schoolid = /*[[${schoolBean.id}]]*/ null;
                         alert(event.name + "was dropped on " + event.start.format());
                         var starttime = event.start.format('MM/DD/YYYY');
                         if(event.end != null) {
@@ -131,7 +132,7 @@
                             $.ajax({
                                 url: /*[[@{/system/schedule/events/school}]]*/ "../system/schedule/events/school",
                                 type: "POST",
-                                data: {name: event.name, title: event.title, start: starttime, end: endtime, id: event.id, school: event.school.id}
+                                data: {name: event.name, title: event.title, start: starttime, end: endtime, id: event.id, school: schoolid}
                             });
                             $('#calendar').fullCalendar('updateEvent', event);
                         }
