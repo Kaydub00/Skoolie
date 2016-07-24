@@ -51,8 +51,8 @@ public class SystemSchoolCalendarController {
     }
     
     @RequestMapping(value="/system/schools/{school}/calendar/schoolyear", method=RequestMethod.GET)
-    public @ResponseBody String getSchoolYears(@RequestParam("school") String id) throws JsonProcessingException {
-        List<SchoolYearBean> schoolYearBeans = uiSchoolYearServiceImpl.getSchoolYearsBySchoolId(Long.parseLong(id));
+    public @ResponseBody String getSchoolYears(@PathVariable("school") Long id) throws JsonProcessingException {
+        List<SchoolYearBean> schoolYearBeans = uiSchoolYearServiceImpl.getSchoolYearsBySchoolId(id);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(schoolYearBeans);
     }

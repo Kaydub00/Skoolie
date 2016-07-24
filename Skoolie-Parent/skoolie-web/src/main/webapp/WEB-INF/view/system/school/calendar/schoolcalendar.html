@@ -144,8 +144,23 @@
                         },
                         {
                             url: /*[[@{/system/schedule/events/district/{id}(id=${schoolBean.district.id})}]]*/ "../system/schedule/events/district",
-                            editable: true,
-                            durationEditable: true,
+                            editable: false,
+                            durationEditable: false,
+                            color: 'black',
+                        },
+                        {
+                            url: /*[[@{/system/schools/{school}/calendar/schoolyear(school=${schoolBean.id})}]]*/ "../system/schools/calendar/schoolyear",
+                            editable: false,
+                            durationEditable: false,
+                            color: 'gray',
+                            eventDataTransform: function (rawEvent) {
+                                return {
+                                    id: rawEvent.id,
+                                    title: rawEvent.name,
+                                    start: rawEvent.startDate,
+                                    end: rawEvent.endDate,
+                                }
+                            }
                         }
                     ]
                 });
