@@ -7,11 +7,14 @@ package com.dub.skoolie.business.service.schedule;
 
 import com.dub.skoolie.business.service.BaseCrudService;
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
+import java.util.List;
 
 /**
  *
  * @author Kevin W
  */
 public interface GradingPeriodService extends BaseCrudService<GradingPeriodBean,Long>{
+    
+    public List<GradingPeriodBean> getGradingPeriodBySchoolId(Long id);
     
 }

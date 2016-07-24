@@ -65,5 +65,15 @@ public class GradingPeriodServiceImpl implements GradingPeriodService {
         }
         return newlist;
     }
+
+    @Override
+    public List<GradingPeriodBean> getGradingPeriodBySchoolId(Long id) {
+        List<GradingPeriodBean> newlist = new ArrayList<>();
+        Iterable<GradingPeriod> list = repo.findGradingPeriodBySchoolId(id);
+        for(GradingPeriod gp : list) {
+            newlist.add(mapper.map(gp, GradingPeriodBean.class));
+        }
+        return newlist;
+    }
     
 }

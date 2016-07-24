@@ -26,4 +26,6 @@ public interface UiGradingPeriodService {
     public List<SchoolYearBean> getSchoolYears();
     
     public void deleteGradingPeriod(Long id);
+    
+    public List<GradingPeriodBean> getGradingPeriodBySchoolId(Long id);
 }

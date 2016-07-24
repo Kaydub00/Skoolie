@@ -162,6 +162,20 @@
                                     end: rawEvent.endDate,
                                 }
                             }
+                        },
+                        {
+                            url: /*[[@{/system/schools/{school}/calendar/gradingperiod(school=${schoolBean.id})}]]*/ "../system/schools/calendar/gradingperiod",
+                            editable: false,
+                            durationEditable: false,
+                            color: 'gray',
+                            eventDataTransform: function (rawEvent) {
+                                return {
+                                    id: rawEvent.id,
+                                    title: rawEvent.name,
+                                    start: rawEvent.startDate,
+                                    end: rawEvent.endDate,
+                                }
+                            }
                         }
                     ]
                 });

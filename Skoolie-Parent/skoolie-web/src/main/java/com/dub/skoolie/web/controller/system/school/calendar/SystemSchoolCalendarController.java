@@ -5,8 +5,10 @@
  */
 package com.dub.skoolie.web.controller.system.school.calendar;
 
+import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
 import com.dub.skoolie.structures.school.SchoolBean;
+import com.dub.skoolie.web.service.schedule.UiGradingPeriodService;
 import com.dub.skoolie.web.service.schedule.UiSchoolYearService;
 import com.dub.skoolie.web.service.school.UiSchoolService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -43,6 +45,9 @@ public class SystemSchoolCalendarController {
     @Autowired
     UiSchoolYearService uiSchoolYearServiceImpl;
     
+    @Autowired
+    UiGradingPeriodService uiGradingPeriodServiceImpl;
+    
     @RequestMapping(value="/system/schools/{id}/calendar", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean schoolBean = uiSchoolServiceImpl.getSchool(school);
@@ -55,5 +60,12 @@ public class SystemSchoolCalendarController {
         List<SchoolYearBean> schoolYearBeans = uiSchoolYearServiceImpl.getSchoolYearsBySchoolId(id);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(schoolYearBeans);
+    }
+    
+    @RequestMapping(value="/system/schools/{school}/calendar/gradingperiod", method=RequestMethod.GET)
+    public @ResponseBody String getGradingPeriods(@PathVariable("school") Long id) throws JsonProcessingException {
+        List<GradingPeriodBean> gradingPeriodBeans = uiGradingPeriodServiceImpl.getGradingPeriodBySchoolId(id);
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.writeValueAsString(gradingPeriodBeans);
     }
 }
