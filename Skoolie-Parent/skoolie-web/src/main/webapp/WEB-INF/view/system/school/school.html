@@ -18,6 +18,13 @@
         
         <link th:replace="../templates/header:: sidebarcss" />
         
+        <script th:replace="../templates/header:: moment"/>
+        
+        <script th:replace="../templates/header:: fullcalendarjs"/>
+        
+        <link th:replace="../templates/header:: fullcalendarcss"/>
+        <link th:replace="../templates/header:: fullcalendarcssprint"/>
+        
         
         <title th:text="${schoolBean.name}">Skoolie School</title>
         
@@ -93,6 +100,69 @@
                             <script type="text/javascript" th:inline="javascript">
                                 $("#schoolModal").draggable({handle: ".modal-header"});
                             </script>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-0 col-xs-11 col-xs-offset-1">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    School Calendar
+                                </div>
+                                <div class="panel-body">
+                                    <div id="calendar">
+                                    </div>
+                                    <script type="text/javascript" th:inline="javascript">
+                                        $(document).ready(function() {
+                                            $('#calendar').fullCalendar({
+                                                header: {
+                                                    left: 'prev,next today',
+                                                    center: 'title',
+                                                    right: 'month,agendaWeek,agendaDay'
+                                                },
+                                                eventSources: [
+                                                    {
+                                                        url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",
+                                                        editable: false,
+                                                        durationEditable: false,
+                                                    },
+                                                    {
+                                                        url: /*[[@{/system/schedule/events/district/{id}(id=${schoolBean.district.id})}]]*/ "../system/schedule/events/district",
+                                                        editable: false,
+                                                        durationEditable: false,
+                                                        color: 'black',
+                                                    },
+                                                    {
+                                                        url: /*[[@{/system/schools/{school}/calendar/schoolyear(school=${schoolBean.id})}]]*/ "../system/schools/calendar/schoolyear",
+                                                        editable: false,
+                                                        durationEditable: false,
+                                                        color: 'gray',
+                                                        eventDataTransform: function (rawEvent) {
+                                                            return {
+                                                                id: rawEvent.id,
+                                                                title: rawEvent.name,
+                                                                start: rawEvent.startDate,
+                                                                end: rawEvent.endDate,
+                                                            }
+                                                        }
+                                                    },
+                                                    {
+                                                        url: /*[[@{/system/schools/{school}/calendar/gradingperiod(school=${schoolBean.id})}]]*/ "../system/schools/calendar/gradingperiod",
+                                                        editable: false,
+                                                        durationEditable: false,
+                                                        color: 'gray',
+                                                        eventDataTransform: function (rawEvent) {
+                                                            return {
+                                                                id: rawEvent.id,
+                                                                title: rawEvent.name,
+                                                                start: rawEvent.startDate,
+                                                                end: rawEvent.endDate,
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            });
+                                        })
+                                    </script>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-sm-6 col-sm-offset-0 col-xs-11 col-xs-offset-1">
                             <div class="panel panel-primary">
