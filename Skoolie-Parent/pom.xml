@@ -9,10 +9,10 @@
     
     <name>Skoolie</name>
 	<modules>
-		<module>Skoolie-Structures</module>
-		<module>Skoolie-Data</module>
-		<module>Skoolie-Business</module>
-		<module>Skoolie-Web</module>
+		<module>skoolie-structures</module>
+		<module>skoolie-data</module>
+		<module>skoolie-business</module>
+		<module>skoolie-web</module>
 	</modules>
         
         
