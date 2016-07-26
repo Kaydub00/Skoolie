@@ -221,7 +221,7 @@
                                                         </li>
                                                         <li class="list-group-item">
                                                             <h4>Primary School</h4>
-                                                            <span th:text="${schoolAdminBean.primarySchool.name}"></span>
+                                                            <span th:text="${schoolAdminBean.primarySchool.name != null} ? ${schoolAdminBean.primarySchool.name} : 'Not Set'"></span>
                                                         </li>
                                                     </ul>
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addSchoolAdminModal">Edit/Add Admin</a>
