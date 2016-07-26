@@ -57,7 +57,13 @@
                                         <td th:text="${user.firstName + ' ' + user.lastName}"/>
                                         <td th:text="${user.email}">null</td>
                                         <td th:text="${user.type}">null</td>
-                                        <td>activate/deactivate</td>
+                                        <td>
+                                            <form action="#" th:action="@{/system/users/activate}" method="post">
+                                                <input type="hidden" name="username" th:value="${user.username}"/>
+                                                <button th:if="${user.enabled != 0 and user.enabled != null}" type="submit" class="btn btn-danger">Deactivate</button>
+                                                <button th:if="${user.enabled == 0 or user.enabled == null}" type="submit" class="btn btn-success">Activate</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

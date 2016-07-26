@@ -24,6 +24,7 @@ import com.dub.skoolie.web.service.usr.security.UiGroupService;
 import com.dub.skoolie.web.service.usr.security.UiRoleService;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -80,6 +82,19 @@ public class SystemUserController {
         model.addAttribute("users", users);
         model.addAttribute("allUserTypes", allusertypes);
         return new ModelAndView("system/users");
+    }
+    
+    @RequestMapping(value="/system/users/activate", method=RequestMethod.POST)
+    public ModelAndView activateUser(@RequestParam("username") String username, HttpServletRequest request) {
+        String referrer = request.getHeader("Referer");
+        UserBean userBean = uiUserServiceImpl.getUser(username);
+        if(null == userBean.getEnabled() || userBean.getEnabled() == 0) {
+            userBean.setEnabled(1);
+        } else {
+            userBean.setEnabled(0);
+        }
+        uiUserServiceImpl.updateUser(userBean);
+        return new ModelAndView("redirect:" + referrer);
     }
     
     @RequestMapping(value="/system/users", method=RequestMethod.POST)
