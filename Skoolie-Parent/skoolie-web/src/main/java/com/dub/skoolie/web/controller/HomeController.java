@@ -4,12 +4,15 @@ package com.dub.skoolie.web.controller;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -56,6 +59,16 @@ public class HomeController {
     @RequestMapping("/acct")
     public ModelAndView getAcct() {
         return new ModelAndView("account");
+    }
+    
+    @RequestMapping(value = "/reset", method=RequestMethod.GET)
+    public ModelAndView resetUserPasswordPage() {
+        return new ModelAndView("reset");
+    }
+    
+    @RequestMapping(value = "/reset", method=RequestMethod.POST)
+    public ModelAndView resetUserPassword(@RequestParam("email") String email, HttpServletRequest request) {
+        return new ModelAndView("redirect:login");
     }
 
 }

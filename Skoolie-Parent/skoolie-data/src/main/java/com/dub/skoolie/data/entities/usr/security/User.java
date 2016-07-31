@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 /**
  *
@@ -59,6 +60,9 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP")
     )
     private List<Group> groups;
+    
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    private List<PasswordResetToken> resetTokens;
 
     public String getUsername() {
         return username;
@@ -158,5 +162,19 @@ public class User implements Serializable {
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    /**
+     * @return the resetTokens
+     */
+    public List<PasswordResetToken> getResetTokens() {
+        return resetTokens;
+    }
+
+    /**
+     * @param resetTokens the resetTokens to set
+     */
+    public void setResetTokens(List<PasswordResetToken> resetTokens) {
+        this.resetTokens = resetTokens;
     }
 }
