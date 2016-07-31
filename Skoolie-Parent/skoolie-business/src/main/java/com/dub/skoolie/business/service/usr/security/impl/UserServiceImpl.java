@@ -125,4 +125,15 @@ public class UserServiceImpl implements UserService {
         repo.save(entity);
     }
 
+    @Override
+    public void resetUserPassword(String username, String password) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String encpwd = encoder.encode(password);
+        User entity = repo.findOne(username);
+        entity.setPassword(encpwd);
+        repo.save(entity);
+    }
+    
+    
+
 }

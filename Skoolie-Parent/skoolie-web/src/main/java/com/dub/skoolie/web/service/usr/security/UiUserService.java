@@ -25,5 +25,7 @@ public interface UiUserService {
     public void enableUserByUsername(String username);
     
     public List<String> getUserTypes();
+    
+    public void resetPassword(String username, String password);
 
 }

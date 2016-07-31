@@ -19,4 +19,6 @@ public interface UserService extends BaseCrudService<UserBean,String>{
     //@Secured("ROLE_ADMIN")
     public void deactivateUser(String username);
     
+    public void resetUserPassword(String username, String password);
+    
 }

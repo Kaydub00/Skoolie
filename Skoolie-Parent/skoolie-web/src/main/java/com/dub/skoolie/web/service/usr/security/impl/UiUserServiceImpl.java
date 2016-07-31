@@ -67,6 +67,11 @@ public class UiUserServiceImpl implements UiUserService {
         }
         return usertypes;
     }
+
+    @Override
+    public void resetPassword(String username, String password) {
+        userServiceImpl.resetUserPassword(username, password);
+    }
     
     
 
