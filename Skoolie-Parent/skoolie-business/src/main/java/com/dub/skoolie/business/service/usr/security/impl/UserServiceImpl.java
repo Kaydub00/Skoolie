@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
     GroupService groupServiceImpl;
     
     @Override
-    //@Secured("ROLE_USER")
     public UserBean updateEntity(UserBean entity) {
         User user = new User();
         if(entity.getPassword() == null || entity.getPassword().isEmpty()) {
@@ -45,9 +44,6 @@ public class UserServiceImpl implements UserService {
             return entity;
         } else {
             mapper.map(entity, user);
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            String encpwd = encoder.encode(user.getPassword());
-            user.setPassword(encpwd);
             user = repo.save(user);
             mapper.map(user, entity);
             return entity;
