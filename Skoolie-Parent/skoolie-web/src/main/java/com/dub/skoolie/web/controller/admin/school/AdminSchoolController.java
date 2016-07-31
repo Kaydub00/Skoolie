@@ -5,8 +5,12 @@
  */
 package com.dub.skoolie.web.controller.admin.school;
 
+import com.dub.skoolie.structures.people.faculty.SchoolAdminBean;
 import com.dub.skoolie.structures.school.SchoolBean;
+import com.dub.skoolie.structures.usr.security.UserBean;
+import com.dub.skoolie.web.service.people.faculty.UiSchoolAdminService;
 import com.dub.skoolie.web.service.school.UiSchoolService;
+import com.dub.skoolie.web.service.usr.security.UiUserService;
 import java.security.Principal;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +32,9 @@ public class AdminSchoolController {
     
     @Autowired
     UiSchoolService uiSchoolServiceImpl;
+    
+    @Autowired
+    UiSchoolAdminService uiSchoolAdminServiceImpl;
     
     @Secured("ROLE_DISTRICT_ADMIN")
     @RequestMapping(value="/admin/schools", method=RequestMethod.GET)
@@ -61,9 +68,8 @@ public class AdminSchoolController {
     @RequestMapping(value="/admin/school")
     public ModelAndView getSchool(Model model, Principal principal) {
         // need to figure out how I'm going to associate users with schools still
-        String username = principal.getName();
-        String id = username;
-        return new ModelAndView("redirect://admin/schools/" + id);
+        SchoolAdminBean usr = uiSchoolAdminServiceImpl.getSchoolAdmin(principal.getName());
+        return new ModelAndView("redirect://admin/schools/" + usr.getPrimarySchool().getId());
     }
     
 }
