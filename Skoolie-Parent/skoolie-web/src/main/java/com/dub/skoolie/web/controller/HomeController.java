@@ -69,10 +69,17 @@ public class HomeController {
     }
     
     @RequestMapping(value = "/reset", method=RequestMethod.POST)
-    public ModelAndView resetUserPassword(@RequestParam("email") String email, HttpServletRequest request) {
+    public ModelAndView resetUserPassword(@RequestParam("email") String email, HttpServletRequest request, Model model) {
         //generate PasswordResetToken
         //Send email to user with link to passwordresettoken
-        String token = UUID.randomUUID().toString();
+        UserBean user;
+        try {
+            user = uiUserServiceImpl.getUserByEmail(email);
+        } catch (Exception e) {
+            model.addAttribute("error", "error");
+            return new ModelAndView("redirect:/reset");
+        }
+        uiUserServiceImpl.createUserResetToken(user);
         return new ModelAndView("redirect:/login");
     }
     

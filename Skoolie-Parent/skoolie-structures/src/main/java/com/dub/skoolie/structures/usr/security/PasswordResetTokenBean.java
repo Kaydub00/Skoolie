@@ -6,6 +6,7 @@
 package com.dub.skoolie.structures.usr.security;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -21,6 +22,14 @@ public class PasswordResetTokenBean implements Serializable {
     private String resetToken;
     
     private Date expiration;
+    
+    
+    public PasswordResetTokenBean() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DATE, 1);
+        this.expiration = cal.getTime();
+    }
 
     /**
      * @return the id

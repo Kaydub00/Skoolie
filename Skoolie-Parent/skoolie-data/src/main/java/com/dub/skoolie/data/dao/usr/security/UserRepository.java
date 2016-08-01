@@ -13,5 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional("skooliecoreTransactionManager")
 public interface UserRepository extends CrudRepository<User, String> {
+    
+    public User findOneByEmail(String email);
 
 }

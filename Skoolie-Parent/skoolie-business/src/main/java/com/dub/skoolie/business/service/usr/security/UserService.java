@@ -20,5 +20,9 @@ public interface UserService extends BaseCrudService<UserBean,String>{
     public void deactivateUser(String username);
     
     public void resetUserPassword(String username, String password);
+
+    public UserBean getUserByEmail(String email);
+    
+    public void createUserResetPasswordToken(UserBean user);
     
 }

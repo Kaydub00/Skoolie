@@ -72,6 +72,16 @@ public class UiUserServiceImpl implements UiUserService {
     public void resetPassword(String username, String password) {
         userServiceImpl.resetUserPassword(username, password);
     }
+
+    @Override
+    public UserBean getUserByEmail(String email) {
+        return userServiceImpl.getUserByEmail(email);
+    }
+
+    @Override
+    public void createUserResetToken(UserBean user) {
+        userServiceImpl.createUserResetPasswordToken(user);
+    }
     
     
 

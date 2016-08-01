@@ -2,12 +2,15 @@
 package com.dub.skoolie.business.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.GroupService;
+import com.dub.skoolie.business.service.usr.security.PasswordResetTokenService;
 import com.dub.skoolie.business.service.usr.security.UserService;
 import com.dub.skoolie.data.dao.usr.security.UserRepository;
 import com.dub.skoolie.data.entities.usr.security.User;
+import com.dub.skoolie.structures.usr.security.PasswordResetTokenBean;
 import com.dub.skoolie.structures.usr.security.UserBean;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,6 +33,9 @@ public class UserServiceImpl implements UserService {
     
     @Autowired
     GroupService groupServiceImpl;
+    
+    @Autowired
+    PasswordResetTokenService passwordResetTokenServiceImpl;
     
     @Override
     public UserBean updateEntity(UserBean entity) {
@@ -132,6 +138,22 @@ public class UserServiceImpl implements UserService {
         User entity = repo.findOne(username);
         entity.setPassword(encpwd);
         repo.save(entity);
+    }
+
+    @Override
+    public UserBean getUserByEmail(String email) {
+        UserBean usr = new UserBean();
+        mapper.map(repo.findOneByEmail(email), usr);
+        return usr;
+    }
+
+    @Override
+    public void createUserResetPasswordToken(UserBean user) {
+        PasswordResetTokenBean token = new PasswordResetTokenBean();
+        token.setResetToken(UUID.randomUUID().toString());
+        token.setUser(user);
+        passwordResetTokenServiceImpl.updateEntity(token);
+        //need to send an email here too!!!
     }
     
     

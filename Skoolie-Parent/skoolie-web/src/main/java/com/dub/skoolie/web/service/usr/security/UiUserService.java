@@ -28,4 +28,8 @@ public interface UiUserService {
     
     public void resetPassword(String username, String password);
 
+    public UserBean getUserByEmail(String email);
+    
+    public void createUserResetToken(UserBean user);
+
 }
