@@ -6,7 +6,7 @@
 package com.dub.skoolie.data.entities.usr.security;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,6 +38,9 @@ public class PasswordResetToken implements Serializable {
     
     @Column(name="EXPIRATION")
     private Date expiration;
+    
+    @Column(name="CREATION")
+    private Date creation;
 
     /**
      * @return the id
@@ -93,5 +96,19 @@ public class PasswordResetToken implements Serializable {
      */
     public void setExpiration(Date expiration) {
         this.expiration = expiration;
+    }
+
+    /**
+     * @return the creation
+     */
+    public Date getCreation() {
+        return creation;
+    }
+
+    /**
+     * @param creation the creation to set
+     */
+    public void setCreation(Date creation) {
+        this.creation = creation;
     }
 }

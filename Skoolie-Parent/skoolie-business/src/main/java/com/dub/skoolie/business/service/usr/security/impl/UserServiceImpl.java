@@ -153,7 +153,6 @@ public class UserServiceImpl implements UserService {
         token.setResetToken(UUID.randomUUID().toString());
         token.setUser(user);
         passwordResetTokenServiceImpl.updateEntity(token);
-        //need to send an email here too!!!
     }
     
     

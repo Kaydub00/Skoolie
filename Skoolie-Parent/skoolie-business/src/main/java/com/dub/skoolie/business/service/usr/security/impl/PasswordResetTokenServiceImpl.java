@@ -6,6 +6,7 @@
 package com.dub.skoolie.business.service.usr.security.impl;
 
 import com.dub.skoolie.business.service.usr.security.PasswordResetTokenService;
+import com.dub.skoolie.business.service.utils.email.EmailService;
 import com.dub.skoolie.data.dao.usr.security.PasswordResetTokenRepository;
 import com.dub.skoolie.data.entities.usr.security.PasswordResetToken;
 import com.dub.skoolie.structures.usr.security.PasswordResetTokenBean;
@@ -28,13 +29,20 @@ public class PasswordResetTokenServiceImpl implements PasswordResetTokenService 
     
     @Autowired
     PasswordResetTokenRepository repo;
+    
+    @Autowired
+    EmailService emailServiceImpl;
 
+    //these should only be udpated when a new one is added, so send email here
     @Override
     public PasswordResetTokenBean updateEntity(PasswordResetTokenBean entity) {
         PasswordResetToken tkn = new  PasswordResetToken();
         mapper.map(entity, tkn);
         tkn = repo.save(tkn);
         mapper.map(tkn,entity);
+        //email to user now!!!
+        emailServiceImpl.sendEmail(entity.getUser().getEmail(), "reset@skoolie-sis.com", "Password Reset", 
+                "Your password has been reset, please visit this place with this token " + tkn.getResetToken());
         return entity;
     }
 

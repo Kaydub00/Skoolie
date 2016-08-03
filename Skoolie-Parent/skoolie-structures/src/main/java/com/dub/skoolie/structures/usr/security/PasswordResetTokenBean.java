@@ -6,6 +6,8 @@
 package com.dub.skoolie.structures.usr.security;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -23,8 +25,11 @@ public class PasswordResetTokenBean implements Serializable {
     
     private Date expiration;
     
+    private Date creation;
+    
     
     public PasswordResetTokenBean() {
+        this.creation = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.add(Calendar.DATE, 1);
@@ -85,6 +90,20 @@ public class PasswordResetTokenBean implements Serializable {
      */
     public void setExpiration(Date expiration) {
         this.expiration = expiration;
+    }
+
+    /**
+     * @return the creation
+     */
+    public Date getCreation() {
+        return creation;
+    }
+
+    /**
+     * @param creation the creation to set
+     */
+    public void setCreation(Date creation) {
+        this.creation = creation;
     }
     
 }
