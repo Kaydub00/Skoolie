@@ -12,10 +12,13 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -60,6 +63,14 @@ public class School implements Serializable {
     @ManyToOne
     @JoinColumn(name="DISTRICT_ID")
     private District district;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
+    @JoinTable(
+            name="SCL_GRADE_LEVELS",
+            joinColumns = @JoinColumn(name = "SCHOOL_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "GRADE_LEVEL_ID", referencedColumnName = "ID")
+    )
+    private List<GradeLevel> gradeLevels;
 
     /**
      * @return the id
@@ -199,6 +210,20 @@ public class School implements Serializable {
      */
     public void setSchoolRooms(List<SchoolRoom> schoolRooms) {
         this.schoolRooms = schoolRooms;
+    }
+
+    /**
+     * @return the gradeLevels
+     */
+    public List<GradeLevel> getGradeLevels() {
+        return gradeLevels;
+    }
+
+    /**
+     * @param gradeLevels the gradeLevels to set
+     */
+    public void setGradeLevels(List<GradeLevel> gradeLevels) {
+        this.gradeLevels = gradeLevels;
     }
     
 }

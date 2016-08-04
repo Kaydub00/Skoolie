@@ -46,6 +46,8 @@ public class SchoolBean implements Serializable {
     
     private List<SchoolYearBean> schoolYears;
     
+    private List<GradeLevelBean> gradeLevels;
+    
     private DistrictBean district;
 
     public Long getId() {
@@ -136,6 +138,20 @@ public class SchoolBean implements Serializable {
      */
     public void setDistrict(DistrictBean district) {
         this.district = district;
+    }
+
+    /**
+     * @return the gradeLevels
+     */
+    public List<GradeLevelBean> getGradeLevels() {
+        return gradeLevels;
+    }
+
+    /**
+     * @param gradeLevels the gradeLevels to set
+     */
+    public void setGradeLevels(List<GradeLevelBean> gradeLevels) {
+        this.gradeLevels = gradeLevels;
     }
     
 }
