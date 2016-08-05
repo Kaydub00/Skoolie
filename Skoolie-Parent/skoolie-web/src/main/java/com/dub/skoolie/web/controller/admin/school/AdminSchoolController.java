@@ -60,7 +60,7 @@ public class AdminSchoolController {
     @RequestMapping(value="/admin/schools/{id}", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean skl = uiSchoolServiceImpl.getSchool(school);
-        model.addAttribute("school", skl);
+        model.addAttribute("schoolBean", skl);
         return new ModelAndView("admin/school/school");
     }
     
@@ -69,7 +69,7 @@ public class AdminSchoolController {
     public ModelAndView getSchool(Model model, Principal principal) {
         // need to figure out how I'm going to associate users with schools still
         SchoolAdminBean usr = uiSchoolAdminServiceImpl.getSchoolAdmin(principal.getName());
-        return new ModelAndView("redirect://admin/schools/" + usr.getPrimarySchool().getId());
+        return new ModelAndView("redirect:/admin/schools/" + usr.getPrimarySchool().getId());
     }
     
 }
