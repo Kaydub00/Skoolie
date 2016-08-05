@@ -17,11 +17,11 @@
         <http pattern="/images/*" security="none"/>
         <http pattern="/denied*" security="none"/>
 	<http auto-config="true">
-                <intercept-url pattern="/admin*" access="ROLE_ADMIN,ROLE_SYSTEM" />
-                <intercept-url pattern="/parent*" access="ROLE_PARENT,ROLE_SYSTEM" />
-                <intercept-url pattern="/student*" access="ROLE_STUDENT,ROLE_SYSTEM" />
-                <intercept-url pattern="/teacher*" access="ROLE_TEACHER,ROLE_SYSTEM" />
-                <intercept-url pattern="/system*" access="ROLE_SYSTEM" />
+                <intercept-url pattern="/admin/*" access="ROLE_ADMIN,ROLE_SYSTEM" />
+                <intercept-url pattern="/parent/*" access="ROLE_PARENT,ROLE_SYSTEM" />
+                <intercept-url pattern="/student/*" access="ROLE_STUDENT,ROLE_SYSTEM" />
+                <intercept-url pattern="/teacher/*" access="ROLE_TEACHER,ROLE_SYSTEM" />
+                <intercept-url pattern="/system/*" access="ROLE_SYSTEM" />
 		<intercept-url pattern="/**" access="ROLE_USER" />
                 <form-login 
                     login-page="/login"

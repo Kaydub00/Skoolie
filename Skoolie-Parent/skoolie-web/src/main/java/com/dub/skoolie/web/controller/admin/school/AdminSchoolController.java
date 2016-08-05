@@ -67,7 +67,6 @@ public class AdminSchoolController {
     @Secured("ROLE_SCHOOL_ADMIN")
     @RequestMapping(value="/admin/school")
     public ModelAndView getSchool(Model model, Principal principal) {
-        // need to figure out how I'm going to associate users with schools still
         SchoolAdminBean usr = uiSchoolAdminServiceImpl.getSchoolAdmin(principal.getName());
         return new ModelAndView("redirect:/admin/schools/" + usr.getPrimarySchool().getId());
     }

@@ -41,5 +41,20 @@
                 </ul>
             </div>
         </div>
+        
+        <div th:fragment="admin-school">
+            <div id="sidebar" class="col-xs-2">
+                <ul class="sidebar-nav">
+                    <li><a th:href="@{/admin/schools/{id}(id=${schoolBean.id})}">Dashboard</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/courses(id=${schoolBean.id})}">Courses</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/calendar(id=${schoolBean.id})}">Calendar</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/schedule(id=${schoolBean.id})}">Schedule</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/rooms(id=${schoolBean.id})}">Rooms</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/config(id=${schoolBean.id})}">Config</a></li>
+                    <li><a th:href="@{/admin/schools/{id}/settings(id=${schoolBean.id})}">Settings</a></li>
+                </ul>
+            </div>
+        </div>
+        
     </body>
 </html>

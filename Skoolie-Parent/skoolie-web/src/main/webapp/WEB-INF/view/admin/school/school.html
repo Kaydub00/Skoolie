@@ -39,7 +39,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-2 col-xs-1">
-                    <div th:replace="../templates/sidebar :: system-school">Side Bar</div>
+                    <div th:replace="../templates/sidebar :: admin-school">Side Bar</div>
                 </div>
                 
                 <div class="col-sm-10 col-xs-11">
@@ -65,7 +65,7 @@
                                                     <span th:text="${'Edit: ' + schoolBean.name}"></span>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="#" th:action="@{/system/schools}" th:object="${schoolBean}" method="post" role="form">
+                                                    <form action="#" th:action="@{/admin/schools}" th:object="${schoolBean}" method="post" role="form">
                                                         <div class="form-group">
                                                             
                                                             <input type="hidden" th:value="${schoolBean.id}" name="id" id="id"/>
@@ -119,18 +119,18 @@
                                                 },
                                                 eventSources: [
                                                     {
-                                                        url: /*[[@{/system/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../system/schedule/events/school",
+                                                        url: /*[[@{/admin/schedule/events/school/{id}(id=${schoolBean.id})}]]*/ "../admin/schedule/events/school",
                                                         editable: false,
                                                         durationEditable: false,
                                                     },
                                                     {
-                                                        url: /*[[@{/system/schedule/events/district/{id}(id=${schoolBean.district.id})}]]*/ "../system/schedule/events/district",
+                                                        url: /*[[@{/admin/schedule/events/district/{id}(id=${schoolBean.district.id})}]]*/ "../admin/schedule/events/district",
                                                         editable: false,
                                                         durationEditable: false,
                                                         color: 'black',
                                                     },
                                                     {
-                                                        url: /*[[@{/system/schools/{school}/calendar/schoolyear(school=${schoolBean.id})}]]*/ "../system/schools/calendar/schoolyear",
+                                                        url: /*[[@{/admin/schools/{school}/calendar/schoolyear(school=${schoolBean.id})}]]*/ "../admin/schools/calendar/schoolyear",
                                                         editable: false,
                                                         durationEditable: false,
                                                         color: 'gray',
@@ -144,7 +144,7 @@
                                                         }
                                                     },
                                                     {
-                                                        url: /*[[@{/system/schools/{school}/calendar/gradingperiod(school=${schoolBean.id})}]]*/ "../system/schools/calendar/gradingperiod",
+                                                        url: /*[[@{/admin/schools/{school}/calendar/gradingperiod(school=${schoolBean.id})}]]*/ "../admin/schools/calendar/gradingperiod",
                                                         editable: false,
                                                         durationEditable: false,
                                                         color: 'gray',
@@ -202,7 +202,7 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                     
-                                                                            <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
+                                                                            <form action="#" th:action="@{/admin/schedule/schoolyear}" th:object="${schoolYearBean}" method="post" role="form">
                                                                                 <div class="form-group">
                                                                                     <label for="name">Name</label>
                                                                                     <input class="form-control" id="name" name="name" type="text" th:value="${schoolYearBean.name}" />
@@ -274,7 +274,7 @@
                                                                                 <h4 th:text="${'Edit: ' + gradingPeriodBean.name}">Edit</h4>
                                                                             </div>
                                                                             <div class="modal-body">
-                                                                                <form action="#" th:action="@{/system/schedule/gradingperiod}" th:object="${gradingPeriodBean}" method="post" role="form">
+                                                                                <form action="#" th:action="@{/admin/schedule/gradingperiod}" th:object="${gradingPeriodBean}" method="post" role="form">
                                                                                     <div class="form-group">
                                                                                         <label for="name">Name</label>
                                                                                         <input class="form-control" id="name" type="text" name="name"
@@ -353,7 +353,7 @@
                                                                                     <h4 th:text="${'Edit: ' + classTimeBlockBean.name}">Edit</h4>
                                                                                 </div>
                                                                                 <div class="modal-body">
-                                                                                    <form action="#" th:action="@{/system/schedule/classtimeblock}" th:object="${classTimeBlockBean}" method="post" role="form">
+                                                                                    <form action="#" th:action="@{/admin/schedule/classtimeblock}" th:object="${classTimeBlockBean}" method="post" role="form">
                                                                                         <div class="form-group">
                                                                                             <label for="name">Name</label><input class="form-control" id="name" name="name" type="text" th:value="${classTimeBlockBean.name}" />
                                                                                                     
