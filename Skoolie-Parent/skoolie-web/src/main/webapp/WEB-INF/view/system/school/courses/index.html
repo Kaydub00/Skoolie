@@ -44,7 +44,7 @@
                                 <div class="panel-body">
                                     <ul id="subject-list" class="list-group">
                                         <li th:each="subjectBean : ${subjectBeans}" class="list-group-item" th:id="${subjectBean.id}">
-                                            <h3 th:text="${subjectBean.name}">Subject</h3>
+                                            <h3 th:text="${subjectBean.name}">Subject<span class="pull-right"><a href="#">Add Course</a></h3>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
                                             <span th:text="${subjectBean.description}">Permission Desc</span>
                                         </li>
@@ -62,7 +62,7 @@
                                 <div class="panel-body">
                                     <ul id="course-list" class="list-group">
                                         <li th:each="courseBean : ${courseBeans}" class="list-group-item" th:id="${'course' + courseBean.subject.id}">
-                                            <h3 th:text="${courseBean.name}">Course</h3>
+                                            <h3><a href="#" th:text="${courseBean.name}">Course</a></h3>
                                             <h4>Code</h4>
                                             <span>Permission Desc</span>
                                         </li>
@@ -90,22 +90,15 @@
                 }
             });
             
-            function showCoursesBySubject(course) {
-                var liArray = $("#course-list li");
-                for(var i = 0; i < liArray.length; ++i) {
-                    if(liArray[i].id == "course"+course) {
-                        alert("still works");
-                        //liArray[i].hide();
-                        $("#course-list li#"+i).show();
-                        //var litem = liArray[i];
-                        //litem.show();
-                        alert("maybe worked");
+            function showCoursesBySubject(subject) {
+                $("#course-list li").each(function() {
+                    var id = $(this).attr("id");
+                    if(id == "course"+subject) {
+                        $(this).show();
                     } else {
-                        $("#course-list li#"+i).hide();
-                        //var litem = liArray[i];
-                        //litem.hide();
+                        $(this).hide();
                     }
-                }
+                });
             }
             
             function showAllCourses() {
