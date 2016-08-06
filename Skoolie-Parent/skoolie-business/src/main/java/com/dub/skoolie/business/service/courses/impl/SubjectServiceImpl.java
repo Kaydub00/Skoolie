@@ -53,7 +53,11 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public SubjectBean updateEntity(SubjectBean entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Subject sbj = new Subject();
+        mapper.map(entity, sbj);
+        sbj = repo.save(sbj);
+        mapper.map(sbj,entity);
+        return entity;
     }
 
     @Override
