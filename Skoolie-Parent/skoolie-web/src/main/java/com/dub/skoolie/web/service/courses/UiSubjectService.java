@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.service.courses;
 
 import com.dub.skoolie.structures.courses.SubjectBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.List;
 
 /**
@@ -25,5 +26,9 @@ public interface UiSubjectService {
     public void deleteSubjectById(Long id);
     
     public void deleteSubject(SubjectBean subject);
+    
+    public List<SubjectBean> getSubjectsBySchool(Long id);
+    
+    public List<SubjectBean> getSubjectsBySchool(SchoolBean school);
     
 }

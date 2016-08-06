@@ -6,6 +6,9 @@
 package com.dub.skoolie.data.dao.courses;
 
 import com.dub.skoolie.data.entities.courses.Course;
+import com.dub.skoolie.data.entities.courses.Subject;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,4 +17,11 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CourseRepository extends CrudRepository<Course, Long>{
     
+    @Query("select c from Course c where c.subject.school.id = ?1")
+    public List<Course> findCourseBySchoolId(Long id);
+    
+    @Query("select c from Course c where c.subject.id = ?1")
+    public List<Course> findCourseBySubjectId(Long id);
+    
+    public List<Course> findBySubject(Subject subject);
 }

@@ -5,10 +5,75 @@
  */
 package com.dub.skoolie.business.service.courses.impl;
 
+import com.dub.skoolie.business.service.courses.SubjectService;
+import com.dub.skoolie.data.dao.courses.SubjectRepository;
+import com.dub.skoolie.data.entities.courses.Subject;
+import com.dub.skoolie.structures.courses.SubjectBean;
+import com.dub.skoolie.structures.school.SchoolBean;
+import java.util.ArrayList;
+import java.util.List;
+import org.dozer.Mapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  *
  * @author Kevin W
  */
-public class SubjectServiceImpl {
+@Transactional("skooliecoreTransactionManager")
+@Service
+public class SubjectServiceImpl implements SubjectService {
+    
+    @Autowired
+    Mapper mapper;
+    
+    @Autowired
+    SubjectRepository repo;
+
+    @Override
+    public List<SubjectBean> getSubjectsBySchool(SchoolBean school) {
+        List<SubjectBean> newlist = new ArrayList<>();
+        Iterable<Subject> list = repo.findSubjectBySchoolId(school.getId());
+        for(Subject sbj : list) {
+            newlist.add(mapper.map(sbj, SubjectBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<SubjectBean> getSubjectsBySchoolId(Long id) {
+        List<SubjectBean> newlist = new ArrayList<>();
+        Iterable<Subject> list = repo.findSubjectBySchoolId(id);
+        for(Subject sbj : list) {
+            newlist.add(mapper.map(sbj, SubjectBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public SubjectBean updateEntity(SubjectBean entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteEntity(SubjectBean entity) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void deleteByID(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public SubjectBean getByID(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SubjectBean> getAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

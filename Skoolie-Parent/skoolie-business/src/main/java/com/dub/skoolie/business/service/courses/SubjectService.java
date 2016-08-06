@@ -7,6 +7,8 @@ package com.dub.skoolie.business.service.courses;
 
 import com.dub.skoolie.business.service.BaseCrudService;
 import com.dub.skoolie.structures.courses.SubjectBean;
+import com.dub.skoolie.structures.school.SchoolBean;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,7 @@ import com.dub.skoolie.structures.courses.SubjectBean;
  */
 public interface SubjectService extends BaseCrudService<SubjectBean,Long>{
     
+    public List<SubjectBean> getSubjectsBySchool(SchoolBean school);
+    
+    public List<SubjectBean> getSubjectsBySchoolId(Long id);
 }

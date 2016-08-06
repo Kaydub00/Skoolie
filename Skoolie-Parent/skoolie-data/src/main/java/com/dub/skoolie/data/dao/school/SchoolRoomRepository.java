@@ -19,7 +19,7 @@ public interface SchoolRoomRepository extends CrudRepository<SchoolRoom, Long> {
     
     @Query("select r from SchoolRoom r "
             + "where r.school.id = ?1")
-    List<SchoolRoom> findSchoolRoomsBySchoolId(Long id);
+    public List<SchoolRoom> findSchoolRoomsBySchoolId(Long id);
     
     public List<SchoolRoom> findBySchool(School school);
 }
