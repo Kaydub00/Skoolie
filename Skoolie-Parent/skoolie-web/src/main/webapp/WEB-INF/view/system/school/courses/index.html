@@ -38,9 +38,11 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     Subjects
+                                    <a href="#" class="btn btn-success pull-right">Add Subject</a>
+                                    <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
-                                    <ul class="list-group">
+                                    <ul id="subject-list" class="list-group">
                                         <li th:each="subjectBean : ${subjectBeans}" class="list-group-item">
                                             <h3 th:text="${subjectBean.name}">Subject</h3>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
@@ -53,7 +55,9 @@
                         <div class="col-sm-5 col-sm-offset-0 col-xs-11 col-xs-offset-1">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Courses list here
+                                    Courses
+                                    <a href="#" class="btn btn-success pull-right">Add Course</a>
+                                    <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
                                     Yup, courses will go here
@@ -64,5 +68,17 @@
                 </div>
             </div>
         </div>
+        
+        <script type="text/javascript" th:inline="javascript">
+            $("#subject-list li").click(function(e) {
+                $that = $(this);
+                $('#subject-list').find('li').removeClass('active');
+                if($that.hasClass('active')){
+                    $that.removeClass('active');
+                } else {
+                    $that.addClass('active');
+                }
+            });
+        </script>
     </body>
 </html>
