@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class SystemSubjectController {
     
-    //@Autowired
+    @Autowired
     UiSubjectService uiSubjectServiceImpl;
     
     @RequestMapping(value="/system/subjects", method=RequestMethod.GET)
