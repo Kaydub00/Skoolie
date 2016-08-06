@@ -37,10 +37,16 @@
                         <div class="col-sm-5 col-sm-offset-0 col-xs-11 col-xs-offset-1">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Subject list here
+                                    Subjects
                                 </div>
                                 <div class="panel-body">
-                                    Yay list right here!!!
+                                    <ul class="list-group">
+                                        <li th:each="subjectBean : ${subjectBeans}" class="list-group-item">
+                                            <h3 th:text="${subjectBean.name}">Subject</h3>
+                                            <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
+                                            <span th:text="${subjectBean.description}">Permission Desc</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
