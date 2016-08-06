@@ -75,24 +75,7 @@
                                 <div class="panel-heading">
                                     Courses
                                     <a href="#" class="btn btn-primary pull-right" data-target="#addCourse" data-toggle="modal" data-backdrop="false">Add Course</a>
-                                    <div id="addCourse" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4>Course</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${courseBean}" method="post" role="form">
-                                                        <div class="form-group">
-                                                            <label for="name">Name</label>
-                                                            <input class="form-control" id="name" name="name" type="text" th:value="${courseBean.name}" />
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
@@ -104,6 +87,24 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="addCourse" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Course</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${courseBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" id="name" name="name" type="text" th:value="${courseBean.name}" />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
