@@ -34,12 +34,12 @@ public class SystemSubjectController {
     }
     
     @RequestMapping(value="/system/subjects/{subject}", method=RequestMethod.GET)
-    public ModelAndView getDistrictAdmin(@PathVariable("subject") String subject, Model model) {
+    public ModelAndView getSubject(@PathVariable("subject") String subject, Model model) {
         return new ModelAndView("");
     }
     
     @RequestMapping(value="/system/subjects", method=RequestMethod.POST)
-    public ModelAndView addDistrictAdmin(@Valid SubjectBean subjectBean, BindingResult result, Model model, HttpServletRequest request) {
+    public ModelAndView addSubject(@Valid SubjectBean subjectBean, BindingResult result, Model model, HttpServletRequest request) {
         String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
             if(!referrer.equals("/system/subjects")) {
