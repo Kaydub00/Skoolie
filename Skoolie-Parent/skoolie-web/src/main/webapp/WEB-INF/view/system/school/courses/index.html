@@ -44,7 +44,7 @@
                                 <div class="panel-body">
                                     <ul id="subject-list" class="list-group">
                                         <li th:each="subjectBean : ${subjectBeans}" class="list-group-item" th:id="${subjectBean.id}">
-                                            <h3 th:text="${subjectBean.name}">Subject<span class="pull-right"><a href="#">Add Course</a></h3>
+                                            <h3 th:text="${subjectBean.name}">Subject<span class="pull-right"><a href="#">Add Course</a></span></h3>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
                                             <span th:text="${subjectBean.description}">Permission Desc</span>
                                         </li>
