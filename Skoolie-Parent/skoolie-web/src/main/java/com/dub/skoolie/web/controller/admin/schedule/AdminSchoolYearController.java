@@ -5,6 +5,8 @@
  */
 package com.dub.skoolie.web.controller.admin.schedule;
 
+import com.dub.skoolie.web.service.schedule.UiSchoolYearService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -13,5 +15,10 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class AdminSchoolYearController {
+    
+    @Autowired
+    UiSchoolYearService uiSchoolYearServiceImpl;
+    
+    
     
 }

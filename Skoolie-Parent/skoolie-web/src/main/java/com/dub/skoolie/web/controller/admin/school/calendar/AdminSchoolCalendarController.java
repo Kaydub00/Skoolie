@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dub.skoolie.web.controller.system.school.calendar;
+package com.dub.skoolie.web.controller.admin.school.calendar;
 
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
@@ -28,11 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Kevin W
  */
 @Controller
-public class SystemSchoolCalendarController {
-    
-    //probably should make a SchoolCalendar Service object for ui
-    //@Autowired
-    //UiSchoolCalendarService uiSchoolCalendarServiceImpl;
+public class AdminSchoolCalendarController {
     
     @Autowired
     UiSchoolService uiSchoolServiceImpl;
@@ -43,21 +39,21 @@ public class SystemSchoolCalendarController {
     @Autowired
     UiGradingPeriodService uiGradingPeriodServiceImpl;
     
-    @RequestMapping(value="/system/schools/{id}/calendar", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/schools/{id}/calendar", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean schoolBean = uiSchoolServiceImpl.getSchool(school);
         model.addAttribute("schoolBean", schoolBean);
-        return new ModelAndView("system/school/calendar/schoolcalendar");
+        return new ModelAndView("admin/school/calendar/schoolcalendar");
     }
     
-    @RequestMapping(value="/system/schools/{school}/calendar/schoolyear", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/schools/{school}/calendar/schoolyear", method=RequestMethod.GET)
     public @ResponseBody String getSchoolYears(@PathVariable("school") Long id) throws JsonProcessingException {
         List<SchoolYearBean> schoolYearBeans = uiSchoolYearServiceImpl.getSchoolYearsBySchoolId(id);
         ObjectMapper mapper = new ObjectMapper();
         return mapper.writeValueAsString(schoolYearBeans);
     }
     
-    @RequestMapping(value="/system/schools/{school}/calendar/gradingperiod", method=RequestMethod.GET)
+    @RequestMapping(value="/admin/schools/{school}/calendar/gradingperiod", method=RequestMethod.GET)
     public @ResponseBody String getGradingPeriods(@PathVariable("school") Long id) throws JsonProcessingException {
         List<GradingPeriodBean> gradingPeriodBeans = uiGradingPeriodServiceImpl.getGradingPeriodBySchoolId(id);
         ObjectMapper mapper = new ObjectMapper();
