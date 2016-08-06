@@ -39,24 +39,7 @@
                                 <div class="panel-heading">
                                     Subjects
                                     <a href="#" class="btn btn-primary pull-right" data-target="#addSubject" data-toggle="modal" data-backdrop="false">Add Subject</a>
-                                    <div id="addSubject" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h4>Subject</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${subjectBean}" method="post" role="form">
-                                                        <div class="form-group">
-                                                            <label for="name">Name</label>
-                                                            <input class="form-control" id="name" name="name" type="text" th:value="${subjectBean.name}" />
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
@@ -87,6 +70,28 @@
                                     </ul>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="addSubject" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Subject</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/subjects}" th:object="${subjectBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="hidden" name="school" th:value="${schoolBean.id}"/>
+                                    <input class="form-control" id="name" name="name" type="text" />
+                                    <input class="form-control" name="code" type="text"/>
+                                    <input class="form-control" name="description" type="text"/>
+                                    <input type="submit"/>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
