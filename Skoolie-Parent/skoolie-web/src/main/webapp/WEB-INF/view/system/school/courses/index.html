@@ -43,7 +43,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul id="subject-list" class="list-group">
-                                        <li th:each="subjectBean : ${subjectBeans}" class="list-group-item">
+                                        <li th:each="subjectBean : ${subjectBeans}" class="list-group-item" th:id="${subjectBean.id}">
                                             <h3 th:text="${subjectBean.name}">Subject</h3>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
                                             <span th:text="${subjectBean.description}">Permission Desc</span>
@@ -60,7 +60,13 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="panel-body">
-                                    Yup, courses will go here
+                                    <ul id="course-list" class="list-group">
+                                        <li th:each="courseBean : ${courseBeans}" class="list-group-item" th:id="${courseBean.subject.id}">
+                                            <h3 th:text="${courseBean.name}">Course</h3>
+                                            <h4>Code</h4>
+                                            <span>Permission Desc</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -70,13 +76,14 @@
         </div>
         
         <script type="text/javascript" th:inline="javascript">
-            $("#subject-list li").click(function(e) {
+            $("#subject-list li").click(function() {
                 $that = $(this);                
                 if($that.hasClass('active')){
                     $that.removeClass('active');
                 } else {
                     $('#subject-list').find('li').removeClass('active');
                     $that.addClass('active');
+                    //alert(this.id);
                 }
             });
         </script>
