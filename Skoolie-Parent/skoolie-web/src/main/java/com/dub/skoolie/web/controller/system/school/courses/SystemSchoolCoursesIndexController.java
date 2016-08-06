@@ -20,7 +20,7 @@ public class SystemSchoolCoursesIndexController {
     
     @RequestMapping(value="/system/schools/{id}/coursesidx", method=RequestMethod.GET)
     public ModelAndView getSchoolCoursesIndex(Model model) {
-        return new ModelAndView("whatever");
+        return new ModelAndView("system/school/courses/index");
     }
     
 }
