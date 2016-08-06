@@ -71,11 +71,11 @@
         
         <script type="text/javascript" th:inline="javascript">
             $("#subject-list li").click(function(e) {
-                $that = $(this);
-                $('#subject-list').find('li').removeClass('active');
+                $that = $(this);                
                 if($that.hasClass('active')){
                     $that.removeClass('active');
                 } else {
+                    $('#subject-list').find('li').removeClass('active');
                     $that.addClass('active');
                 }
             });
