@@ -36,6 +36,7 @@ public class SystemSchoolCoursesIndexController {
     public ModelAndView getSchoolCoursesIndex(@PathVariable("id") Long school, Model model) {
         model.addAttribute("schoolBean", uiSchoolServiceImpl.getSchool(school));
         model.addAttribute("subjectBeans", uiSubjectServiceImpl.getSubjectsBySchool(school));
+        model.addAttribute("courseBeans", uiCourseServiceImpl.getCoursesBySchool(school));
         return new ModelAndView("system/school/courses/index");
     }
     

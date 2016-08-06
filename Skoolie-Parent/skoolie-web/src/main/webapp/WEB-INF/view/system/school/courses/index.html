@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul id="course-list" class="list-group">
-                                        <li th:each="courseBean : ${courseBeans}" class="list-group-item" th:id="${courseBean.subject.id}">
+                                        <li th:each="courseBean : ${courseBeans}" class="list-group-item" th:id="${'course' + courseBean.subject.id}">
                                             <h3 th:text="${courseBean.name}">Course</h3>
                                             <h4>Code</h4>
                                             <span>Permission Desc</span>
@@ -76,16 +76,42 @@
         </div>
         
         <script type="text/javascript" th:inline="javascript">
+            /*<![CDATA[*/
             $("#subject-list li").click(function() {
                 $that = $(this);                
                 if($that.hasClass('active')){
                     $that.removeClass('active');
+                    showAllCourses();
                 } else {
                     $('#subject-list').find('li').removeClass('active');
                     $that.addClass('active');
+                    showCoursesBySubject(this.id);
                     //alert(this.id);
                 }
             });
+            
+            function showCoursesBySubject(course) {
+                var liArray = $("#course-list li");
+                for(var i = 0; i < liArray.length; ++i) {
+                    if(liArray[i].id == "course"+course) {
+                        alert("still works");
+                        //liArray[i].hide();
+                        $("#course-list li#"+i).show();
+                        //var litem = liArray[i];
+                        //litem.show();
+                        alert("maybe worked");
+                    } else {
+                        $("#course-list li#"+i).hide();
+                        //var litem = liArray[i];
+                        //litem.hide();
+                    }
+                }
+            }
+            
+            function showAllCourses() {
+                $("#course-list li").show();
+            }
+            /*]]>*/
         </script>
     </body>
 </html>

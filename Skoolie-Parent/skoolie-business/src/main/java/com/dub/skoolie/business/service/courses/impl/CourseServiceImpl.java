@@ -7,9 +7,11 @@ package com.dub.skoolie.business.service.courses.impl;
 
 import com.dub.skoolie.business.service.courses.CourseService;
 import com.dub.skoolie.data.dao.courses.CourseRepository;
+import com.dub.skoolie.data.entities.courses.Course;
 import com.dub.skoolie.structures.courses.CourseBean;
 import com.dub.skoolie.structures.courses.SubjectBean;
 import com.dub.skoolie.structures.school.SchoolBean;
+import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,22 +34,42 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<CourseBean> getCoursesBySchool(SchoolBean school) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CourseBean> newlist = new ArrayList<>();
+        Iterable<Course> list = repo.findCourseBySchoolId(school.getId());
+        for(Course crs : list) {
+            newlist.add(mapper.map(crs, CourseBean.class));
+        }
+        return newlist;
     }
 
     @Override
     public List<CourseBean> getCoursesBySchoolId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CourseBean> newlist = new ArrayList<>();
+        Iterable<Course> list = repo.findCourseBySchoolId(id);
+        for(Course crs : list) {
+            newlist.add(mapper.map(crs, CourseBean.class));
+        }
+        return newlist;
     }
 
     @Override
     public List<CourseBean> getCoursesBySubject(SubjectBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CourseBean> newlist = new ArrayList<>();
+        Iterable<Course> list = repo.findCourseBySubjectId(subject.getId());
+        for(Course crs : list) {
+            newlist.add(mapper.map(crs, CourseBean.class));
+        }
+        return newlist;
     }
 
     @Override
     public List<CourseBean> getCoursesBySubjectId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CourseBean> newlist = new ArrayList<>();
+        Iterable<Course> list = repo.findCourseBySubjectId(id);
+        for(Course crs : list) {
+            newlist.add(mapper.map(crs, CourseBean.class));
+        }
+        return newlist;
     }
 
     @Override
