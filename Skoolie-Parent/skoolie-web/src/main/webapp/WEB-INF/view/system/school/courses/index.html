@@ -45,7 +45,7 @@
                                 <div class="panel-body">
                                     <ul id="subject-list" class="list-group">
                                         <li th:each="subjectBean : ${subjectBeans}" class="list-group-item" th:id="${subjectBean.id}">
-                                            <h3 th:text="${subjectBean.name}">Subject</h3><span class="pull-right"><a href="#" th:id="${subjectBean.id}" data-target="#addCourseFromSubject" data-toggle="modal" data-backdrop="false">Add Course</a></span>
+                                            <h3><a th:href="@{/system/subjects/{subj}(subj=${subjectBean.id})}" th:text="${subjectBean.name}">Subject</a></h3><span class="pull-right"><a href="#" th:id="${subjectBean.id}" data-target="#addCourseFromSubject" data-toggle="modal" data-backdrop="false">Add Course</a></span>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
                                             <span th:text="${subjectBean.description}">Permission Desc</span>
                                         </li>
@@ -64,7 +64,7 @@
                                 <div class="panel-body">
                                     <ul id="course-list" class="list-group">
                                         <li th:each="courseBean : ${courseBeans}" class="list-group-item" th:id="${'course' + courseBean.subject.id}">
-                                            <h3><a href="#" th:text="${courseBean.name}">Course</a></h3>
+                                            <h3><a href="#" th:href="@{/system/courses/{course}(course=${courseBean.id})}" th:text="${courseBean.name}">Course</a></h3>
                                             <h4 th:text="${courseBean.description}">Code</h4>
                                         </li>
                                     </ul>
