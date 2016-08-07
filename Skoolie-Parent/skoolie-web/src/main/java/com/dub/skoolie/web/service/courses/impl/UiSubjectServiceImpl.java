@@ -35,12 +35,12 @@ public class UiSubjectServiceImpl implements UiSubjectService {
 
     @Override
     public void updateSubject(SubjectBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        subjectServiceImpl.updateEntity(subject);
     }
 
     @Override
     public void addSubject(SubjectBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        subjectServiceImpl.updateEntity(subject);
     }
 
     @Override
