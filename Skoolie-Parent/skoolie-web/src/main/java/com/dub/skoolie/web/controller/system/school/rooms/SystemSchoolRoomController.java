@@ -47,8 +47,8 @@ public class SystemSchoolRoomController {
         return new ModelAndView("system/school/rooms/index");
     }
     
-    @RequestMapping(value="/system/schools/{id}/rooms", method=RequestMethod.POST)
-    public ModelAndView addSchoolRoom(@PathVariable("id") Long schoolid, @Valid SchoolRoomBean schoolRoomBean, BindingResult result, Model model, HttpServletRequest request) {
+    @RequestMapping(value="/system/schools/{schoolid}/rooms", method=RequestMethod.POST)
+    public ModelAndView addSchoolRoom(@PathVariable("schoolid") Long schoolid, @Valid SchoolRoomBean schoolRoomBean, BindingResult result, Model model, HttpServletRequest request) {
         String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
             if(!referrer.equals("/system/schools/" + schoolid + "/rooms")) {

@@ -92,7 +92,7 @@
                                             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">username Error</span>
                             
                                             <label for="type">Type</label><input class="form-control" id="type" type="text" th:field="*{type}" />
-                                            <span th:if="${#fields.hasErrors('type')}" th:errors="*{name}">type Error</span>
+                                            <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}">type Error</span>
                                 
                                             <label for="capacity">Capacity</label><input class="form-control" id="capacity" type="number" th:field="*{capacity}" />
                                             <span th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}">capacity Error</span>
