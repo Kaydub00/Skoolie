@@ -74,7 +74,11 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public CourseBean updateEntity(CourseBean entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Course crs = new Course();
+        mapper.map(entity, crs);
+        crs = repo.save(crs);
+        mapper.map(crs,entity);
+        return entity;
     }
 
     @Override

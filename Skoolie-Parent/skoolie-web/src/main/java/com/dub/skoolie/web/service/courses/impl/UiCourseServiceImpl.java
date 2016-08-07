@@ -36,12 +36,12 @@ public class UiCourseServiceImpl implements UiCourseService{
 
     @Override
     public void updateCourse(CourseBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        courseServiceImpl.updateEntity(subject);
     }
 
     @Override
     public void addCourse(CourseBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        courseServiceImpl.updateEntity(subject);
     }
 
     @Override

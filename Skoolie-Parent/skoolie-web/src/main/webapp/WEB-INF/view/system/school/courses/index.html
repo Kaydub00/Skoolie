@@ -87,7 +87,9 @@
                                     <label for="name">Name</label>
                                     <input type="hidden" name="school" th:value="${schoolBean.id}"/>
                                     <input class="form-control" id="name" name="name" type="text" />
+                                    <label for="code">Code</label>
                                     <input class="form-control" name="code" type="text"/>
+                                    <label for="description">Description</label>
                                     <input class="form-control" name="description" type="text"/>
                                     <input type="submit"/>
                                 </div>
@@ -104,10 +106,19 @@
                             <h4>Course</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="#" th:action="@{/system/schedule/schoolyear}" th:object="${courseBean}" method="post" role="form">
+                            <form action="#" th:action="@{/system/courses}" th:object="${courseBean}" method="post" role="form">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input class="form-control" id="name" name="name" type="text" th:value="${courseBean.name}" />
+                                    <label for="description">Description</label>
+                                    <input class="form-control" id="description" name="description" type="text"/>
+                                    <label for="type">Type</label>
+                                    <select class="form-control" id="subject" name="subject">
+                                        <option th:each="subject : ${subjectBeans}"
+                                                th:value="${subject.id}"
+                                                th:text="${subject.name}">Type</option>
+                                    </select>
+                                    <input type="submit"/>
                                 </div>
                             </form>
                         </div>
