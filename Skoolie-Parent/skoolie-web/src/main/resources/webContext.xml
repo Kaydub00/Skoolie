@@ -29,6 +29,7 @@
                 <bean class="com.dub.skoolie.web.forms.conversion.IdToUserConverter"/>
                 <bean class="com.dub.skoolie.web.forms.conversion.IdToDistrictConverter"/>
                 <bean class="com.dub.skoolie.web.forms.conversion.IdToSubjectConverter"/>
+                <bean class="com.dub.skoolie.web.forms.conversion.IdToGradeLevelConverter"/>
             </list>
         </property>
     </bean>

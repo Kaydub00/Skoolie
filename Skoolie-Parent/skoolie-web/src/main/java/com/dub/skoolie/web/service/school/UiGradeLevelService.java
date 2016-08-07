@@ -6,23 +6,20 @@
 package com.dub.skoolie.web.service.school;
 
 import com.dub.skoolie.structures.school.GradeLevelBean;
-import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.List;
 
 /**
  *
- * @author Kevin W
+ * @author kevinw
  */
-public interface UiSchoolService {
+public interface UiGradeLevelService {
     
-    public List<SchoolBean> getSchools();
+    public List<GradeLevelBean> getGradeLevels();
     
-    public void updateSchool(SchoolBean skl);
+    public void updateGradeLevel(GradeLevelBean glb);
     
-    public void addSchool(SchoolBean skl);
+    public void addGradeLevel(GradeLevelBean glb);
     
-    public SchoolBean getSchool(Long id);
-    
-    public List<GradeLevelBean> getAvailableGradeLevels();
+    public GradeLevelBean getGradeLevel(Long id);
     
 }

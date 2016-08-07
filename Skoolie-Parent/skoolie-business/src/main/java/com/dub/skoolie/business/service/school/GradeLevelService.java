@@ -7,15 +7,11 @@ package com.dub.skoolie.business.service.school;
 
 import com.dub.skoolie.business.service.BaseCrudService;
 import com.dub.skoolie.structures.school.GradeLevelBean;
-import com.dub.skoolie.structures.school.SchoolBean;
-import java.util.List;
 
 /**
  *
- * @author Kevin W
+ * @author kevinw
  */
-public interface SchoolService extends BaseCrudService<SchoolBean,Long> {
-    
-    public List<GradeLevelBean> getAvailableGradeLevels();
+public interface GradeLevelService extends BaseCrudService<GradeLevelBean,Long> {
     
 }

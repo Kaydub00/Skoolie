@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.service.school.impl;
 
 import com.dub.skoolie.business.service.school.SchoolService;
+import com.dub.skoolie.structures.school.GradeLevelBean;
 import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.school.UiSchoolService;
 import java.util.List;
@@ -40,6 +41,11 @@ public class UiSchoolServiceImpl implements UiSchoolService {
     @Override
     public SchoolBean getSchool(Long id) {
         return schoolServiceImpl.getByID(id);
+    }
+
+    @Override
+    public List<GradeLevelBean> getAvailableGradeLevels() {
+        return schoolServiceImpl.getAvailableGradeLevels();
     }
     
 }

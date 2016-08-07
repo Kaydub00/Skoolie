@@ -5,9 +5,11 @@
  */
 package com.dub.skoolie.business.service.school.impl;
 
+import com.dub.skoolie.business.service.school.GradeLevelService;
 import com.dub.skoolie.business.service.school.SchoolService;
 import com.dub.skoolie.data.dao.school.SchoolRepository;
 import com.dub.skoolie.data.entities.school.School;
+import com.dub.skoolie.structures.school.GradeLevelBean;
 import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,9 @@ public class SchoolServiceImpl implements SchoolService {
     
     @Autowired
     SchoolRepository repo;
+    
+    @Autowired
+    GradeLevelService gradeLevelServiceImpl;
 
     @Override
     public SchoolBean updateEntity(SchoolBean entity) {
@@ -64,6 +69,11 @@ public class SchoolServiceImpl implements SchoolService {
             newlist.add(mapper.map(skl, SchoolBean.class));
         }
         return newlist;
+    }
+
+    @Override
+    public List<GradeLevelBean> getAvailableGradeLevels() {
+        return gradeLevelServiceImpl.getAll();
     }
     
 }

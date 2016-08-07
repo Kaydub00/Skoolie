@@ -417,6 +417,9 @@
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
                                     Grade Levels
+                                    <a href="#" class="btn btn-primary pull-right" data-target="#addGradeLevel" data-toggle="modal" data-backdrop="false">Add Grade Level</a>
+                                    <div class="clearfix"></div>
+                                    
                                 </div>
                                 <div class="panel-body">
                                     <ul id="gradelevel-list" class="list-group">
@@ -425,6 +428,30 @@
                                 </div>
                             </div>
                         </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="addGradeLevel" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>Grade Level</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" th:action="@{/system/schools/{schoolid}/gradelevel(schoolid=${schoolBean.id})}" method="post" role="form">
+                            <div class="form-group">
+                                <input type="hidden" th:value="${schoolBean.id}" name="school"/>
+                                <select class="form-control" id="gradeLevel-select" name="gradeLevel">
+                                    <option th:each="gradeLevelBean : ${gradeLevelBeans}"
+                                            th:value="${gradeLevelBean.id}"
+                                            th:text="${gradeLevelBean.name}">Grade Level</option>
+                                </select>
+                                <input type="submit" class="btn btn-primary" />
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

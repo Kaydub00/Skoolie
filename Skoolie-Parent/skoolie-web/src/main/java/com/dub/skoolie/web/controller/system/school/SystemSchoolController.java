@@ -56,6 +56,7 @@ public class SystemSchoolController {
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
         SchoolBean skl = uiSchoolServiceImpl.getSchool(school);
         model.addAttribute("schoolBean", skl);
+        model.addAttribute("gradeLevelBeans",uiSchoolServiceImpl.getAvailableGradeLevels());
         return new ModelAndView("system/school/school");
     }
     
