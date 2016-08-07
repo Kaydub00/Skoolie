@@ -45,7 +45,7 @@
                                 <div class="panel-body">
                                     <ul id="subject-list" class="list-group">
                                         <li th:each="subjectBean : ${subjectBeans}" class="list-group-item" th:id="${subjectBean.id}">
-                                            <h3 th:text="${subjectBean.name}">Subject</h3><span class="pull-right"><a href="#">Add Course</a></span>
+                                            <h3 th:text="${subjectBean.name}">Subject</h3><span class="pull-right"><a href="#" th:id="${subjectBean.id}" data-target="#addCourseFromSubject" data-toggle="modal" data-backdrop="false">Add Course</a></span>
                                             <h4 th:text="${'Code: ' + subjectBean.code}">Code</h4>
                                             <span th:text="${subjectBean.description}">Permission Desc</span>
                                         </li>
@@ -113,7 +113,35 @@
                                     <label for="description">Description</label>
                                     <input class="form-control" id="description" name="description" type="text"/>
                                     <label for="type">Type</label>
-                                    <select class="form-control" id="subject" name="subject">
+                                    <select class="form-control" id="subjectselect" name="subject">
+                                        <option th:each="subject : ${subjectBeans}"
+                                                th:value="${subject.id}"
+                                                th:text="${subject.name}">Type</option>
+                                    </select>
+                                    <input type="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="addCourseFromSubject" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Course</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/courses}" th:object="${courseBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" id="name" name="name" type="text" th:value="${courseBean.name}" />
+                                    <label for="description">Description</label>
+                                    <input class="form-control" id="description" name="description" type="text"/>
+                                    <label for="type">Type</label>
+                                    <select class="form-control" id="subjectselect" name="subject">
                                         <option th:each="subject : ${subjectBeans}"
                                                 th:value="${subject.id}"
                                                 th:text="${subject.name}">Type</option>
@@ -141,6 +169,7 @@
                     //alert(this.id);
                 }
             });
+            
             
             function showCoursesBySubject(subject) {
                 $("#course-list li").each(function() {
