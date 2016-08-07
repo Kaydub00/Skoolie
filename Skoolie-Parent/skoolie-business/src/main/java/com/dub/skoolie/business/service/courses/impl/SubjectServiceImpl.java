@@ -72,7 +72,9 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public SubjectBean getByID(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        SubjectBean sbj = new SubjectBean();
+        mapper.map(repo.findOne(id), sbj);
+        return sbj;
     }
 
     @Override

@@ -15,14 +15,14 @@ import org.springframework.core.convert.converter.Converter;
  *
  * @author kevinw
  */
-public class IdToSubjectConverter implements Converter<Long, SubjectBean>{
+public class IdToSubjectConverter implements Converter<String, SubjectBean>{
     
     @Autowired
     SubjectService subjectServiceImpl;
 
     @Override
-    public SubjectBean convert(Long s) {
-        return subjectServiceImpl.getByID(s);
+    public SubjectBean convert(String s) {
+        return subjectServiceImpl.getByID(Long.parseLong(s));
     }
     
     
