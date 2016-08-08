@@ -80,6 +80,15 @@
                                     <span th:if="${#fields.hasErrors('postal')}" th:errors="*{postal}">postal Error</span>
                                     <label for="phone">Phone</label><input class="form-control" type="text" id="phone" th:field="*{phone}"/>
                                     <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">phone Error</span>
+                                    
+                                    
+                                    <label for="district">District</label>
+                                    <select class="form-control" id="district-selector" name="district">
+                                        <option th:each="districtBean : ${districtBeans}"
+                                                th:value="${districtBean.id}" th:text="${districtBean.name}">District</option>
+                                    </select>
+                                    
+                                    
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>

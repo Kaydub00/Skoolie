@@ -33,7 +33,7 @@ public class SystemSchoolGradeLevelController {
     @Autowired
     UiGradeLevelService uiGradeLevelService;
     
-    //should create a form object here and validate it, but going to use requestparams for now
+    //should create a form object here and validate it, but going to use requestparams for now. This should also be accomplished at the service layer but whatever
     @RequestMapping(value="/system/schools/{schoolid}/gradelevel", method=RequestMethod.POST)
     public ModelAndView addGradeLevelToSchool(@PathVariable("schoolid") Long school, @RequestParam("gradeLevel") String gradeLevel, Model model, HttpServletRequest request) {
         String referrer = request.getHeader("Referer");

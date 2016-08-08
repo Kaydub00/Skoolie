@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.controller.system.school;
 
 import com.dub.skoolie.structures.school.SchoolBean;
+import com.dub.skoolie.web.service.district.UiDistrictService;
 import com.dub.skoolie.web.service.school.UiSchoolService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -30,8 +31,12 @@ public class SystemSchoolController {
     @Autowired
     UiSchoolService uiSchoolServiceImpl;
     
+    @Autowired
+    UiDistrictService uiDistrictServiceImpl;
+    
     @RequestMapping(value="/system/schools", method=RequestMethod.GET)
     public ModelAndView getSchools(Model model) {
+        model.addAttribute("districtBeans", uiDistrictServiceImpl.getDistricts());
         model.addAttribute("schools", uiSchoolServiceImpl.getSchools());
         model.addAttribute("schoolBean", new SchoolBean());
         return new ModelAndView("system/school/schools");

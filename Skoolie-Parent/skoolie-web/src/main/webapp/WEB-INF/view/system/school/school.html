@@ -69,6 +69,7 @@
                                                         <div class="form-group">
                                                             
                                                             <input type="hidden" th:value="${schoolBean.id}" name="id" id="id"/>
+                                                            <input type="hidden" th:value="${schoolBean.district.id}" name="district"/>
                                                             <label for="name">Name</label>
                                                             <input class="form-control" id="name" name="name" type="text" th:value="${schoolBean.name}" />
                                                             
