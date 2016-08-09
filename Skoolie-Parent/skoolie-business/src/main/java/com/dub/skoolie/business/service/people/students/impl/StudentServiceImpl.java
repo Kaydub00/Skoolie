@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.people.students.StudentService;
 import com.dub.skoolie.data.dao.people.students.StudentRepository;
 import com.dub.skoolie.data.entities.people.students.Student;
 import com.dub.skoolie.structures.people.students.StudentBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -69,6 +70,26 @@ public class StudentServiceImpl implements StudentService {
     public List<StudentBean> getAll() {
         List<StudentBean> newlist = new ArrayList<>();
         Iterable<Student> list = repo.findAll();
+        for(Student s : list) {
+            newlist.add(mapper.map(s, StudentBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<StudentBean> getStudentsBySchool(SchoolBean school) {
+        List<StudentBean> newlist = new ArrayList<>();
+        Iterable<Student> list = repo.findStudentsBySchoolId(school.getId());
+        for(Student s : list) {
+            newlist.add(mapper.map(s, StudentBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<StudentBean> getStudentsBySchool(Long id) {
+        List<StudentBean> newlist = new ArrayList<>();
+        Iterable<Student> list = repo.findStudentsBySchoolId(id);
         for(Student s : list) {
             newlist.add(mapper.map(s, StudentBean.class));
         }

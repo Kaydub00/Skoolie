@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.people.faculty.TeacherService;
 import com.dub.skoolie.data.dao.people.faculty.TeacherRepository;
 import com.dub.skoolie.data.entities.people.faculty.Teacher;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -70,6 +71,26 @@ public class TeacherServiceImpl implements TeacherService {
     public List<TeacherBean> getAll() {
         List<TeacherBean> newlist = new ArrayList<>();
         Iterable<Teacher> list = repo.findAll();
+        for(Teacher t : list) {
+            newlist.add(mapper.map(t, TeacherBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<TeacherBean> getTeachersBySchool(SchoolBean school) {
+        List<TeacherBean> newlist = new ArrayList<>();
+        Iterable<Teacher> list = repo.findTeachersBySchoolId(school.getId());
+        for(Teacher t : list) {
+            newlist.add(mapper.map(t, TeacherBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<TeacherBean> getTeachersBySchool(Long id) {
+        List<TeacherBean> newlist = new ArrayList<>();
+        Iterable<Teacher> list = repo.findTeachersBySchoolId(id);
         for(Teacher t : list) {
             newlist.add(mapper.map(t, TeacherBean.class));
         }

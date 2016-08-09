@@ -7,6 +7,7 @@ package com.dub.skoolie.web.service.people.faculty.impl;
 
 import com.dub.skoolie.business.service.people.faculty.TeacherService;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,16 @@ public class UiTeacherServiceImpl implements UiTeacherService{
     @Override
     public void deleteTeacher(TeacherBean user) {
         teacherServiceImpl.deleteEntity(user);
+    }
+
+    @Override
+    public List<TeacherBean> getTeachersBySchool(SchoolBean school) {
+        return teacherServiceImpl.getTeachersBySchool(school);
+    }
+
+    @Override
+    public List<TeacherBean> getTeachersBySchool(Long id) {
+        return teacherServiceImpl.getTeachersBySchool(id);
     }
     
 }

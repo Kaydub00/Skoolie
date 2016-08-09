@@ -6,6 +6,7 @@
 package com.dub.skoolie.web.service.people.faculty;
 
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.List;
 
 /**
@@ -25,5 +26,9 @@ public interface UiTeacherService {
     public void deleteTeacherByUsername(String username);
     
     public void deleteTeacher(TeacherBean user);
+    
+    public List<TeacherBean> getTeachersBySchool(SchoolBean school);
+    
+    public List<TeacherBean> getTeachersBySchool(Long id);
     
 }
