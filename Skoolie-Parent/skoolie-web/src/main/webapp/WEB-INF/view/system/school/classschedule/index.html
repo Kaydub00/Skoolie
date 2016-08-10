@@ -20,5 +20,12 @@
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <ul id="subject-list" class="list-group">
+            <li th:each="gradingPeriodBean : ${gradingPeriodBeans}" class="list-group-item" th:id="${gradingPeriodBean.id}">
+                <h3><a href="#" th:text="${gradingPeriodBean.name}">Subject</a></h3>
+                <h4 th:text="${gradingPeriodBean.startDate}">Code</h4>
+                <span th:text="${gradingPeriodBean.endDate}">Permission Desc</span>
+            </li>
+        </ul>
     </body>
 </html>

@@ -7,6 +7,7 @@ package com.dub.skoolie.web.service.schedule;
 
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.List;
 
 /**
@@ -28,4 +29,8 @@ public interface UiGradingPeriodService {
     public void deleteGradingPeriod(Long id);
     
     public List<GradingPeriodBean> getGradingPeriodBySchoolId(Long id);
+    
+    public GradingPeriodBean getCurrentGradingPeriodBySchool(SchoolBean school);
+    
+    public GradingPeriodBean getCurrentGradingPeriodBySchool(Long id);
 }

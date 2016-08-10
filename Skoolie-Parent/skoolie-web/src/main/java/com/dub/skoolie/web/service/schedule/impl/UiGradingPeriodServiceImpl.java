@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.schedule.GradingPeriodService;
 import com.dub.skoolie.business.service.schedule.SchoolYearService;
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.structures.schedule.SchoolYearBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import com.dub.skoolie.web.service.schedule.UiGradingPeriodService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,16 @@ public class UiGradingPeriodServiceImpl implements UiGradingPeriodService{
     @Override
     public List<GradingPeriodBean> getGradingPeriodBySchoolId(Long id) {
         return gradingPeriodServiceImpl.getGradingPeriodBySchoolId(id);
+    }
+
+    @Override
+    public GradingPeriodBean getCurrentGradingPeriodBySchool(SchoolBean school) {
+        return gradingPeriodServiceImpl.getCurrentGradingPeriodBySchool(school);
+    }
+
+    @Override
+    public GradingPeriodBean getCurrentGradingPeriodBySchool(Long id) {
+        return gradingPeriodServiceImpl.getCurrentGradingPeriodBySchoolId(id);
     }
     
 }
