@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.schedule.GradingPeriodService;
 import com.dub.skoolie.data.dao.schedule.GradingPeriodRepository;
 import com.dub.skoolie.data.entities.schedule.GradingPeriod;
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
+import com.dub.skoolie.structures.school.SchoolBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -74,6 +75,20 @@ public class GradingPeriodServiceImpl implements GradingPeriodService {
             newlist.add(mapper.map(gp, GradingPeriodBean.class));
         }
         return newlist;
+    }
+
+    @Override
+    public GradingPeriodBean getCurrentGradingPeriodBySchoolId(Long id) {
+        GradingPeriodBean gp = new GradingPeriodBean();
+        mapper.map(repo.findCurrentGradingPeriodBySchoolId(id), gp);
+        return gp;
+    }
+
+    @Override
+    public GradingPeriodBean getCurrentGradingPeriodBySchool(SchoolBean school) {
+        GradingPeriodBean gp = new GradingPeriodBean();
+        mapper.map(repo.findCurrentGradingPeriodBySchoolId(school.getId()), gp);
+        return gp;
     }
     
 }

@@ -6,6 +6,7 @@
 package com.dub.skoolie.data.dao.schedule;
 
 import com.dub.skoolie.data.entities.schedule.GradingPeriod;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -18,6 +19,10 @@ public interface GradingPeriodRepository extends CrudRepository<GradingPeriod, L
     
     @Query("select e from GradingPeriod e "
             + "where e.schoolYear.school.id = ?1")
-    List<GradingPeriod> findGradingPeriodBySchoolId(Long id);
+    public List<GradingPeriod> findGradingPeriodBySchoolId(Long id);
+    
+    @Query("select e from GradingPeriod e where e.schoolYear.school.id = ?1" + 
+            " and e.startDate < current_date() and e.endDate > current_date()")
+    public GradingPeriod findCurrentGradingPeriodBySchoolId(Long id);
     
 }
