@@ -5,7 +5,9 @@
  */
 package com.dub.skoolie.web.controller.system.school.teachers;
 
+import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +28,8 @@ public class SystemSchoolTeacherController {
     
     @RequestMapping(value="/system/schools/{id}/teachers", method=RequestMethod.GET)
     public ModelAndView getSchool(@PathVariable("id") Long school, Model model) {
-        return new ModelAndView("system/school/school");
+        List<TeacherBean> teacherBeans = uiTeacherServiceImpl.getTeachersBySchool(school);
+        return new ModelAndView("system/people/faculty/teachers");
     }
     
 }
