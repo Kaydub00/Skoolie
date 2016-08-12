@@ -25,12 +25,12 @@ public class UiSubjectServiceImpl implements UiSubjectService {
 
     @Override
     public List<SubjectBean> getSubjects() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return subjectServiceImpl.getAll();
     }
 
     @Override
     public SubjectBean getSubject(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return subjectServiceImpl.getByID(id);
     }
 
     @Override
@@ -45,12 +45,12 @@ public class UiSubjectServiceImpl implements UiSubjectService {
 
     @Override
     public void deleteSubjectById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        subjectServiceImpl.deleteByID(id);
     }
 
     @Override
     public void deleteSubject(SubjectBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        subjectServiceImpl.deleteEntity(subject);
     }
 
     @Override

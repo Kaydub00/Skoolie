@@ -34,8 +34,10 @@ public class SystemSubjectController {
     }
     
     @RequestMapping(value="/system/subjects/{subject}", method=RequestMethod.GET)
-    public ModelAndView getSubject(@PathVariable("subject") String subject, Model model) {
-        return new ModelAndView("");
+    public ModelAndView getSubject(@PathVariable("subject") Long subject, Model model) {
+        SubjectBean subjectBean = uiSubjectServiceImpl.getSubject(subject);
+        model.addAttribute("subjectBean", subjectBean);
+        return new ModelAndView("system/courses/subject");
     }
     
     @RequestMapping(value="/system/subjects", method=RequestMethod.POST)

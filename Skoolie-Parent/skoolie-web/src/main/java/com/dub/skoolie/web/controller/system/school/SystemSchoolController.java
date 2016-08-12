@@ -44,6 +44,9 @@ public class SystemSchoolController {
     
     @RequestMapping(value="/system/schools", method=RequestMethod.POST)
     public ModelAndView addSchool(@Valid SchoolBean schoolBean, BindingResult result, Model model, HttpServletRequest request) {
+        //If I add more model attributes I can probably cut back on a lot of the sql being ran. The way I use the object in the view
+        //is causing a ton of sql to run and I see a lot of duplicate queries running. due to jpa
+        //I'm not worried about this right now, but once I have more of the app completed I'll need to start working on optimizing this
         String referrer = request.getHeader("Referer");
         if(result.hasErrors()) {
             if(!referrer.equals("/system/schools")) {

@@ -62,12 +62,12 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public void deleteEntity(SubjectBean entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repo.delete(entity.getId());
     }
 
     @Override
     public void deleteByID(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repo.delete(id);
     }
 
     @Override
