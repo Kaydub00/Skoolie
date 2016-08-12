@@ -83,17 +83,19 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void deleteEntity(CourseBean entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repo.delete(entity.getId());
     }
 
     @Override
     public void deleteByID(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        repo.delete(id);
     }
 
     @Override
     public CourseBean getByID(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CourseBean sbj = new CourseBean();
+        mapper.map(repo.findOne(id), sbj);
+        return sbj;
     }
 
     @Override

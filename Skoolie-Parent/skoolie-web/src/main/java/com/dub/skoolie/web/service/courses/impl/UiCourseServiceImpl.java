@@ -25,13 +25,13 @@ public class UiCourseServiceImpl implements UiCourseService{
     CourseService courseServiceImpl;
 
     @Override
-    public List<CourseBean> getCourse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<CourseBean> getCourses() {
+        return courseServiceImpl.getAll();
     }
 
     @Override
     public CourseBean getCourse(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return courseServiceImpl.getByID(id);
     }
 
     @Override
@@ -46,12 +46,12 @@ public class UiCourseServiceImpl implements UiCourseService{
 
     @Override
     public void deleteCourseById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        courseServiceImpl.deleteByID(id);
     }
 
     @Override
     public void deleteCourse(CourseBean subject) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        courseServiceImpl.deleteEntity(subject);
     }
 
     @Override

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface UiCourseService {
     
-    public List<CourseBean> getCourse();
+    public List<CourseBean> getCourses();
     
     public CourseBean getCourse(Long id);
     
