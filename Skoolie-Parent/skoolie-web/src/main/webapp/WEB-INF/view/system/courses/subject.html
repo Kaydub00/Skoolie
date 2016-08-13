@@ -20,5 +20,41 @@
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-11 col-sm-offset-1">
+                    <h1 th:text="${subjectBean.name}">Subject</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-xs-1">
+                    <div>Side Bar</div>
+                </div>
+                <div class="col-sm-10 col-xs-11">
+                    <div class="row">
+                        <div class="col-sm-5 col-sm-offset-0 col-xs-11 col-xs-offset-1">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    Subject 
+                                </div>
+                                <div class="panel-body">
+                                    Goign to put list here of subject info
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 col-sm-offset-0 col-xs-11 col-xs-offset-1">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    Courses related to subject 
+                                </div>
+                                <div class="panel-body">
+                                    list of courses related to subject
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
