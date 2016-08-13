@@ -35,10 +35,17 @@
                         <div class="col-sm-5 col-sm-offset-0 col-xs-11 col-xs-offset-1">
                             <div class="panel panel-primary">
                                 <div class="panel-heading">
-                                    Subject 
+                                    <h4 th:text="${subjectBean.name}">Subject</h4>
                                 </div>
                                 <div class="panel-body">
-                                    Goign to put list here of subject info
+                                    <ul id="subject-list" class="list-group">
+                                        <li class="list-group-item" th:id="${subjectBean.id}">
+                                            <h4 th:text="${subjectBean.name}">Subject</h4>
+                                            <label for="code">Code </label><span th:text="${subjectBean.code}">code</span>
+                                            <p th:text="${subjectBean.description}">subject Desc</p>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="btn btn-primary pull-right" data-target="#editSubject" data-toggle="modal" data-backdrop="false">Edit Subject</a>
                                 </div>
                             </div>
                         </div>
@@ -56,5 +63,32 @@
                 </div>
             </div>
         </div>
+        
+        <div id="editSubject" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Subject</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/subjects}" th:object="${subjectBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <input type="hidden" name="school" th:value="${subjectBean.school.id}"/>
+                                    <input type="hidden" name="id" th:value="${subjectBean.id}"/>
+                                    
+                                    <label for="name">Name</label>                                    
+                                    <input class="form-control" id="name" name="name" type="text" th:value="${subjectBean.name}"/>
+                                    <label for="code">Code</label>
+                                    <input class="form-control" name="code" type="text" th:value="${subjectBean.code}"/>
+                                    <label for="description">Description</label>
+                                    <input class="form-control" name="description" type="text" th:value="${subjectBean.description}"/>
+                                    <input type="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>
