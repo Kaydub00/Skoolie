@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="school : ${schools}" >
-                                <td th:text="${school.district.name}">District</td>
+                                <td<a th:href="@{/system/districts/{id}(id=${school.district.id})}" th:text="${school.district.name}">District</a></td>
                                 <td><a th:href="@{/system/schools/{id}(id=${school.id})}" th:text="${school.name}">null</a></td>
                                 <td th:text="${school.address}">null</td>
                                 <td th:text="${school.city}">null</td>
