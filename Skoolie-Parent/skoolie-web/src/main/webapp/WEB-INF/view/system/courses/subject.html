@@ -55,7 +55,13 @@
                                     Courses related to subject 
                                 </div>
                                 <div class="panel-body">
-                                    list of courses related to subject
+                                    <ul id="course-list" class="list-group">
+                                        <li th:each="courseBean : ${subjectBean.courses}" class="list-group-item" th:id="${subjectBean.id}">
+                                            <h4 th:text="${courseBean.name}">Name</h4>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="btn btn-primary pull-right" data-target="#addCourse" data-toggle="modal" data-backdrop="false">Add Course</a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -89,6 +95,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
+        
+        <div id="addCourse" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Course</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/courses}" th:object="${courseBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input class="form-control" id="name" name="name" type="text" th:value="${courseBean.name}" />
+                                    <label for="description">Description</label>
+                                    <input class="form-control" id="description" name="description" type="text"/>
+                                    <input type="hidden" name="subject" th:value="${subjectBean.id}"/>
+                                    <input type="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </body>
 </html>

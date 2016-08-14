@@ -30,7 +30,8 @@ public class SystemCourseController {
     
     @RequestMapping(value="/system/courses", method=RequestMethod.GET)
     public ModelAndView getCourses(Model model) {
-        return new ModelAndView("test");
+        model.addAttribute("courseBeans", uiCourseServiceImpl.getCourses());
+        return new ModelAndView("system/courses/courses");
     }
     
     @RequestMapping(value="/system/courses/{course}", method=RequestMethod.GET)

@@ -79,7 +79,12 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<SubjectBean> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<SubjectBean> newlist = new ArrayList<>();
+        Iterable<Subject> list = repo.findAll();
+        for(Subject sbj : list) {
+            newlist.add(mapper.map(sbj, SubjectBean.class));
+        }
+        return newlist;
     }
     
 }

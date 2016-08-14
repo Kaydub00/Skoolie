@@ -5,6 +5,7 @@
  */
 package com.dub.skoolie.web.controller.system.courses;
 
+import com.dub.skoolie.structures.courses.CourseBean;
 import com.dub.skoolie.structures.courses.SubjectBean;
 import com.dub.skoolie.web.service.courses.UiSubjectService;
 import javax.servlet.http.HttpServletRequest;
@@ -30,13 +31,16 @@ public class SystemSubjectController {
     
     @RequestMapping(value="/system/subjects", method=RequestMethod.GET)
     public ModelAndView getSubjects(Model model) {
-        return new ModelAndView("test");
+        model.addAttribute("subjectBeans", uiSubjectServiceImpl.getSubjects());
+        return new ModelAndView("system/courses/subjects");
     }
     
     @RequestMapping(value="/system/subjects/{subject}", method=RequestMethod.GET)
     public ModelAndView getSubject(@PathVariable("subject") Long subject, Model model) {
         SubjectBean subjectBean = uiSubjectServiceImpl.getSubject(subject);
         model.addAttribute("subjectBean", subjectBean);
+        model.addAttribute("courseBean", new CourseBean());
+        //model.addAttribute("courseBeans",);
         return new ModelAndView("system/courses/subject");
     }
     

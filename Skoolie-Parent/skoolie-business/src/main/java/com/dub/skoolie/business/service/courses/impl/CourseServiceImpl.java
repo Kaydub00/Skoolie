@@ -100,7 +100,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public List<CourseBean> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CourseBean> newlist = new ArrayList<>();
+        Iterable<Course> list = repo.findAll();
+        for(Course crs : list) {
+            newlist.add(mapper.map(crs, CourseBean.class));
+        }
+        return newlist;
     }
     
 }
