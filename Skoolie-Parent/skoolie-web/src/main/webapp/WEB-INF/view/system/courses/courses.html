@@ -31,7 +31,6 @@
             </div>
             <div class="row">
                 <div class="col-xs-2 col-xs-offset-10">
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addCourse">Add Course</a>
                 </div>
                 
             </div>
@@ -48,6 +47,7 @@
                             <tr th:each="courseBean : ${courseBeans}" >
                                 <td><a th:href="@{/system/subjects/{id}(id=${courseBean.subject.id})}" th:text="${courseBean.subject.name}">Subject</a></td>
                                 <td><a th:href="@{/system/courses/{id}(id=${courseBean.id})}" th:text="${courseBean.name}">Name</a></td>
+                                <td><a th:href="@{/system/schools/{id}(id=${courseBean.subject.school.id})}" th:text="${courseBean.subject.school.name}">School</a></td>
                             </tr>
                         </tbody>
                     </table>

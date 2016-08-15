@@ -56,5 +56,41 @@
                 </div>
             </div>
         </div>
+        
+        <div id="addSubject" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>Subject</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="#" th:action="@{/system/subjects}" th:object="${subjectBean}" method="post" role="form">
+                                <div class="form-group">
+                                    <label for="name">Name</label>                                    
+                                    <input class="form-control" id="name" name="name" type="text" th:value="${subjectBean.name}"/>
+                                    <label for="code">Code</label>
+                                    <input class="form-control" name="code" type="text" th:value="${subjectBean.code}"/>
+                                    <label for="description">Description</label>
+                                    <input class="form-control" name="description" type="text" th:value="${subjectBean.description}"/>
+                                    
+                                    
+                                    <!-- I need a way to assign subjects to multiple schools -->
+                                    
+                                    
+                                    <label for="school">School</label>
+                                    <select class="form-control" id="subjectselect" name="school">
+                                        <option th:each="school : ${schoolBeans}"
+                                                th:value="${school.id}"
+                                                th:text="${school.name}">Type</option>
+                                    </select>
+                                    
+                                    <input type="submit"/>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+        </div>
     </body>
 </html>

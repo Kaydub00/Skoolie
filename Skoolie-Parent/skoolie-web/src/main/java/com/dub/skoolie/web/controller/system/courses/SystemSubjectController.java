@@ -8,6 +8,7 @@ package com.dub.skoolie.web.controller.system.courses;
 import com.dub.skoolie.structures.courses.CourseBean;
 import com.dub.skoolie.structures.courses.SubjectBean;
 import com.dub.skoolie.web.service.courses.UiSubjectService;
+import com.dub.skoolie.web.service.school.UiSchoolService;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +30,14 @@ public class SystemSubjectController {
     @Autowired
     UiSubjectService uiSubjectServiceImpl;
     
+    @Autowired
+    UiSchoolService uiSchoolServiceImpl;
+    
     @RequestMapping(value="/system/subjects", method=RequestMethod.GET)
     public ModelAndView getSubjects(Model model) {
         model.addAttribute("subjectBeans", uiSubjectServiceImpl.getSubjects());
+        model.addAttribute("subjectBean", new SubjectBean());
+        model.addAttribute("schoolBeans", uiSchoolServiceImpl.getSchools());
         return new ModelAndView("system/courses/subjects");
     }
     
