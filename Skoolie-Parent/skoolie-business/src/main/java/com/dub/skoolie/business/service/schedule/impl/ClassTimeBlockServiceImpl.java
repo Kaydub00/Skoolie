@@ -9,6 +9,7 @@ import com.dub.skoolie.business.service.schedule.ClassTimeBlockService;
 import com.dub.skoolie.data.dao.schedule.ClassTimeBlockRepository;
 import com.dub.skoolie.data.entities.schedule.ClassTimeBlock;
 import com.dub.skoolie.structures.schedule.ClassTimeBlockBean;
+import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
@@ -61,6 +62,26 @@ public class ClassTimeBlockServiceImpl implements ClassTimeBlockService {
     public List<ClassTimeBlockBean> getAll() {
         List<ClassTimeBlockBean> newlist = new ArrayList<>();
         Iterable<ClassTimeBlock> list = repo.findAll();
+        for(ClassTimeBlock ctb : list) {
+            newlist.add(mapper.map(ctb, ClassTimeBlockBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<ClassTimeBlockBean> getClassTimeBlocksByGradingPeriod(GradingPeriodBean gradingPeriodBean) {
+        List<ClassTimeBlockBean> newlist = new ArrayList<>();
+        Iterable<ClassTimeBlock> list = repo.findClassTimeBlocksByGradingPeriodId(gradingPeriodBean.getId());
+        for(ClassTimeBlock ctb : list) {
+            newlist.add(mapper.map(ctb, ClassTimeBlockBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<ClassTimeBlockBean> getClassTimeBlocksByGradingPeriod(Long id) {
+        List<ClassTimeBlockBean> newlist = new ArrayList<>();
+        Iterable<ClassTimeBlock> list = repo.findClassTimeBlocksByGradingPeriodId(id);
         for(ClassTimeBlock ctb : list) {
             newlist.add(mapper.map(ctb, ClassTimeBlockBean.class));
         }

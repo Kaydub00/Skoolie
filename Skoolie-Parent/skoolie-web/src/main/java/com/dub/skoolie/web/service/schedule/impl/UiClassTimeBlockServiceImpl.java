@@ -56,5 +56,10 @@ public class UiClassTimeBlockServiceImpl implements UiClassTimeBlockService {
     public void deleteClassTimeBlock(Long id) {
         classTimeBlockServiceImpl.deleteByID(id);
     }
+
+    @Override
+    public List<ClassTimeBlockBean> getClassTimeBlocksByGradingPeriod(GradingPeriodBean gradingPeriodBean) {
+        return classTimeBlockServiceImpl.getClassTimeBlocksByGradingPeriod(gradingPeriodBean);
+    }
     
 }

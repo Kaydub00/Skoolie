@@ -20,5 +20,52 @@
     </head>
     <body>
         <div th:replace="../templates/header :: topmenubar">Menu Bar</div>
+        
+        
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Class Schedule</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#byTeacher">By Teacher</a></li>
+                                <li><a data-toggle="tab" href="#byClassroom">By Classroom</a></li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div id="byTeacher" class="tab-pane fade in active">
+                                    <table>
+                                        <tr>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                        </tr>
+                                        <tr th:each="teacherBean : ${teacherBeans}">
+                                            <td th:text="${teacherBean.user.firstName}"></td>
+                                            <td th:text="${teacherBean.user.lastName}"></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div id="byClassroom" class="tab-pane fade">
+                                    <table>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr th:each="schoolRoomBean : ${schoolRoomBeans}">
+                                            <td th:text="${schoolRoomBean.name}"></td>
+                                            <td>text</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </body>
 </html>
