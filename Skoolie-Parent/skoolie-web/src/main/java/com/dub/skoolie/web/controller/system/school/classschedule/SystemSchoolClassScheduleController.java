@@ -39,6 +39,7 @@ public class SystemSchoolClassScheduleController {
             }
         });
         model.addAttribute("gradingPeriodBeans", gpblist);
+        model.addAttribute("schoolid", school);
         return new ModelAndView("/system/school/classschedule/index");
     }
     
