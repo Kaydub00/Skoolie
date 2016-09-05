@@ -5,7 +5,9 @@
  */
 package com.dub.skoolie.structures.courses;
 
+import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.structures.schedule.ClassTimeBlockBean;
+import com.dub.skoolie.structures.school.SchoolRoomBean;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -27,6 +29,12 @@ public class SchoolClassBean implements Serializable {
     
     @NotNull
     private ClassTimeBlockBean classTimeBlock;
+    
+    @NotNull
+    private TeacherBean teacher;
+    
+    @NotNull
+    private SchoolRoomBean room;
 
     /**
      * @return the id
@@ -82,6 +90,34 @@ public class SchoolClassBean implements Serializable {
      */
     public void setClassTimeBlock(ClassTimeBlockBean classTimeBlock) {
         this.classTimeBlock = classTimeBlock;
+    }
+
+    /**
+     * @return the teacher
+     */
+    public TeacherBean getTeacher() {
+        return teacher;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(TeacherBean teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     * @return the room
+     */
+    public SchoolRoomBean getRoom() {
+        return room;
+    }
+
+    /**
+     * @param room the room to set
+     */
+    public void setRoom(SchoolRoomBean room) {
+        this.room = room;
     }
     
 }

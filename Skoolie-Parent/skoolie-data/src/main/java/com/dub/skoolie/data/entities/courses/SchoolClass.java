@@ -5,7 +5,9 @@
  */
 package com.dub.skoolie.data.entities.courses;
 
+import com.dub.skoolie.data.entities.people.faculty.Teacher;
 import com.dub.skoolie.data.entities.schedule.ClassTimeBlock;
+import com.dub.skoolie.data.entities.school.SchoolRoom;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,6 +41,14 @@ public class SchoolClass implements Serializable {
     @ManyToOne
     @JoinColumn(name="CLASS_TIME_BLOCK_ID")
     private ClassTimeBlock classTimeBlock;
+    
+    @ManyToOne
+    @JoinColumn(name="TEACHER_ID")
+    private Teacher teacher;
+    
+    @ManyToOne
+    @JoinColumn(name="ROOM_ID")
+    private SchoolRoom room;
 
     /**
      * @return the id
@@ -94,6 +104,34 @@ public class SchoolClass implements Serializable {
      */
     public void setClassTimeBlock(ClassTimeBlock classTimeBlock) {
         this.classTimeBlock = classTimeBlock;
+    }
+
+    /**
+     * @return the teacher
+     */
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    /**
+     * @param teacher the teacher to set
+     */
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    /**
+     * @return the room
+     */
+    public SchoolRoom getRoom() {
+        return room;
+    }
+
+    /**
+     * @param room the room to set
+     */
+    public void setRoom(SchoolRoom room) {
+        this.room = room;
     }
     
 }
