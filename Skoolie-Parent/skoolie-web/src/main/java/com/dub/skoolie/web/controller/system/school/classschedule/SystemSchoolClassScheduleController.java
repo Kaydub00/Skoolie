@@ -5,10 +5,12 @@
  */
 package com.dub.skoolie.web.controller.system.school.classschedule;
 
+import com.dub.skoolie.structures.courses.CourseBean;
 import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import com.dub.skoolie.structures.schedule.ClassTimeBlockBean;
 import com.dub.skoolie.structures.schedule.GradingPeriodBean;
 import com.dub.skoolie.structures.school.SchoolRoomBean;
+import com.dub.skoolie.web.service.courses.UiCourseService;
 import com.dub.skoolie.web.service.people.faculty.UiTeacherService;
 import com.dub.skoolie.web.service.schedule.UiClassTimeBlockService;
 import com.dub.skoolie.web.service.schedule.UiGradingPeriodService;
@@ -44,6 +46,8 @@ public class SystemSchoolClassScheduleController {
     @Autowired
     UiTeacherService uiTeacherServiceImpl;
     
+    @Autowired
+    UiCourseService uiCourseServiceImpl;
     
     //Giving the user a list of the grading periods so they can choose which grading period class schedule to review
     @RequestMapping(value="/system/schools/{id}/classes",method=RequestMethod.GET)
@@ -68,10 +72,12 @@ public class SystemSchoolClassScheduleController {
         List<ClassTimeBlockBean> classTimeBlockBeans = uiClassTimeBlockServiceImpl.getClassTimeBlocksByGradingPeriod(gradingPeriodBean);
         List<SchoolRoomBean> schoolRoomBeans = uiSchoolRoomServiceImpl.getSchoolRoomsBySchool(school);
         List<TeacherBean> teacherBeans = uiTeacherServiceImpl.getTeachersBySchool(school);
+        List<CourseBean> courseBeans = uiCourseServiceImpl.getCoursesBySchool(school);
         model.addAttribute("gradingPeriodBean", gradingPeriodBean);
         model.addAttribute("classTimeBlockBeans", classTimeBlockBeans);
         model.addAttribute("schoolRoomBeans", schoolRoomBeans);
         model.addAttribute("teacherBeans", teacherBeans);
+        model.addAttribute("courseBeans", courseBeans);
         return new ModelAndView("/system/school/classschedule/gradingperiod");
     }
     
