@@ -51,7 +51,24 @@
                                                             <th th:each="classTimeBlockBean : ${classTimeBlockBeans}" th:text="${classTimeBlockBean.name}">Class time blocks</th>
                                                         </tr>
                                                         <tr th:each="teacherBean : ${teacherBeans}">
-                                                            <td th:text="${teacherBean.user.firstName + ' ' + teacherBean.user.lastName}">Teacher</td>
+                                                            <td>
+                                                                <div class="col-xs-12">
+                                                                    <a th:href="@{/system/people/faculty/teacher/{username}(username=${teacherBean.user.username})}" 
+                                                                       accesskey=""th:text="${teacherBean.user.firstName + ' ' + teacherBean.user.lastName}">
+                                                                        Teacher
+                                                                    </a>
+                                                                </div>
+                                                                <ul class="list-group col-xs-6">
+                                                                    <li class="list-group-item">
+                                                                        Subjects
+                                                                    </li>
+                                                                </ul>
+                                                                <ul class="list-group col-xs-6">
+                                                                    <li class="list-group-item">
+                                                                        assign room
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
                                                             <td th:each="classTimeBlockBean : ${classTimeBlockBeans}" th:text="${classTimeBlockBean.name}">CTBs</td>
                                                         </tr>
                                                     </table>                                        
@@ -59,16 +76,23 @@
                                             </div>
                                         </div>
                                         <div class="col-xs-2 col-sm-2 col-md-2">
-                                            <table>
-                                                <tr>
-                                                    <th>First Name</th>
-                                                    <th>Last Name</th>
-                                                </tr>
-                                                <tr th:each="schoolRoomBean : ${schoolRoomBeans}">
-                                                    <td><div th:id="${schoolRoomBean.id}" class="draggable" th:text="${schoolRoomBean.name}">room</div></td>
-                                                    <td th:text="${schoolRoomBean.name}"></td>
-                                                </tr>
-                                            </table>
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Available Courses</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table>
+                                                        <tr>
+                                                            <th>First Name</th>
+                                                            <th>Last Name</th>
+                                                        </tr>
+                                                        <tr th:each="schoolRoomBean : ${schoolRoomBeans}">
+                                                            <td><div th:id="${schoolRoomBean.id}" class="draggable" th:text="${schoolRoomBean.name}">room</div></td>
+                                                            <td th:text="${schoolRoomBean.name}"></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     

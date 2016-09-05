@@ -5,6 +5,8 @@
  */
 package com.dub.skoolie.data.entities.people.faculty;
 
+import com.dub.skoolie.data.entities.courses.SchoolClass;
+import com.dub.skoolie.data.entities.courses.Subject;
 import com.dub.skoolie.data.entities.school.School;
 import com.dub.skoolie.data.entities.usr.security.User;
 import java.io.Serializable;
@@ -19,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -65,6 +68,12 @@ public class Teacher implements Serializable {
     @ManyToOne
     @JoinColumn(name="PRIMARY_SCHOOL_ID")
     private School primarySchool;
+    
+    @OneToMany(mappedBy="teacher")
+    private List<SchoolClass> classes;
+    
+    //private List<Subject> subjects;
+    
     
     /*@ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     @JoinTable(
@@ -226,6 +235,20 @@ public class Teacher implements Serializable {
      */
     public void setAddressTwo(String addressTwo) {
         this.addressTwo = addressTwo;
+    }
+
+    /**
+     * @return the classes
+     */
+    public List<SchoolClass> getClasses() {
+        return classes;
+    }
+
+    /**
+     * @param classes the classes to set
+     */
+    public void setClasses(List<SchoolClass> classes) {
+        this.classes = classes;
     }
 
     /**
