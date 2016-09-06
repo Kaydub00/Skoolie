@@ -6,6 +6,7 @@
 package com.dub.skoolie.structures.schedule;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -26,6 +27,7 @@ public class GradingPeriodBean {
     @JsonBackReference
     private SchoolYearBean schoolYear;
     
+    @JsonIgnore
     private List<ClassTimeBlockBean> classTimeBlocks;
     
     @NotNull

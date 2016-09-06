@@ -89,7 +89,8 @@
                                                                             </div>
                                                                             <div class="modal-body">
                                                                                 <form action="#" method="post" role="form">
-                                                                                    <input type="hidden" th:value="${teacherBean.user.username}" name="teacher"/>
+                                                                                    <input class="teacher" type="hidden" th:value="${teacherBean.user.username}" name="teacher"/>
+                                                                                    <input type="hidden" th:value="${classTimeBlockBean.id}" name="classTimeBlock"/>
                                                                                 </form>
                                                                             </div>
                                                                         </div>
@@ -158,6 +159,8 @@
                     $(ui.draggable).draggable('disable');
                     alert('course id = ' + $(ui.draggable).attr("id"));
                     alert('ctb id = ' + $(this).attr("id"));
+                    alert('teacher = ' + $(this).find("input.teacher").attr("value"));
+                    $("#addClassModal").modal() ;
                 }
             });
         </script>
