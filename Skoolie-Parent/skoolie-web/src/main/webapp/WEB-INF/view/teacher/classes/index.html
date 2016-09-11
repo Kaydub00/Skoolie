@@ -41,7 +41,7 @@
                         <tbody>
                             <tr th:each="schoolClassBean : ${schoolClassBeans}" >
                                 <td th:text="${schoolClassBean.course.name}">course</td>
-                                <td th:text="${schoolClassBean.name}">class</td>
+                                <td><a th:href="@{/teacher/classes/{classid}(classid=${schoolClassBean.id})}" th:text="${schoolClassBean.name}">class</a></td>
                                 <td th:text="${schoolClassBean.classTimeBlock.name}">null</td>
                             </tr>
                         </tbody>
