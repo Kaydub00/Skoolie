@@ -29,7 +29,24 @@
                 </div>
             </div>
             <div class="row">
-                
+                <div class="col-xs-10 col-md-10 col-md-offset-1 col-xs-offset-1">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Class Name</th>
+                                <th>CTB</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="schoolClassBean : ${schoolClassBeans}" >
+                                <td th:text="${schoolClassBean.course.name}">course</td>
+                                <td th:text="${schoolClassBean.name}">class</td>
+                                <td th:text="${schoolClassBean.classTimeBlock.name}">null</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
