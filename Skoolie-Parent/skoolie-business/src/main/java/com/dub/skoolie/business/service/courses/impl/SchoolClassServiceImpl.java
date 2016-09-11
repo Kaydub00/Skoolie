@@ -9,16 +9,19 @@ import com.dub.skoolie.business.service.courses.SchoolClassService;
 import com.dub.skoolie.data.dao.courses.SchoolClassRepository;
 import com.dub.skoolie.data.entities.courses.SchoolClass;
 import com.dub.skoolie.structures.courses.SchoolClassBean;
+import com.dub.skoolie.structures.people.faculty.TeacherBean;
 import java.util.ArrayList;
 import java.util.List;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Kevin W
  */
+@Transactional("skooliecoreTransactionManager")
 @Service
 public class SchoolClassServiceImpl implements SchoolClassService {
     
@@ -58,6 +61,42 @@ public class SchoolClassServiceImpl implements SchoolClassService {
     public List<SchoolClassBean> getAll() {
         List<SchoolClassBean> newlist = new ArrayList<>();
         Iterable<SchoolClass> list = repo.findAll();
+        for(SchoolClass skcls : list) {
+            newlist.add(mapper.map(skcls, SchoolClassBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<SchoolClassBean> getTeacherSchoolClasses(String teacherName) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SchoolClassBean> getTeacherSchoolClasses(TeacherBean teacher) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SchoolClassBean> getTeacherCurrentSchoolClasses(String teacherName) {
+        //need to get classes that are in the current gradingperiod and are for the input teacherName
+        
+        
+        List<SchoolClassBean> newlist = new ArrayList<>();
+        Iterable<SchoolClass> list = repo.findSchoolClassByCurrentGradingPeriodAndTeacher(teacherName);
+        for(SchoolClass skcls : list) {
+            newlist.add(mapper.map(skcls, SchoolClassBean.class));
+        }
+        return newlist;
+    }
+
+    @Override
+    public List<SchoolClassBean> getTeacherCurrentSchoolClasses(TeacherBean teacher) {
+        //need to get classes that are in the current gradingperiod and are for the input teacherName
+        
+        
+        List<SchoolClassBean> newlist = new ArrayList<>();
+        Iterable<SchoolClass> list = repo.findSchoolClassByCurrentGradingPeriodAndTeacher(teacher.getUsername());
         for(SchoolClass skcls : list) {
             newlist.add(mapper.map(skcls, SchoolClassBean.class));
         }

@@ -44,7 +44,7 @@
                             
                             <!--/* Teacher Menu */-->
                             <li sec:authorize="hasRole('ROLE_TEACHER')">
-                                <a th:href="@{/}">Classes</a>
+                                <a th:href="@{/teacher/classes}">Classes</a>
                             </li>
                             <li sec:authorize="hasRole('ROLE_TEACHER')">
                                 <a th:href="@{/}">Students</a>
