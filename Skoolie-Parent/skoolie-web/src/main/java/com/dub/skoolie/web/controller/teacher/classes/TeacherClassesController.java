@@ -7,6 +7,8 @@ package com.dub.skoolie.web.controller.teacher.classes;
 
 import com.dub.skoolie.web.service.courses.UiSchoolClassService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +28,8 @@ public class TeacherClassesController {
     
     @RequestMapping(value="/teacher/classes", method=RequestMethod.GET)
     public ModelAndView getTeacherClasses(Model model) {
-        String teacherName = "teacher";
-        model.addAttribute("schoolClassBeans", uiSchoolClassServiceImpl.getTeacherCurrentClasses(teacherName));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("schoolClassBeans", uiSchoolClassServiceImpl.getTeacherCurrentClasses(auth.getName()));
         return new ModelAndView("teacher/classes/index");
     }
 }
